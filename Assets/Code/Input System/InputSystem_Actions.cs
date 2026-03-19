@@ -296,7 +296,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Player3D"",
+            ""name"": ""Jogador"",
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
@@ -486,138 +486,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
-        },
-        {
-            ""name"": ""Player2D"",
-            ""id"": ""70bcb42b-7fdb-44c1-911a-782b3db06289"",
-            ""actions"": [
-                {
-                    ""name"": ""Mover"",
-                    ""type"": ""Value"",
-                    ""id"": ""c2e7d935-0c86-40ad-82d5-6897689cc681"",
-                    ""expectedControlType"": ""Dpad"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Correr"",
-                    ""type"": ""Button"",
-                    ""id"": ""bf5780b1-fadb-4eae-a626-788a43d193b3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interagir"",
-                    ""type"": ""Button"",
-                    ""id"": ""ccdbe2d8-3437-4282-aaac-b65eac5884ac"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Lanterna"",
-                    ""type"": ""Button"",
-                    ""id"": ""ac29fdac-12eb-41df-ac48-430c73b681b7"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""c353b37f-cebb-4131-b737-7a1a33387f11"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Mover"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""36837bc7-f46a-4781-9f75-a96177b9f6f7"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""74718762-b659-46f3-930b-bea7f2270946"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""7bf5a61a-a0f8-4d6c-ab4c-3e730ef81f5e"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""7d92df7d-81cc-4c1e-9e6a-a47947253c9a"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d1f668d7-3dd9-4444-80fd-866b6007be18"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Correr"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d872d2ea-61d5-4622-b945-4699eb50fc84"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Interagir"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6a300cb6-8e28-47a1-84c6-e28db59a629e"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Lanterna"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": [
@@ -690,28 +558,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Interface_Diario = m_Interface.FindAction("Diario", throwIfNotFound: true);
         m_Interface_Navegar = m_Interface.FindAction("Navegar", throwIfNotFound: true);
         m_Interface_Selecionar = m_Interface.FindAction("Selecionar", throwIfNotFound: true);
-        // Player3D
-        m_Player3D = asset.FindActionMap("Player3D", throwIfNotFound: true);
-        m_Player3D_Mover = m_Player3D.FindAction("Mover", throwIfNotFound: true);
-        m_Player3D_Correr = m_Player3D.FindAction("Correr", throwIfNotFound: true);
-        m_Player3D_Agachar = m_Player3D.FindAction("Agachar", throwIfNotFound: true);
-        m_Player3D_Interagir = m_Player3D.FindAction("Interagir", throwIfNotFound: true);
-        m_Player3D_Lanterna = m_Player3D.FindAction("Lanterna", throwIfNotFound: true);
-        m_Player3D_Visao = m_Player3D.FindAction("Visao", throwIfNotFound: true);
-        m_Player3D_TrocarPOV = m_Player3D.FindAction("TrocarPOV", throwIfNotFound: true);
-        // Player2D
-        m_Player2D = asset.FindActionMap("Player2D", throwIfNotFound: true);
-        m_Player2D_Mover = m_Player2D.FindAction("Mover", throwIfNotFound: true);
-        m_Player2D_Correr = m_Player2D.FindAction("Correr", throwIfNotFound: true);
-        m_Player2D_Interagir = m_Player2D.FindAction("Interagir", throwIfNotFound: true);
-        m_Player2D_Lanterna = m_Player2D.FindAction("Lanterna", throwIfNotFound: true);
+        // Jogador
+        m_Jogador = asset.FindActionMap("Jogador", throwIfNotFound: true);
+        m_Jogador_Mover = m_Jogador.FindAction("Mover", throwIfNotFound: true);
+        m_Jogador_Correr = m_Jogador.FindAction("Correr", throwIfNotFound: true);
+        m_Jogador_Agachar = m_Jogador.FindAction("Agachar", throwIfNotFound: true);
+        m_Jogador_Interagir = m_Jogador.FindAction("Interagir", throwIfNotFound: true);
+        m_Jogador_Lanterna = m_Jogador.FindAction("Lanterna", throwIfNotFound: true);
+        m_Jogador_Visao = m_Jogador.FindAction("Visao", throwIfNotFound: true);
+        m_Jogador_TrocarPOV = m_Jogador.FindAction("TrocarPOV", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
     {
         UnityEngine.Debug.Assert(!m_Interface.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Interface.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Player3D.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player3D.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Player2D.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player2D.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Jogador.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Jogador.Disable() has not been called.");
     }
 
     /// <summary>
@@ -924,59 +785,59 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// </summary>
     public InterfaceActions @Interface => new InterfaceActions(this);
 
-    // Player3D
-    private readonly InputActionMap m_Player3D;
-    private List<IPlayer3DActions> m_Player3DActionsCallbackInterfaces = new List<IPlayer3DActions>();
-    private readonly InputAction m_Player3D_Mover;
-    private readonly InputAction m_Player3D_Correr;
-    private readonly InputAction m_Player3D_Agachar;
-    private readonly InputAction m_Player3D_Interagir;
-    private readonly InputAction m_Player3D_Lanterna;
-    private readonly InputAction m_Player3D_Visao;
-    private readonly InputAction m_Player3D_TrocarPOV;
+    // Jogador
+    private readonly InputActionMap m_Jogador;
+    private List<IJogadorActions> m_JogadorActionsCallbackInterfaces = new List<IJogadorActions>();
+    private readonly InputAction m_Jogador_Mover;
+    private readonly InputAction m_Jogador_Correr;
+    private readonly InputAction m_Jogador_Agachar;
+    private readonly InputAction m_Jogador_Interagir;
+    private readonly InputAction m_Jogador_Lanterna;
+    private readonly InputAction m_Jogador_Visao;
+    private readonly InputAction m_Jogador_TrocarPOV;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Player3D".
+    /// Provides access to input actions defined in input action map "Jogador".
     /// </summary>
-    public struct Player3DActions
+    public struct JogadorActions
     {
         private @InputSystem_Actions m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public Player3DActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        public JogadorActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player3D/Mover".
+        /// Provides access to the underlying input action "Jogador/Mover".
         /// </summary>
-        public InputAction @Mover => m_Wrapper.m_Player3D_Mover;
+        public InputAction @Mover => m_Wrapper.m_Jogador_Mover;
         /// <summary>
-        /// Provides access to the underlying input action "Player3D/Correr".
+        /// Provides access to the underlying input action "Jogador/Correr".
         /// </summary>
-        public InputAction @Correr => m_Wrapper.m_Player3D_Correr;
+        public InputAction @Correr => m_Wrapper.m_Jogador_Correr;
         /// <summary>
-        /// Provides access to the underlying input action "Player3D/Agachar".
+        /// Provides access to the underlying input action "Jogador/Agachar".
         /// </summary>
-        public InputAction @Agachar => m_Wrapper.m_Player3D_Agachar;
+        public InputAction @Agachar => m_Wrapper.m_Jogador_Agachar;
         /// <summary>
-        /// Provides access to the underlying input action "Player3D/Interagir".
+        /// Provides access to the underlying input action "Jogador/Interagir".
         /// </summary>
-        public InputAction @Interagir => m_Wrapper.m_Player3D_Interagir;
+        public InputAction @Interagir => m_Wrapper.m_Jogador_Interagir;
         /// <summary>
-        /// Provides access to the underlying input action "Player3D/Lanterna".
+        /// Provides access to the underlying input action "Jogador/Lanterna".
         /// </summary>
-        public InputAction @Lanterna => m_Wrapper.m_Player3D_Lanterna;
+        public InputAction @Lanterna => m_Wrapper.m_Jogador_Lanterna;
         /// <summary>
-        /// Provides access to the underlying input action "Player3D/Visao".
+        /// Provides access to the underlying input action "Jogador/Visao".
         /// </summary>
-        public InputAction @Visao => m_Wrapper.m_Player3D_Visao;
+        public InputAction @Visao => m_Wrapper.m_Jogador_Visao;
         /// <summary>
-        /// Provides access to the underlying input action "Player3D/TrocarPOV".
+        /// Provides access to the underlying input action "Jogador/TrocarPOV".
         /// </summary>
-        public InputAction @TrocarPOV => m_Wrapper.m_Player3D_TrocarPOV;
+        public InputAction @TrocarPOV => m_Wrapper.m_Jogador_TrocarPOV;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player3D; }
+        public InputActionMap Get() { return m_Wrapper.m_Jogador; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -984,9 +845,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="Player3DActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="JogadorActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(Player3DActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(JogadorActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -994,11 +855,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="Player3DActions" />
-        public void AddCallbacks(IPlayer3DActions instance)
+        /// <seealso cref="JogadorActions" />
+        public void AddCallbacks(IJogadorActions instance)
         {
-            if (instance == null || m_Wrapper.m_Player3DActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Player3DActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_JogadorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_JogadorActionsCallbackInterfaces.Add(instance);
             @Mover.started += instance.OnMover;
             @Mover.performed += instance.OnMover;
             @Mover.canceled += instance.OnMover;
@@ -1028,8 +889,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="Player3DActions" />
-        private void UnregisterCallbacks(IPlayer3DActions instance)
+        /// <seealso cref="JogadorActions" />
+        private void UnregisterCallbacks(IJogadorActions instance)
         {
             @Mover.started -= instance.OnMover;
             @Mover.performed -= instance.OnMover;
@@ -1055,12 +916,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player3DActions.UnregisterCallbacks(IPlayer3DActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="JogadorActions.UnregisterCallbacks(IJogadorActions)" />.
         /// </summary>
-        /// <seealso cref="Player3DActions.UnregisterCallbacks(IPlayer3DActions)" />
-        public void RemoveCallbacks(IPlayer3DActions instance)
+        /// <seealso cref="JogadorActions.UnregisterCallbacks(IJogadorActions)" />
+        public void RemoveCallbacks(IJogadorActions instance)
         {
-            if (m_Wrapper.m_Player3DActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_JogadorActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -1070,150 +931,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="Player3DActions.AddCallbacks(IPlayer3DActions)" />
-        /// <seealso cref="Player3DActions.RemoveCallbacks(IPlayer3DActions)" />
-        /// <seealso cref="Player3DActions.UnregisterCallbacks(IPlayer3DActions)" />
-        public void SetCallbacks(IPlayer3DActions instance)
+        /// <seealso cref="JogadorActions.AddCallbacks(IJogadorActions)" />
+        /// <seealso cref="JogadorActions.RemoveCallbacks(IJogadorActions)" />
+        /// <seealso cref="JogadorActions.UnregisterCallbacks(IJogadorActions)" />
+        public void SetCallbacks(IJogadorActions instance)
         {
-            foreach (var item in m_Wrapper.m_Player3DActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_JogadorActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Player3DActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_JogadorActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="Player3DActions" /> instance referencing this action map.
+    /// Provides a new <see cref="JogadorActions" /> instance referencing this action map.
     /// </summary>
-    public Player3DActions @Player3D => new Player3DActions(this);
-
-    // Player2D
-    private readonly InputActionMap m_Player2D;
-    private List<IPlayer2DActions> m_Player2DActionsCallbackInterfaces = new List<IPlayer2DActions>();
-    private readonly InputAction m_Player2D_Mover;
-    private readonly InputAction m_Player2D_Correr;
-    private readonly InputAction m_Player2D_Interagir;
-    private readonly InputAction m_Player2D_Lanterna;
-    /// <summary>
-    /// Provides access to input actions defined in input action map "Player2D".
-    /// </summary>
-    public struct Player2DActions
-    {
-        private @InputSystem_Actions m_Wrapper;
-
-        /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
-        /// </summary>
-        public Player2DActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "Player2D/Mover".
-        /// </summary>
-        public InputAction @Mover => m_Wrapper.m_Player2D_Mover;
-        /// <summary>
-        /// Provides access to the underlying input action "Player2D/Correr".
-        /// </summary>
-        public InputAction @Correr => m_Wrapper.m_Player2D_Correr;
-        /// <summary>
-        /// Provides access to the underlying input action "Player2D/Interagir".
-        /// </summary>
-        public InputAction @Interagir => m_Wrapper.m_Player2D_Interagir;
-        /// <summary>
-        /// Provides access to the underlying input action "Player2D/Lanterna".
-        /// </summary>
-        public InputAction @Lanterna => m_Wrapper.m_Player2D_Lanterna;
-        /// <summary>
-        /// Provides access to the underlying input action map instance.
-        /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player2D; }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
-        public void Enable() { Get().Enable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
-        public void Disable() { Get().Disable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
-        public bool enabled => Get().enabled;
-        /// <summary>
-        /// Implicitly converts an <see ref="Player2DActions" /> to an <see ref="InputActionMap" /> instance.
-        /// </summary>
-        public static implicit operator InputActionMap(Player2DActions set) { return set.Get(); }
-        /// <summary>
-        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <param name="instance">Callback instance.</param>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
-        /// </remarks>
-        /// <seealso cref="Player2DActions" />
-        public void AddCallbacks(IPlayer2DActions instance)
-        {
-            if (instance == null || m_Wrapper.m_Player2DActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Player2DActionsCallbackInterfaces.Add(instance);
-            @Mover.started += instance.OnMover;
-            @Mover.performed += instance.OnMover;
-            @Mover.canceled += instance.OnMover;
-            @Correr.started += instance.OnCorrer;
-            @Correr.performed += instance.OnCorrer;
-            @Correr.canceled += instance.OnCorrer;
-            @Interagir.started += instance.OnInteragir;
-            @Interagir.performed += instance.OnInteragir;
-            @Interagir.canceled += instance.OnInteragir;
-            @Lanterna.started += instance.OnLanterna;
-            @Lanterna.performed += instance.OnLanterna;
-            @Lanterna.canceled += instance.OnLanterna;
-        }
-
-        /// <summary>
-        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <remarks>
-        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
-        /// </remarks>
-        /// <seealso cref="Player2DActions" />
-        private void UnregisterCallbacks(IPlayer2DActions instance)
-        {
-            @Mover.started -= instance.OnMover;
-            @Mover.performed -= instance.OnMover;
-            @Mover.canceled -= instance.OnMover;
-            @Correr.started -= instance.OnCorrer;
-            @Correr.performed -= instance.OnCorrer;
-            @Correr.canceled -= instance.OnCorrer;
-            @Interagir.started -= instance.OnInteragir;
-            @Interagir.performed -= instance.OnInteragir;
-            @Interagir.canceled -= instance.OnInteragir;
-            @Lanterna.started -= instance.OnLanterna;
-            @Lanterna.performed -= instance.OnLanterna;
-            @Lanterna.canceled -= instance.OnLanterna;
-        }
-
-        /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="Player2DActions.UnregisterCallbacks(IPlayer2DActions)" />.
-        /// </summary>
-        /// <seealso cref="Player2DActions.UnregisterCallbacks(IPlayer2DActions)" />
-        public void RemoveCallbacks(IPlayer2DActions instance)
-        {
-            if (m_Wrapper.m_Player2DActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        /// <summary>
-        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-        /// </summary>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
-        /// </remarks>
-        /// <seealso cref="Player2DActions.AddCallbacks(IPlayer2DActions)" />
-        /// <seealso cref="Player2DActions.RemoveCallbacks(IPlayer2DActions)" />
-        /// <seealso cref="Player2DActions.UnregisterCallbacks(IPlayer2DActions)" />
-        public void SetCallbacks(IPlayer2DActions instance)
-        {
-            foreach (var item in m_Wrapper.m_Player2DActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_Player2DActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    /// <summary>
-    /// Provides a new <see cref="Player2DActions" /> instance referencing this action map.
-    /// </summary>
-    public Player2DActions @Player2D => new Player2DActions(this);
+    public JogadorActions @Jogador => new JogadorActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1323,11 +1055,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnSelecionar(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player3D" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Jogador" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="Player3DActions.AddCallbacks(IPlayer3DActions)" />
-    /// <seealso cref="Player3DActions.RemoveCallbacks(IPlayer3DActions)" />
-    public interface IPlayer3DActions
+    /// <seealso cref="JogadorActions.AddCallbacks(IJogadorActions)" />
+    /// <seealso cref="JogadorActions.RemoveCallbacks(IJogadorActions)" />
+    public interface IJogadorActions
     {
         /// <summary>
         /// Method invoked when associated input action "Mover" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -1378,41 +1110,5 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrocarPOV(InputAction.CallbackContext context);
-    }
-    /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player2D" which allows adding and removing callbacks.
-    /// </summary>
-    /// <seealso cref="Player2DActions.AddCallbacks(IPlayer2DActions)" />
-    /// <seealso cref="Player2DActions.RemoveCallbacks(IPlayer2DActions)" />
-    public interface IPlayer2DActions
-    {
-        /// <summary>
-        /// Method invoked when associated input action "Mover" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMover(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Correr" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCorrer(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Interagir" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInteragir(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Lanterna" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLanterna(InputAction.CallbackContext context);
     }
 }
