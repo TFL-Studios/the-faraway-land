@@ -405,6 +405,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867f1648e8f9a5a4ba09ac683bae1328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _firstPerson_maxLookDownAngle: 85
+  _firstPerson_maxLookUpAngle: 275
+  _firstPerson_sensitivity: {x: 1, y: 1}
+  _thirdPerson_maxLookDownAngle: 85
+  _thirdPerson_maxLookUpAngle: 275
+  _thirdPerson_sensitivity: {x: 1, y: 1}
 --- !u!1 &983657097
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +742,7 @@ MonoBehaviour:
     Enabled: 0
     DefaultMode: 2
   DefaultBlend:
-    Style: 1
+    Style: 0
     Time: 2
     CustomCurve:
       serializedVersion: 2

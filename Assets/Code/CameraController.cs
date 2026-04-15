@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Header("Primeira Pessoa")]
     [Range(5f, 85f)]
-    [SerializeField] private float _maxLookDownAngle = 85f;
+    [SerializeField] private float _firstPerson_maxLookDownAngle = 85f;
     [Range(275, 355f)]
-    [SerializeField] private float _maxLookUpAngle = 275f;
+    [SerializeField] private float _firstPerson_maxLookUpAngle = 275f;
+    [SerializeField] private Vector2 _firstPerson_sensitivity = Vector2.one; // TODO: botar como preferencia pro player editar
+
+    [Header("Terceira Pessoa")]
+    [Range(5f, 85f)]
+    [SerializeField] private float _thirdPerson_maxLookDownAngle = 85f;
+    [Range(275, 355f)]
+    [SerializeField] private float _thirdPerson_maxLookUpAngle = 275f;
+    [SerializeField] private Vector2 _thirdPerson_sensitivity = Vector2.one; // TODO: botar como preferencia pro player editar
 
     private GameObject _cameraGimblePrefab;
     private GameObject _cameraGimbleInstance;
+
+    private bool _isThirdPerson = false;
+    private CinemachineCamera _firstPersonCamera;
+    private CinemachineCamera _thirdPersonCamera;
 
     private void Awake()
     {
@@ -19,25 +32,44 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         this.InitCameraGimble();
+
+        this._firstPersonCamera = this._cameraGimbleInstance.transform.GetChild(0).GetComponent<CinemachineCamera>();
+        this._thirdPersonCamera = this._cameraGimbleInstance.transform.GetChild(1).GetComponent<CinemachineCamera>();
+
+        if (this._isThirdPerson) { this._thirdPersonCamera.Prioritize(); }
+        else { this._firstPersonCamera.Prioritize(); }
     }
 
     private void Update()
     {
+        // Inputs
+        if (InputHandler.Instance.EntradaPOV.FoiPressionada)
+        {
+            this._isThirdPerson = !this._isThirdPerson;
+            if (this._isThirdPerson) { this._thirdPersonCamera.Prioritize(); }
+            else { this._firstPersonCamera.Prioritize(); }
+        }
         Vector2 mouseDelta = InputHandler.Instance.EntradaVisao.Valor;
         
         // Horizontal Rotation
         Vector3 playerRotation = this.transform.localRotation.eulerAngles;
-        playerRotation.y += mouseDelta.x;
+        playerRotation.y += mouseDelta.x * Time.deltaTime * (this._isThirdPerson ? this._thirdPerson_sensitivity : this._firstPerson_sensitivity).x;
 
         // Vertical Rotation
         Vector3 gimbleRotation = this._cameraGimbleInstance.transform.localRotation.eulerAngles;
-        gimbleRotation.x -= mouseDelta.y;
+        gimbleRotation.x -= mouseDelta.y * Time.deltaTime * (this._isThirdPerson ? this._thirdPerson_sensitivity : this._firstPerson_sensitivity).y;
         gimbleRotation.y = 0f;
         gimbleRotation.z = 0f;
+        
         // Clamps
-        if (gimbleRotation.x <= 180f && gimbleRotation.x > this._maxLookDownAngle) gimbleRotation.x = this._maxLookDownAngle;
-        if (gimbleRotation.x > 180f && gimbleRotation.x < this._maxLookUpAngle) gimbleRotation.x = this._maxLookUpAngle;
+        float maxLookDownAngle = this._isThirdPerson ? this._thirdPerson_maxLookDownAngle : this._firstPerson_maxLookDownAngle;
+        float maxLookUpAngle = this._isThirdPerson ? this._thirdPerson_maxLookUpAngle : this._firstPerson_maxLookUpAngle;
+        
+        if (gimbleRotation.x <= 180f && gimbleRotation.x > maxLookDownAngle) gimbleRotation.x = this._thirdPerson_maxLookDownAngle;
+        if (gimbleRotation.x > 180f && gimbleRotation.x < maxLookUpAngle) gimbleRotation.x = this._thirdPerson_maxLookUpAngle;
 
         // Apply Rotations
         this.transform.localRotation = Quaternion.Euler(playerRotation);
@@ -61,23 +93,8 @@ public class CameraController : MonoBehaviour
             this._cameraGimbleInstance = GameObject.Instantiate(this._cameraGimblePrefab, this.transform);
             return;
         }
-
-        GameObject cameraGimble = new GameObject("CameraGimble");
-        cameraGimble.transform.parent = this.transform;
-        cameraGimble.transform.localPosition = Vector3.zero;
-        cameraGimble.transform.localRotation = Quaternion.identity;
-        cameraGimble.transform.localScale = Vector3.one * 5f;
-
-        CinemachineCamera firstPersonCamera = new GameObject("FirstPersonCamera").AddComponent<CinemachineCamera>();
-        firstPersonCamera.transform.parent = cameraGimble.transform;
-        firstPersonCamera.transform.localPosition = Vector3.zero;
-        firstPersonCamera.transform.localRotation = Quaternion.identity;
-
-        CinemachineCamera thirdPersonCamera = new GameObject("ThirdPersonCamera").AddComponent<CinemachineCamera>();
-        thirdPersonCamera.transform.parent = cameraGimble.transform;
-        thirdPersonCamera.transform.localPosition = Vector3.back * .5f;
-        thirdPersonCamera.transform.localRotation = Quaternion.identity;
-
-        this._cameraGimbleInstance = cameraGimble;
+#if UNITY_EDITOR
+        Debug.Log("<color=#ff0000>[!] Prefab do CameraGimble nao encontrada na pasta Resources</color>");
+#endif
     }
 }
