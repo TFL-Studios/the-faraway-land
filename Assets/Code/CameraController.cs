@@ -9,14 +9,14 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float _firstPerson_maxLookDownAngle = 85f;
     [Range(275, 355f)]
     [SerializeField] private float _firstPerson_maxLookUpAngle = 275f;
-    [SerializeField] private Vector2 _firstPerson_sensitivity = Vector2.one; // TODO: botar como preferencia pro player editar
+    [SerializeField] private Vector2 _firstPerson_sensitivity = new Vector2(50f, 50f); // TODO: botar como preferencia pro player editar
 
     [Header("Terceira Pessoa")]
     [Range(5f, 85f)]
     [SerializeField] private float _thirdPerson_maxLookDownAngle = 85f;
     [Range(275, 355f)]
     [SerializeField] private float _thirdPerson_maxLookUpAngle = 275f;
-    [SerializeField] private Vector2 _thirdPerson_sensitivity = Vector2.one; // TODO: botar como preferencia pro player editar
+    [SerializeField] private Vector2 _thirdPerson_sensitivity = new Vector2(50f, 50f); // TODO: botar como preferencia pro player editar
 
     private GameObject _cameraGimblePrefab;
     private GameObject _cameraGimbleInstance;
@@ -24,6 +24,8 @@ public class CameraController : MonoBehaviour
     private bool _isThirdPerson = false;
     private CinemachineCamera _firstPersonCamera;
     private CinemachineCamera _thirdPersonCamera;
+
+    private float _cameraDistance = 2.5f; // TODO: botar como preferencia pro player editar, talvez
 
     private void Awake()
     {
@@ -74,6 +76,9 @@ public class CameraController : MonoBehaviour
         // Apply Rotations
         this.transform.localRotation = Quaternion.Euler(playerRotation);
         this._cameraGimbleInstance.transform.localRotation = Quaternion.Euler(gimbleRotation);
+
+        // Avoid Camera Clipping
+        this._cameraGimbleInstance.transform.localScale = Vector3.one * this.CalculateCameraDistance();
     }
 
     private void InitCameraGimble()
@@ -96,5 +101,18 @@ public class CameraController : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log("<color=#ff0000>[!] Prefab do CameraGimble nao encontrada na pasta Resources</color>");
 #endif
+    }
+
+    private float CalculateCameraDistance()
+    {
+        float result = this._cameraDistance;
+
+        if (this._isThirdPerson && Physics.Raycast(this._cameraGimbleInstance.transform.position, -this._cameraGimbleInstance.transform.forward, out RaycastHit hitInfo, this._cameraDistance))
+        {
+            Debug.Log(hitInfo.distance);
+            result = hitInfo.distance;
+        }
+
+        return result * 2;
     }
 }

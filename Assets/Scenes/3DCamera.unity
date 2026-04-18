@@ -407,10 +407,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _firstPerson_maxLookDownAngle: 85
   _firstPerson_maxLookUpAngle: 275
-  _firstPerson_sensitivity: {x: 1, y: 1}
+  _firstPerson_sensitivity: {x: 50, y: 50}
   _thirdPerson_maxLookDownAngle: 85
   _thirdPerson_maxLookUpAngle: 275
-  _thirdPerson_sensitivity: {x: 1, y: 1}
+  _thirdPerson_sensitivity: {x: 50, y: 50}
 --- !u!1 &983657097
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ Transform:
   m_GameObject: {fileID: 1908153223}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.5}
+  m_LocalPosition: {x: 0, y: 1, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
