@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     [Range(275, 355f)]
     [SerializeField] private float _firstPerson_maxLookUpAngle = 275f;
     [SerializeField] private Vector2 _firstPerson_sensitivity = new Vector2(50f, 50f); // TODO: botar como preferencia pro player editar
+    [SerializeField] private Vector2 _firstPerson_offset = new Vector2(0f, .5f);
 
     [Header("Terceira Pessoa")]
     [Range(5f, 85f)]
@@ -17,6 +18,7 @@ public class CameraController : MonoBehaviour
     [Range(275, 355f)]
     [SerializeField] private float _thirdPerson_maxLookUpAngle = 275f;
     [SerializeField] private Vector2 _thirdPerson_sensitivity = new Vector2(50f, 50f); // TODO: botar como preferencia pro player editar
+    [SerializeField] private Vector2 _thirdPerson_offset = new Vector2(.5f, .5f);
 
     private GameObject _cameraGimblePrefab;
     private GameObject _cameraGimbleInstance;
@@ -38,6 +40,8 @@ public class CameraController : MonoBehaviour
 
         this.InitCameraGimble();
 
+        this._cameraGimbleInstance.transform.localPosition = this._isThirdPerson ? this._thirdPerson_offset : this._firstPerson_offset;
+
         this._firstPersonCamera = this._cameraGimbleInstance.transform.GetChild(0).GetComponent<CinemachineCamera>();
         this._thirdPersonCamera = this._cameraGimbleInstance.transform.GetChild(1).GetComponent<CinemachineCamera>();
 
@@ -48,12 +52,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         // Inputs
-        if (InputHandler.Instance.EntradaPOV.FoiPressionada)
-        {
-            this._isThirdPerson = !this._isThirdPerson;
-            if (this._isThirdPerson) { this._thirdPersonCamera.Prioritize(); }
-            else { this._firstPersonCamera.Prioritize(); }
-        }
+        if (InputHandler.Instance.EntradaPOV.FoiPressionada) this.ChangePOV();
         Vector2 mouseDelta = InputHandler.Instance.EntradaVisao.Valor;
         
         // Horizontal Rotation
@@ -103,11 +102,21 @@ public class CameraController : MonoBehaviour
 #endif
     }
 
+    private void ChangePOV()
+    {
+        this._isThirdPerson = !this._isThirdPerson;
+
+        this._cameraGimbleInstance.transform.localPosition = this._isThirdPerson ? this._thirdPerson_offset : this._firstPerson_offset;
+
+        if (this._isThirdPerson) { this._thirdPersonCamera.Prioritize(); }
+        else { this._firstPersonCamera.Prioritize(); }
+    }
+
     private float CalculateCameraDistance()
     {
         float result = this._cameraDistance;
 
-        if (this._isThirdPerson && Physics.Raycast(this._cameraGimbleInstance.transform.position, -this._cameraGimbleInstance.transform.forward, out RaycastHit hitInfo, this._cameraDistance))
+        if (Physics.Raycast(this._cameraGimbleInstance.transform.position, -this._cameraGimbleInstance.transform.forward, out RaycastHit hitInfo, this._cameraDistance))
         {
             Debug.Log(hitInfo.distance);
             result = hitInfo.distance;
