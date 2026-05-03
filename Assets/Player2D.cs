@@ -20,11 +20,11 @@ public class Player2D : MonoBehaviour
             System.Func<KeyCode, bool> inputFunction;
             if (isHolding)
             {
-                inputFunction = Input.GetKey;
+                inputFunction = Input.GetKeyDown;
             }
             else
             {
-                inputFunction = Input.GetKeyDown;
+                inputFunction = Input.GetKey;
             }
 
             if (inputFunction(KeyCode.W))
