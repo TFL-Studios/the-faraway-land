@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private float _height = 1.5f;
+
     [Header("Speed")]
     [SerializeField] private float _defaultSpeed = 2f;
 
@@ -14,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Crouch")]
     [SerializeField] private float _crouchSpeedMultiplier = 0.75f;
     [SerializeField] private float _crouchHeightMultiplier = 0.66f;
-    [SerializeField] private float _standingHeight = 1.5f;
 
     [Header("Gravity")]
     [SerializeField] private float _gravity = -20f;
@@ -27,13 +28,11 @@ public class PlayerMovement : MonoBehaviour
     private bool _isSprinting;
     private bool _isCrouching;
     private float _currentEnergy;
-    private float _crouchHeight;
 
     private void Awake()
     {
         this._controller = this.GetComponent<CharacterController>();
         this._currentEnergy = this._maxEnergy;
-        this._crouchHeight = this._standingHeight * this._crouchHeightMultiplier;
     }
 
     private void Update()
@@ -47,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     private void ReadInput()
     {
         this._moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (Input.GetKeyDown(KeyCode.LeftShift)) { this.TryStartSprint(); }
-        if (Input.GetKeyUp(KeyCode.LeftShift)) { this._isSprinting = false; }
-        if (Input.GetKeyDown(KeyCode.C)) { this.ToggleCrouch(); }
+        if (InputHandler.Instance.EntradaCorrida.FoiPressionada) { this.TryStartSprint(); }
+        if (InputHandler.Instance.EntradaCorrida.FoiSolta) { this._isSprinting = false; }
+        if (InputHandler.Instance.EntradaAgachamento.FoiPressionada) { this.ToggleCrouch(); }
     }
 
     private void TryStartSprint()
@@ -110,20 +109,20 @@ public class PlayerMovement : MonoBehaviour
     {
         this._isCrouching = true;
         this._isSprinting = false;
-        this.ApplyCrouchHeight(this._crouchHeight);
+        this.ApplyCrouchHeight(this._height * this._crouchHeightMultiplier);
     }
 
     private void ExitCrouch()
     {
         this._isCrouching = false;
-        this.ApplyCrouchHeight(this._standingHeight);
+        this.ApplyCrouchHeight(this._height);
     }
 
     private void TryExitCrouch()
     {
         // Cast a ray upward to check if something is blocking standing up
-        Vector3 rayOrigin = this.transform.position + Vector3.up * this._crouchHeight;
-        float rayDistance = this._standingHeight - this._crouchHeight;
+        Vector3 rayOrigin = this.transform.position + Vector3.up * (this._height * this._crouchHeightMultiplier);
+        float rayDistance = this._height - (this._height * this._crouchHeightMultiplier);
         bool blocked = Physics.Raycast(rayOrigin, Vector3.up, rayDistance);
         if (blocked) { return; }
         this.ExitCrouch();

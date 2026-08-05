@@ -1,4 +1,3 @@
-using System.Reflection;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -20,6 +19,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 _thirdPerson_sensitivity = new Vector2(50f, 50f); // TODO: botar como preferencia pro player editar
     [SerializeField] private Vector2 _thirdPerson_offset = new Vector2(.5f, .5f);
 
+    private GameObject _cameraBrainPrefab;
+
     private GameObject _cameraGimblePrefab;
     private GameObject _cameraGimbleInstance;
 
@@ -31,12 +32,19 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        this._cameraBrainPrefab = Resources.Load<GameObject>("CameraBrain");
         this._cameraGimblePrefab = Resources.Load<GameObject>("CameraGimble");
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+        CinemachineBrain mainCamera = GameObject.FindAnyObjectByType<CinemachineBrain>();
+        if (!mainCamera)
+        {
+            GameObject.Instantiate(this._cameraBrainPrefab);
+        }
 
         this.InitCameraGimble();
 
