@@ -15,6 +15,8 @@ public class Player2D : MonoBehaviour
     [SerializeField] private Vector3 hitBoxLeft;
     [SerializeField] private Vector3 hitBoxRight;
     [SerializeField] private Transform hitBox;
+    public List<GameObject> interactables;
+
     void Start()
     {
         
@@ -25,8 +27,8 @@ public class Player2D : MonoBehaviour
     {
         if (InputHandler.Instance.EntradaInteracao.FoiPressionada)
         {
-            
-            Debug.Log("Fiz algo");
+
+            Debug.Log(interactables[0].name);
 
         }
 
@@ -67,12 +69,20 @@ public class Player2D : MonoBehaviour
         }
     }
 
-    private void OnTrigger2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Interactable") && InputHandler.Instance.EntradaInteracao.FoiPressionada) 
+        
+
+        if (collision.CompareTag("Interactable")) 
         {
-            Debug.Log("faz algo");
+            interactables.Add(collision.gameObject);
+            
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        interactables.Remove(collision.gameObject);
     }
 
 

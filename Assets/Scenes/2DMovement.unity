@@ -204,7 +204,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529108720}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -340,6 +340,7 @@ MonoBehaviour:
   hitBoxLeft: {x: -1, y: 0, z: 0}
   hitBoxRight: {x: 1, y: 0, z: 0}
   hitBox: {fileID: 1897425804}
+  interactables: []
 --- !u!1 &673253494
 GameObject:
   m_ObjectHideFlags: 0
