@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct JournalEntry
+public struct MemoryEntry
 {
     public Sprite entrySprite;
     [TextArea] public string entryText;

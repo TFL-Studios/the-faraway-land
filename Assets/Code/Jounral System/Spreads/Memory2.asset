@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cce42f949f3c5a42853cd6a8b63c9ed, type: 3}
-  m_Name: Spread2
+  m_Name: Memory2
   m_EditorClassIdentifier: Assembly-CSharp::JournalSpread
-  spreadEntries:
+  memoryEntries:
   - entrySprite: {fileID: -1054569724, guid: 8eb0a572c08e13345be0dc3737a04a96, type: 3}
-    entryText: Spread 2 Entry 1
+    entryText: Quadrado
   - entrySprite: {fileID: 1223013551, guid: 8eb0a572c08e13345be0dc3737a04a96, type: 3}
-    entryText: Spread 2 Entry 2
+    entryText: Bola
   - entrySprite: {fileID: -772970548, guid: 8eb0a572c08e13345be0dc3737a04a96, type: 3}
-    entryText: Spread 2 Entry 3
+    entryText: Triangulo
