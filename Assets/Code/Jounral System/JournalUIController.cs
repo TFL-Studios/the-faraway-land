@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,27 +22,46 @@ public class JournalUIController : MonoBehaviour
     [SerializeField] private GameObject _collectablesRightPanel;
     [SerializeField] private GameObject _collectableFocusPanel;
 
+    private List<Sprite> _collectables; // TODO: create data type
+
     [Header("MemoriesMode")]
     [SerializeField] private GameObject _memoryImagePanel;
     [SerializeField] private TextMeshProUGUI _memoryText;
 
     private GameObject _memoryImagePrefab;
 
+    private Dictionary<string, JournalMemories> _allMemories = new Dictionary<string, JournalMemories>(); // Resources
+    private Dictionary<string, int[]> _unlockedMemories = new Dictionary<string, int[]>()
+    {
+        {"Memory1", new[] { 0, 1, 3 } },
+        {"Memory2", new[] { 1, 2 }}
+    }; // Load
+
+    private int _activeMemoryIndex = 0;
+
     [Header("CharacterSheetMode")]
     [SerializeField] private GameObject _characterSheetLeftPanel;
     [SerializeField] private GameObject _characterSheetRightPanel;
-    [SerializeField] private Image _characterPortrait;
+    [SerializeField] private Image _characterPortraitImage;
+
+    [SerializeField] private Sprite[] _allCharacterPortraitsShadow; // TODO: change to resources.load
+    [SerializeField] private Sprite[] _allCharacterPortraits; // TODO: change to resources.load
+    [SerializeField] private bool[] _unlockedCharacterPortraits;
+
+    private int _activeCharacterSheetIndex = 0;
 
     [Header("Debug")]
     [SerializeField] private TextMeshProUGUI _activeMemoryDisplay;
-    [SerializeField] private List<JournalMemories> _memories;
-    private int _activeMemoryIndex = 0;
-    private int[] _maxEntryUnlocked;
 
     private void Start()
     {
+        JournalMemories[] allMemories = Resources.LoadAll<JournalMemories>("Memories");
+        foreach (JournalMemories mem in allMemories)
+        {
+            this._allMemories.Add(mem.name, mem);
+        }
+
         this._memoryImagePrefab = this._memoryImagePanel.transform.GetChild(0).gameObject;
-        this._maxEntryUnlocked = new int[this._memories.Count];
 
         for (int i = (int)JournalMode._COUNT - 1; i >= 0; i--)
         {
@@ -62,36 +82,28 @@ public class JournalUIController : MonoBehaviour
         {
             Vector2 inputValue = InputHandler.Instance.EntradaNavegacao.Valor;
 
-            this.ChangeJournalMode((int)inputValue.y);
+            bool modeChangeFlag = this.ChangeJournalMode((int)inputValue.y);
 
             switch (this._currentMode)
             {
                 case JournalMode.Collectables:
-                    //if (this.ChangeSelectedCollectable((int)inputValue)) { this.UpdateCollectableUI(); }
+                    //if (this.ChangeSelectedCollectable((int)inputValue) || modeChangeFlag) { this.UpdateCollectableUI(); }
                     break;
                 case JournalMode.Memories:
-                    if (this.ChangeActiveMemory((int)inputValue.x)) { this.UpdateMemoryUI(); }
+                    if (this.ChangeActiveMemory((int)inputValue.x) || modeChangeFlag) { this.UpdateMemoryUI(); }
                     break;
                 case JournalMode.CharacterSheets:
-                    if (this.ChangeActiveCharacterSheet((int)inputValue.x)) { this.UpdateCharacterSheetUI(); }
+                    if (this.ChangeActiveCharacterSheet((int)inputValue.x) || modeChangeFlag) { this.UpdateCharacterSheetUI(); }
                     break;
             }
-        }
-
-        // debug
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            if (this.ChangeUnlockAmount(1)) { this.UpdateMemoryUI(); }
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            if (this.ChangeUnlockAmount(-1)) { this.UpdateMemoryUI(); }
         }
     }
 
     /* General */
-    private void ChangeJournalMode(int amount)
+    private bool ChangeJournalMode(int amount)
     {
+        if (amount == 0) return false;
+
         this.SetJournalModeObjects(false);
 
         this._currentMode -= amount;
@@ -99,6 +111,8 @@ public class JournalUIController : MonoBehaviour
         if (this._currentMode < 0) this._currentMode = JournalMode._COUNT - 1;
 
         this.SetJournalModeObjects(true);
+
+        return true;
     }
 
     private void SetJournalModeObjects(bool state)
@@ -121,7 +135,7 @@ public class JournalUIController : MonoBehaviour
                 this._characterSheetsModeSelector.color = state ? Color.white : Color.gray; // TODO: change sprite instead
                 for (int i = this._characterSelectors.Length - 1; i >= 0; i--)
                 {
-                    this._characterSelectors[i].color = i == this._currentActiveChar ? Color.white : Color.gray; // TODO: change sprite instead
+                    this._characterSelectors[i].color = i == this._activeCharacterSheetIndex ? Color.white : Color.gray; // TODO: change sprite instead
                 }
                 this._characterSheetLeftPanel.SetActive(state);
                 this._characterSheetRightPanel.SetActive(state);
@@ -131,33 +145,24 @@ public class JournalUIController : MonoBehaviour
 
     /* Memories Mode */
 
-    private bool ChangeUnlockAmount(int amount) // DEBUG
-    {
-        int buffer = this._maxEntryUnlocked[this._activeMemoryIndex];
-
-        this._maxEntryUnlocked[this._activeMemoryIndex] += amount;
-        if (this._maxEntryUnlocked[this._activeMemoryIndex] < 0) { this._maxEntryUnlocked[this._activeMemoryIndex] = 0; }
-        else if (this._maxEntryUnlocked[this._activeMemoryIndex] > this._memories[this._activeMemoryIndex].memoryEntries.Length) this._maxEntryUnlocked[this._activeMemoryIndex] = this._memories[this._activeMemoryIndex].memoryEntries.Length;
-
-        return this._maxEntryUnlocked[this._activeMemoryIndex] != buffer;
-    }
-
     private bool ChangeActiveMemory(int amount)
     {
-        int lastMemory = this._activeMemoryIndex;
+        int lastMemoryIndex = this._activeMemoryIndex;
 
         this._activeMemoryIndex += amount;
         if (this._activeMemoryIndex < 0) { this._activeMemoryIndex = 0; }
-        else if (this._activeMemoryIndex >= this._memories.Count) { this._activeMemoryIndex = this._memories.Count - 1; }
+        else if (this._activeMemoryIndex >= this._unlockedMemories.Count) { this._activeMemoryIndex = this._unlockedMemories.Count - 1; }
 
-        return this._activeMemoryIndex != lastMemory;
+        return this._activeMemoryIndex != lastMemoryIndex;
     }
 
     private void UpdateMemoryUI()
     {
-        JournalMemories activeMemory = this._memories[this._activeMemoryIndex];
+        KeyValuePair<string, int[]> unlockedMemory = this._unlockedMemories.ElementAt(this._activeMemoryIndex);
+        JournalMemories activeMemoryData = this._allMemories[unlockedMemory.Key];
         string resultText = string.Empty;
 
+        // Clear Previous Image
         for (int index = 0; index < this._memoryImagePanel.transform.childCount; index++)
         {
             GameObject currentChild = this._memoryImagePanel.transform.GetChild(index).gameObject;
@@ -165,41 +170,49 @@ public class JournalUIController : MonoBehaviour
             GameObject.Destroy(currentChild);
         }
 
-        for (int index = 0; index < activeMemory.memoryEntries.Length; index++)
+        // Construct New Image
+        for (int index = 0; index < activeMemoryData.memoryEntries.Length; index++)
         {
-            if (index >= this._maxEntryUnlocked[this._activeMemoryIndex]) break;
+            string appendage = new string('.', activeMemoryData.memoryEntries[index].entryText.Length);
 
-            Image newImage = GameObject.Instantiate(this._memoryImagePrefab, this._memoryImagePanel.transform, false).GetComponent<Image>();
-            newImage.gameObject.SetActive(true);
-            newImage.sprite = activeMemory.memoryEntries[index].entrySprite;
+            if (unlockedMemory.Value.Contains(index))
+            {
+                Image newImage = GameObject.Instantiate(this._memoryImagePrefab, this._memoryImagePanel.transform, false).GetComponent<Image>();
+                newImage.gameObject.SetActive(true);
+                newImage.sprite = activeMemoryData.memoryEntries[index].entrySprite;
 
-            resultText += $"{activeMemory.memoryEntries[index].entryText}\n\n";
+                appendage = activeMemoryData.memoryEntries[index].entryText;
+            }
+
+            resultText += $"{appendage}\n\n";
         }
 
         this._memoryText.text = resultText;
 
-        this._activeMemoryDisplay.text = $"Memory {this._activeMemoryIndex + 1} with {this._maxEntryUnlocked[this._activeMemoryIndex]}/{this._memories[this._activeMemoryIndex].memoryEntries.Length} entries unlocked"; // DEBUG
+        this._activeMemoryDisplay.text = $"Memory {unlockedMemory.Key} with entries {unlockedMemory.Value.ToString()} unlocked"; // DEBUG
     }
 
     /* Character Sheet Mode */
 
-    private int _currentActiveChar = 0;
-
     private bool ChangeActiveCharacterSheet(int amount)
     {
-        this._characterSelectors[this._currentActiveChar].color = Color.gray; // TODO: change sprite instead
+        this._characterSelectors[this._activeCharacterSheetIndex].color = Color.gray; // TODO: change sprite instead
 
-        this._currentActiveChar += amount;
-        if (this._currentActiveChar < 0) this._currentActiveChar = this._characterSelectors.Length - 1;
-        if (this._currentActiveChar >= this._characterSelectors.Length) this._currentActiveChar = 0;
+        this._activeCharacterSheetIndex += amount;
+        if (this._activeCharacterSheetIndex < 0) this._activeCharacterSheetIndex = this._characterSelectors.Length - 1;
+        if (this._activeCharacterSheetIndex >= this._characterSelectors.Length) this._activeCharacterSheetIndex = 0;
 
-        this._characterSelectors[this._currentActiveChar].color = Color.white; // TODO: change sprite instead
+        this._characterSelectors[this._activeCharacterSheetIndex].color = Color.white; // TODO: change sprite instead
 
         return true;
     }
 
     private void UpdateCharacterSheetUI()
     {
+        Sprite shadow = this._allCharacterPortraitsShadow[this._activeCharacterSheetIndex];
+        Sprite portrait = this._allCharacterPortraits[this._activeCharacterSheetIndex];
+        bool isUnlocked = this._unlockedCharacterPortraits[this._activeCharacterSheetIndex];
 
+        this._characterPortraitImage.sprite = isUnlocked ? portrait : shadow;
     }
 }
