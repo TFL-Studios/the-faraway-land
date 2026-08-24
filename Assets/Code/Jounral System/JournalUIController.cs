@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,35 @@ public class JournalUIController : MonoBehaviour
     private JournalMode _currentMode;
     
     [Header("CollectablesMode")]
-    [SerializeField] private GameObject _collectablesLeftPanel;
-    [SerializeField] private GameObject _collectablesRightPanel;
+    [SerializeField] private GameObject _collectablesPanel;
+    [SerializeField] private GameObject _collectableImagePrefab;
+    [SerializeField] private GameObject[] _collectablesPagePanels;
+    [SerializeField] private RectTransform _collectableSelector;
     [SerializeField] private GameObject _collectableFocusPanel;
+    [SerializeField] private Image _collectableFocusImage;
+    [SerializeField] private TextMeshProUGUI _collectableFocusText;
 
-    private List<Sprite> _collectables; // TODO: create data type
+    [System.Serializable]
+    public struct Collectable // TODO: create data type
+    {
+        public int page;
+        public Vector2 offset;
+        public Sprite missing;
+        public Sprite found;
+        public Sprite focused;
+        [TextArea] public string description;
+    }
+
+    [SerializeField] private Collectable[] _allCollectables; // TODO: change to resources.load
+    private Collectable[][] _pagedCollectables;
+    private bool[][] _unlockedCollectables;
+
+    private int _activeCollectablesPage = 0;
+    private int _selectedCollectableIndex = 0;
+
+    private RectTransform _targetCollectable;
+
+    private bool isFocusedOnCollectable = false;
 
     [Header("MemoriesMode")]
     [SerializeField] private GameObject _memoryImagePanel;
@@ -44,17 +69,22 @@ public class JournalUIController : MonoBehaviour
     [SerializeField] private GameObject _characterSheetRightPanel;
     [SerializeField] private Image _characterPortraitImage;
 
-    [SerializeField] private Sprite[] _allCharacterPortraitsShadow; // TODO: change to resources.load
-    [SerializeField] private Sprite[] _allCharacterPortraits; // TODO: change to resources.load
+    [System.Serializable]
+    public struct Portrait // TODO: create data type
+    {
+        public Sprite silhouette;
+        public Sprite colored;
+    }
+
+    [SerializeField] private Portrait[] _ainallCharacterPortraits; // TODO: change to resources.load
     [SerializeField] private bool[] _unlockedCharacterPortraits;
 
     private int _activeCharacterSheetIndex = 0;
 
-    [Header("Debug")]
-    [SerializeField] private TextMeshProUGUI _activeMemoryDisplay;
-
     private void Start()
     {
+        this.InitCollectables();
+
         JournalMemories[] allMemories = Resources.LoadAll<JournalMemories>("Memories");
         foreach (JournalMemories mem in allMemories)
         {
@@ -72,30 +102,75 @@ public class JournalUIController : MonoBehaviour
 
     private void Update()
     {
+        this.UpdateCollectableSelector();
+
         if (InputHandler.Instance.EntradaDiario.FoiPressionada)
         {
             this._collectableFocusPanel.SetActive(false);
             this._journalUIPanel.SetActive(!this._journalUIPanel.activeSelf);
         }
 
-        if (InputHandler.Instance.EntradaNavegacao.FoiPressionada && this._journalUIPanel.activeSelf)
+        if (!this._journalUIPanel.activeSelf) return;
+
+        if (InputHandler.Instance.EntradaNavegacao.FoiPressionada)
         {
             Vector2 inputValue = InputHandler.Instance.EntradaNavegacao.Valor;
 
-            bool modeChangeFlag = this.ChangeJournalMode((int)inputValue.y);
+            this.ChangeJournalMode((int)inputValue.y);
 
             switch (this._currentMode)
             {
                 case JournalMode.Collectables:
-                    //if (this.ChangeSelectedCollectable((int)inputValue) || modeChangeFlag) { this.UpdateCollectableUI(); }
+                    if (this.ChangeSelectedCollectable((int)inputValue.x, out bool pageFlag)) { if (pageFlag) this.UpdateCollectablesUI(); else this.UpdateCollectableTarget(); }
                     break;
                 case JournalMode.Memories:
-                    if (this.ChangeActiveMemory((int)inputValue.x) || modeChangeFlag) { this.UpdateMemoryUI(); }
+                    if (this.ChangeActiveMemory((int)inputValue.x)) { this.UpdateMemoryUI(); }
                     break;
                 case JournalMode.CharacterSheets:
-                    if (this.ChangeActiveCharacterSheet((int)inputValue.x) || modeChangeFlag) { this.UpdateCharacterSheetUI(); }
+                    if (this.ChangeActiveCharacterSheet((int)inputValue.x)) { this.UpdateCharacterSheetUI(); }
                     break;
             }
+        }
+
+        if (InputHandler.Instance.EntradaSelecao.FoiPressionada)
+        {
+            switch (this._currentMode)
+            {
+                case JournalMode.Collectables:
+                    if (this.isFocusedOnCollectable)
+                    {
+                        this.isFocusedOnCollectable = false;
+                    }
+                    else if (this._unlockedCollectables[this._activeCollectablesPage][this._selectedCollectableIndex])
+                    {
+                        Collectable selectedCollectable = this._pagedCollectables[this._activeCollectablesPage][this._selectedCollectableIndex];
+                        
+                        this._collectableFocusImage.sprite = selectedCollectable.focused;
+                        this._collectableFocusImage.rectTransform.sizeDelta = selectedCollectable.focused.rect.size;
+
+                        this._collectableFocusText.text = selectedCollectable.description;
+
+                        this.isFocusedOnCollectable = true;
+                    }
+
+                    this._collectableFocusPanel.SetActive(this.isFocusedOnCollectable);
+                    break;
+                case JournalMode.Memories:
+                    
+                    break;
+                case JournalMode.CharacterSheets:
+                    
+                    break;
+            }
+        }
+
+        // Debug
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            bool self = this._unlockedCollectables[this._activeCollectablesPage][this._selectedCollectableIndex];
+            this._unlockedCollectables[this._activeCollectablesPage][this._selectedCollectableIndex] = !self;
+            this.UpdateCollectablesUI();
         }
     }
 
@@ -121,14 +196,15 @@ public class JournalUIController : MonoBehaviour
         {
             case JournalMode.Collectables:
                 this._collectablesModeSelector.color = state ? Color.white : Color.gray; // TODO: change sprite instead
-                this._collectablesLeftPanel.SetActive(state);
-                this._collectablesRightPanel.SetActive(state);
+                this._collectablesPanel.SetActive(state);
+                this.UpdateCollectablesUI();
                 break;
 
             case JournalMode.Memories:
                 this._memoriesModeSelector.color = state ? Color.white : Color.gray; // TODO: change sprite instead
                 this._memoryImagePanel.SetActive(state);
                 this._memoryText.gameObject.SetActive(state);
+                this.UpdateMemoryUI();
                 break;
 
             case JournalMode.CharacterSheets:
@@ -139,8 +215,110 @@ public class JournalUIController : MonoBehaviour
                 }
                 this._characterSheetLeftPanel.SetActive(state);
                 this._characterSheetRightPanel.SetActive(state);
+                this.UpdateCharacterSheetUI();
                 break;
         }
+    }
+
+    /* Collectables Mode */
+
+    private void InitCollectables()
+    {
+        int pageAmount = this._allCollectables[this._allCollectables.Length - 1].page + 1;
+        this._pagedCollectables = new Collectable[pageAmount][];
+        this._unlockedCollectables = new bool[pageAmount][];
+
+        int curPage = 0;
+        int start = 0;
+        for (int i = 0; i < this._allCollectables.Length; i++)
+        {
+            if (i != this._allCollectables.Length - 1 && this._allCollectables[i].page == curPage) continue;
+            if (i == this._allCollectables.Length - 1) i++;
+
+            int colAmount = i - start;
+            this._pagedCollectables[curPage] = new Collectable[colAmount];
+            this._unlockedCollectables[curPage] = new bool[colAmount];
+            for (int j = 0; j < this._pagedCollectables[curPage].Length; j++)
+            {
+                this._pagedCollectables[curPage][j] = this._allCollectables[start + j];
+                this._unlockedCollectables[curPage][j] = false;
+            }
+
+            start = i;
+            curPage++;
+        }
+    }
+
+    private void UpdateCollectablesUI()
+    {
+        // Clear Previous Collectables
+        for (int index = 0; index < this._collectablesPagePanels[0].transform.childCount; index++)
+        {
+            GameObject.Destroy(this._collectablesPagePanels[0].transform.GetChild(index).gameObject);
+        }
+
+        // Spawn os Negocio
+        Collectable[] curPageCollectables = this._pagedCollectables[this._activeCollectablesPage];
+        for (int index = 0; index < curPageCollectables.Length; index++)
+        {
+            Sprite sprite = this._unlockedCollectables[this._activeCollectablesPage][index] ? curPageCollectables[index].found : curPageCollectables[index].missing;
+
+            Image newImage = GameObject.Instantiate(this._collectableImagePrefab, this._collectablesPagePanels[0].transform, false).GetComponent<Image>();
+            newImage.sprite = sprite;
+            newImage.rectTransform.sizeDelta = sprite.rect.size;
+            newImage.rectTransform.anchoredPosition = curPageCollectables[index].offset;
+            newImage.gameObject.SetActive(true);
+
+            if (index == this._selectedCollectableIndex) this._targetCollectable = newImage.rectTransform;
+        }
+
+        // this._collectablesPagePanels[0].SetActive(true);
+    }
+
+    private void UpdateCollectableTarget()
+    {
+        this._targetCollectable = this._collectablesPagePanels[0].transform.GetChild(this._selectedCollectableIndex).GetComponent<RectTransform>();
+    }
+
+    private bool ChangeCollectablesPage(int amount)
+    {
+        this._activeCollectablesPage += amount;
+
+        if (this._activeCollectablesPage < 0) this._activeCollectablesPage = this._pagedCollectables.Length - 1;
+        if (this._activeCollectablesPage >= this._pagedCollectables.Length) this._activeCollectablesPage = 0;
+
+        return amount != 0;
+    }
+
+    private bool ChangeSelectedCollectable(int amount, out bool pageFlag)
+    {
+        pageFlag = false;
+
+        this._selectedCollectableIndex += amount;
+
+        if (this._selectedCollectableIndex < 0)
+        {
+            pageFlag = this.ChangeCollectablesPage(-1);
+            this._selectedCollectableIndex = this._pagedCollectables[this._activeCollectablesPage].Length - 1;
+        }
+        else if (this._selectedCollectableIndex >= this._pagedCollectables[this._activeCollectablesPage].Length)
+        {
+            pageFlag = this.ChangeCollectablesPage(1);
+            this._selectedCollectableIndex = 0;
+        }
+
+        return amount != 0;
+    }
+
+    private void UpdateCollectableSelector()
+    {
+        if (!this._targetCollectable) return;
+
+        Vector2 targetPosition = this._targetCollectable.anchoredPosition;
+        targetPosition.x += this._targetCollectable.sizeDelta.x / 2;
+        targetPosition.y -= this._targetCollectable.sizeDelta.y / 2;
+
+        this._collectableSelector.anchoredPosition = Vector2.Lerp(this._collectableSelector.anchoredPosition, targetPosition, Time.deltaTime * 20f);
     }
 
     /* Memories Mode */
@@ -188,8 +366,6 @@ public class JournalUIController : MonoBehaviour
         }
 
         this._memoryText.text = resultText;
-
-        this._activeMemoryDisplay.text = $"Memory {unlockedMemory.Key} with entries {unlockedMemory.Value.ToString()} unlocked"; // DEBUG
     }
 
     /* Character Sheet Mode */
@@ -209,10 +385,10 @@ public class JournalUIController : MonoBehaviour
 
     private void UpdateCharacterSheetUI()
     {
-        Sprite shadow = this._allCharacterPortraitsShadow[this._activeCharacterSheetIndex];
-        Sprite portrait = this._allCharacterPortraits[this._activeCharacterSheetIndex];
+        Sprite silhouette = this._ainallCharacterPortraits[this._activeCharacterSheetIndex].silhouette;
+        Sprite portrait = this._ainallCharacterPortraits[this._activeCharacterSheetIndex].colored;
         bool isUnlocked = this._unlockedCharacterPortraits[this._activeCharacterSheetIndex];
 
-        this._characterPortraitImage.sprite = isUnlocked ? portrait : shadow;
+        this._characterPortraitImage.sprite = isUnlocked ? portrait : silhouette;
     }
 }
