@@ -27,6 +27,8 @@ public class CameraController : MonoBehaviour
     private GameObject _cameraGimbleInstance;
 
     private bool _isThirdPerson = false;
+    public bool IsThirdPerson { get { return this._isThirdPerson; } }
+
     private CinemachineCamera _firstPersonCamera;
     private CinemachineCamera _thirdPersonCamera;
 
