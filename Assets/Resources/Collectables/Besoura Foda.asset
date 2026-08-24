@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fef242e018c5f43ba9707d7112b291, type: 3}
+  m_Name: Besoura Foda
+  m_EditorClassIdentifier: Assembly-CSharp::CollectableData
+  collectableName: Besourao Foda
+  description: Besourao Foda
+  journalDescription: Besourao Foda
+  propSprite: {fileID: -1613743192, guid: 3a8dcef6b2040ca42b696a47267ea157, type: 3}
+  page: 1
+  journalPage: 1
+  offset: {x: 660, y: -30}
+  journalOffset: {x: 660, y: -30}
+  missing: {fileID: 2050923632, guid: a2089639bb07851469deb9ec038c2449, type: 3}
+  journalMissing: {fileID: 2050923632, guid: a2089639bb07851469deb9ec038c2449, type: 3}
+  found: {fileID: -55376926, guid: a2089639bb07851469deb9ec038c2449, type: 3}
+  journalFound: {fileID: -55376926, guid: a2089639bb07851469deb9ec038c2449, type: 3}
+  focused: {fileID: -1613743192, guid: 3a8dcef6b2040ca42b696a47267ea157, type: 3}
+  journalFocused: {fileID: -1613743192, guid: 3a8dcef6b2040ca42b696a47267ea157, type: 3}

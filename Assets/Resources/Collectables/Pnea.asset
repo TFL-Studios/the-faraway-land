@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fef242e018c5f43ba9707d7112b291, type: 3}
+  m_Name: Pnea
+  m_EditorClassIdentifier: Assembly-CSharp::CollectableData
+  collectableName: Pena
+  description: Pena
+  journalDescription: Pena
+  propSprite: {fileID: 1916562404, guid: bfd1fedd428ad524eb72b68fa6cb63e2, type: 3}
+  page: 0
+  journalPage: 0
+  offset: {x: 720, y: -516}
+  journalOffset: {x: 720, y: -516}
+  missing: {fileID: 1333132735, guid: 3c72293f66982e14ca8e4085a137d396, type: 3}
+  journalMissing: {fileID: 1333132735, guid: 3c72293f66982e14ca8e4085a137d396, type: 3}
+  found: {fileID: -1788213115, guid: 3c72293f66982e14ca8e4085a137d396, type: 3}
+  journalFound: {fileID: -1788213115, guid: 3c72293f66982e14ca8e4085a137d396, type: 3}
+  focused: {fileID: 1916562404, guid: bfd1fedd428ad524eb72b68fa6cb63e2, type: 3}
+  journalFocused: {fileID: 1916562404, guid: bfd1fedd428ad524eb72b68fa6cb63e2, type: 3}
