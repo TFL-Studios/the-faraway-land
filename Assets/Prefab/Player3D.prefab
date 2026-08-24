@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2068083528552698756}
   - component: {fileID: 3326832062544953847}
   - component: {fileID: 8472066707716901517}
+  - component: {fileID: 359225527547854744}
   m_Layer: 0
   m_Name: Player3D
   m_TagString: Untagged
@@ -159,13 +160,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38c323290b14a949bb012d8e7b285db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  _height: 1.5
   _defaultSpeed: 4
   _sprintSpeedMultiplier: 10
   _sprintEnergyDrainPerSecond: 0
   _maxEnergy: 100
   _crouchSpeedMultiplier: 0.75
   _crouchHeightMultiplier: 0.66
-  _standingHeight: 1.5
   _gravity: -20
 --- !u!114 &8472066707716901517
 MonoBehaviour:
@@ -187,6 +188,19 @@ MonoBehaviour:
   _thirdPerson_maxLookUpAngle: 275
   _thirdPerson_sensitivity: {x: 50, y: 50}
   _thirdPerson_offset: {x: 0.5, y: 0.5}
+--- !u!114 &359225527547854744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496333773068225439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad12193b72e1f846ace8bf0d948e8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionController
+  isInFirstPerson: 1
 --- !u!1 &6268778320870416250
 GameObject:
   m_ObjectHideFlags: 0
