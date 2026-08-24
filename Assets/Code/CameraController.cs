@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 _thirdPerson_offset = new Vector2(.5f, .5f);
 
     private GameObject _cameraBrainPrefab;
+    private CinemachineBrain _cameraBrainInstance;
+    public CinemachineBrain MainCamera { get { return this._cameraBrainInstance; } }
 
     private GameObject _cameraGimblePrefab;
     private GameObject _cameraGimbleInstance;
@@ -40,10 +42,10 @@ public class CameraController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        CinemachineBrain mainCamera = GameObject.FindAnyObjectByType<CinemachineBrain>();
-        if (!mainCamera)
+        this._cameraBrainInstance = GameObject.FindAnyObjectByType<CinemachineBrain>();
+        if (!this._cameraBrainInstance)
         {
-            GameObject.Instantiate(this._cameraBrainPrefab);
+            this._cameraBrainInstance = GameObject.Instantiate(this._cameraBrainPrefab).GetComponent<CinemachineBrain>();
         }
 
         this.InitCameraGimble();
@@ -126,7 +128,6 @@ public class CameraController : MonoBehaviour
 
         if (Physics.Raycast(this._cameraGimbleInstance.transform.position, -this._cameraGimbleInstance.transform.forward, out RaycastHit hitInfo, this._cameraDistance))
         {
-            Debug.Log(hitInfo.distance);
             result = hitInfo.distance;
         }
 
