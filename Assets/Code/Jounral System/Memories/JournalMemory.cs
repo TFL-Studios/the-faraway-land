@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewJournalMemory", menuName = "Scriptable Objects/JournalMemory")]
-public class JournalMemories : ScriptableObject
+public class JournalMemory : ScriptableObject
 {
     public MemoryEntry[] memoryEntries;
 }

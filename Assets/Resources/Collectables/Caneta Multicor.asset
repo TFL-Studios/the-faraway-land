@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fef242e018c5f43ba9707d7112b291, type: 3}
+  m_Name: Caneta Multicor
+  m_EditorClassIdentifier: Assembly-CSharp::CollectableData
+  collectableName: Caneta Multicor
+  description: Caneta Multicor
+  journalDescription: Caneta Multicor
+  propSprite: {fileID: -2062967213, guid: d7c485cdb3a143c43b177a39687f0c9b, type: 3}
+  page: 1
+  journalPage: 1
+  offset: {x: 50, y: -100}
+  journalOffset: {x: 50, y: -100}
+  missing: {fileID: -863446104, guid: 5fb367a9e095b63409e8dd8546137b68, type: 3}
+  journalMissing: {fileID: -863446104, guid: 5fb367a9e095b63409e8dd8546137b68, type: 3}
+  found: {fileID: 25746801, guid: 5fb367a9e095b63409e8dd8546137b68, type: 3}
+  journalFound: {fileID: 25746801, guid: 5fb367a9e095b63409e8dd8546137b68, type: 3}
+  focused: {fileID: -2062967213, guid: d7c485cdb3a143c43b177a39687f0c9b, type: 3}
+  journalFocused: {fileID: -2062967213, guid: d7c485cdb3a143c43b177a39687f0c9b, type: 3}

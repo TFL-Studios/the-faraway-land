@@ -1,7 +1,7 @@
 public enum JournalMode
 {
-    Collectables,
     Memories,
     CharacterSheets,
+    Collectables,
     _COUNT,
 }
