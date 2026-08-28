@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class testCube : MonoBehaviour, IInteractable
+public class testCube : Interactable
 {
-    public bool Interact()
+    public override bool Interact()
     {
         Debug.Log(this.name);
         return true;

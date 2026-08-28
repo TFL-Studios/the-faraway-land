@@ -27,12 +27,12 @@ public class InteractionController : MonoBehaviour
     {
         if (this._cameraController.IsThirdPerson)
         {
-            return this._nearestInteractable && this._nearestInteractable.GetComponent<IInteractable>().Interact();
+            return this._nearestInteractable && this._nearestInteractable.GetComponent<Interactable>().Interact();
         }
 
         if (Physics.Raycast(this._cameraController.MainCamera.transform.position, this._cameraController.MainCamera.transform.forward, out RaycastHit hitInfo, float.MaxValue))
         {
-            IInteractable interactableObj = hitInfo.collider.GetComponent<IInteractable>();
+            Interactable interactableObj = hitInfo.collider.GetComponent<Interactable>();
 
             if (interactableObj == null) return false;
             return interactableObj.Interact();
@@ -65,7 +65,7 @@ public class InteractionController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<IInteractable>() != null)
+        if (other.GetComponent<Interactable>() != null)
         {
             this._interactables.Add(other.gameObject);
         }
@@ -73,7 +73,7 @@ public class InteractionController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<IInteractable>() != null)
+        if (other.GetComponent<Interactable>() != null)
         {
             this._interactables.Remove(other.gameObject);
         }
@@ -84,7 +84,7 @@ public class InteractionController : MonoBehaviour
     {
         if (this._cameraController != null && Physics.Raycast(this._cameraController.MainCamera.transform.position, this._cameraController.MainCamera.transform.forward, out RaycastHit hitInfo, float.MaxValue))
         {
-            Gizmos.color = hitInfo.collider.GetComponent<IInteractable>() != null ? Color.green : Gizmos.color = Color.red;
+            Gizmos.color = hitInfo.collider.GetComponent<Interactable>() != null ? Color.green : Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(hitInfo.point, .2f);
 
             Gizmos.color = this._nearestInteractable ? Color.green : Color.red;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Genius : MonoBehaviour, IInteractable
+public class Genius : Interactable
 {
     [SerializeField] private GameObject _minigameUIPrefab;
     private GameObject _minigameUIInstance;
@@ -13,7 +13,7 @@ public class Genius : MonoBehaviour, IInteractable
         }
     }
 
-    public bool Interact()
+    public override bool Interact()
     {
         if (this._minigameUIInstance) return false;
         Canvas canvas = GameObject.FindAnyObjectByType<Canvas>();

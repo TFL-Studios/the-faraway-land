@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class testSphere : MonoBehaviour, IInteractable
+public class testSphere : Interactable
 {
-    public bool Interact()
+    public override bool Interact()
     {
         Debug.Log(this.name);
         return true;
