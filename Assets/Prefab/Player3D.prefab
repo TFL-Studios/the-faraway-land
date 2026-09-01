@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad12193b72e1f846ace8bf0d948e8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionController
+  _interactionDistance: 2
 --- !u!1 &3659222036603622967
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +213,7 @@ GameObject:
   - component: {fileID: 1045997659049630474}
   - component: {fileID: 4929425835381722106}
   - component: {fileID: 3976264222850062746}
-  - component: {fileID: 6543142639371905384}
+  - component: {fileID: 7806539528379323381}
   m_Layer: 2
   m_Name: InteractionDetector
   m_TagString: Untagged
@@ -229,9 +230,9 @@ Transform:
   m_GameObject: {fileID: 3659222036603622967}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
-  m_LocalScale: {x: 3, y: 2, z: 2.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6520273816222431641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -242,7 +243,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3659222036603622967}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2124705421725058983, guid: d1d58a3bea93b71428d2da808a6e6617, type: 3}
 --- !u!23 &3976264222850062746
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -292,8 +293,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6543142639371905384
-BoxCollider:
+--- !u!64 &7806539528379323381
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -310,9 +311,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2124705421725058983, guid: d1d58a3bea93b71428d2da808a6e6617, type: 3}
 --- !u!1 &6268778320870416250
 GameObject:
   m_ObjectHideFlags: 0

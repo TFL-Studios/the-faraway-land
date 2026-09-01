@@ -55,7 +55,7 @@ public class SimonSaysController : MonoBehaviour
         this.StartCoroutine(this.DisplayColorSequence());
     }
 
-    public Material SimonColorToUnityColor(SimonSaysColors color)
+    public Material GetColorMaterial(SimonSaysColors color)
     {
         switch (color)
         {
@@ -80,22 +80,16 @@ public class SimonSaysController : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             this._tv.material = this.black;
-            yield return new WaitForSeconds(1);
-            this._tv.material = this.SimonColorToUnityColor(this._currentSequence[i]);
+            yield return new WaitForSeconds(.5f);
+            this._tv.material = this.GetColorMaterial(this._currentSequence[i]);
         }
 
         yield return new WaitForSeconds(1);
+        this._tv.material = this.black;
+        yield return new WaitForSeconds(.5f);
         this._tv.material = this.white;
 
         this._currentStage = SimonSaysStage.WaitingForInput;
-    }
-
-    public IEnumerator DisplayInputColor(SimonSaysColors selectedColor)
-    {
-        this._tv.material = this.SimonColorToUnityColor(selectedColor);
-        yield return new WaitForSeconds(1);
-        this._tv.material = this.white;
-        yield return new WaitForSeconds(1);
     }
 
     public void InputColor(SimonSaysColors selectedColor)
@@ -110,7 +104,7 @@ public class SimonSaysController : MonoBehaviour
         }
 
         this._sequenceInput++;
-        this.StartCoroutine(this.DisplayInputColor(selectedColor));
+        this._tv.material = this.GetColorMaterial(selectedColor);
 
         if (this._sequenceInput >= this._sequenceLength)
         {

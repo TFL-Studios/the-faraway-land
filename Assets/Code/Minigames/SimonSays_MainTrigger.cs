@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class SimonSays_MainTrigger : Interactable
 {
-    [SerializeField] private SimonSaysController ssc;
+    private SimonSaysController _simonSaysController;
 
-    private void Start()
+    private void Awake()
     {
+        this._simonSaysController = GameObject.FindAnyObjectByType<SimonSaysController>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
         this.interactionStage = 0;
     }
 
@@ -20,7 +27,7 @@ public class SimonSays_MainTrigger : Interactable
 
             case 0:
                 Debug.Log("Creating Sequence");
-                this.ssc.InitSequence();
+                this._simonSaysController.InitSequence();
                 this.interactionStage = 1;
                 return true;
 
