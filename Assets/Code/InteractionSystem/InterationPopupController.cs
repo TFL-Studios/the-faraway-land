@@ -30,19 +30,28 @@ public class InterationPopupController : MonoBehaviour
 
             if (i >= this._anchorsInRange.Count)
             {
-                this._closedPopups[i].SetActive(false);
+                this.ThrowOutisdeScreen(this._closedPopups[i].transform);
                 continue;
             }
 
-            this._closedPopups[i].transform.position = this._cameraController.MainCamera.OutputCamera.WorldToScreenPoint(this._anchorsInRange[i].position);
-            this._closedPopups[i].SetActive(this._anchorsInRange[i] != this._targetAnchor);
+            if (this._anchorsInRange[i] != this._targetAnchor)
+            {
+                this._closedPopups[i].transform.position = this._cameraController.MainCamera.OutputCamera.WorldToScreenPoint(this._anchorsInRange[i].position);
+            }
+            else
+            {
+                this.ThrowOutisdeScreen(this._closedPopups[i].transform);
+            }
         }
 
         if (this._targetAnchor)
         {
             this._openPopup.transform.position = this._cameraController.MainCamera.OutputCamera.WorldToScreenPoint(this._targetAnchor.position);
         }
-        this._openPopup.SetActive(this._targetAnchor);
+        else if (this._openPopup.transform.position.x < 9999) // evitar fazer todo frame
+        {
+            this.ThrowOutisdeScreen(this._openPopup.transform);
+        }
     }
 
     public void SetTarget(Transform interactableAnchor)
@@ -58,5 +67,10 @@ public class InterationPopupController : MonoBehaviour
     public void UnregisterFromRange(Transform interactableAnchor)
     {
         this._anchorsInRange.Remove(interactableAnchor);
+    }
+
+    private void ThrowOutisdeScreen(Transform target)
+    {
+        target.position = Vector3.one * 10000;
     }
 }

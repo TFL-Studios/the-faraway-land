@@ -23,7 +23,7 @@ public enum SimonSaysStage
 
 public class SimonSaysController : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _tv;
+    [SerializeField] private SpriteRenderer[] _tvs;
     [SerializeField] private Material red;
     [SerializeField] private Material green;
     [SerializeField] private Material blue;
@@ -79,15 +79,15 @@ public class SimonSaysController : MonoBehaviour
         for (int i = 0; i < this._sequenceStep; i++)
         {
             yield return new WaitForSeconds(1);
-            this._tv.material = this.black;
+            foreach (SpriteRenderer tv in this._tvs) { tv.material = this.black; }
             yield return new WaitForSeconds(.5f);
-            this._tv.material = this.GetColorMaterial(this._currentSequence[i]);
+            foreach (SpriteRenderer tv in this._tvs) { tv.material = this.GetColorMaterial(this._currentSequence[i]); }
         }
 
         yield return new WaitForSeconds(1);
-        this._tv.material = this.black;
+        foreach (SpriteRenderer tv in this._tvs) { tv.material = this.black; }
         yield return new WaitForSeconds(.5f);
-        this._tv.material = this.white;
+        foreach (SpriteRenderer tv in this._tvs) { tv.material = this.white; }
 
         this._currentStage = SimonSaysStage.WaitingForInput;
     }
@@ -104,7 +104,7 @@ public class SimonSaysController : MonoBehaviour
         }
 
         this._sequenceInput++;
-        this._tv.material = this.GetColorMaterial(selectedColor);
+        foreach (SpriteRenderer tv in this._tvs) { tv.material = this.GetColorMaterial(selectedColor); }
 
         if (this._sequenceInput >= this._sequenceLength)
         {
