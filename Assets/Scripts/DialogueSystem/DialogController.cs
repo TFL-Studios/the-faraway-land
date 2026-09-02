@@ -10,8 +10,8 @@ public class DialogController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI linesBox;
     [SerializeField] private GameObject buttonsParent;
     [SerializeField] private GameObject answerBoxPrefab;
-    [SerializeField] private GameObject firstCharacter;
-    [SerializeField] private GameObject secondCharacter;
+    [SerializeField] private Image firstCharacter;
+    [SerializeField] private Image secondCharacter;
     [SerializeField] private int indexButtons = 0;
     private string[] lanes = new[] { "Linha1", "Linha2", "Linha3" };
     private string[] options = new[] { "eca", "ola", "..." };
@@ -120,14 +120,14 @@ public class DialogController : MonoBehaviour
         switch(spawnController)
         {
             case 1:
-                firstCharacter.SetActive(!firstCharacter.activeSelf);
+                firstCharacter.gameObject.SetActive(!firstCharacter.gameObject.activeSelf);
                 break;
             case 2:
-                secondCharacter.SetActive(!secondCharacter.activeSelf);
+                secondCharacter.gameObject.SetActive(!secondCharacter.gameObject.activeSelf);
                 break;
             case 3:
-                firstCharacter.SetActive(!firstCharacter.activeSelf);
-                secondCharacter.SetActive(!secondCharacter.activeSelf);
+                firstCharacter.gameObject.SetActive(!firstCharacter.gameObject.activeSelf);
+                secondCharacter.gameObject.SetActive(!secondCharacter.gameObject.activeSelf);
                 break;
 
         }
@@ -141,12 +141,12 @@ public class DialogController : MonoBehaviour
         switch (changeCharacter) 
         { 
             case 1:
-                firstCharacter.GetComponent<Image>().color = Color.red;
+                firstCharacter.color = Color.red;
                 TextMeshProUGUI textfirstCharacter = firstCharacter.GetComponentInChildren<TextMeshProUGUI>();
                 textfirstCharacter.text = "Circulo Vermelho FUDIDO";
                 break;
             case 2:
-                secondCharacter.GetComponent<Image>().color = Color.orange;
+                secondCharacter.color = Color.orange;
                 TextMeshProUGUI textsecondCharacter = secondCharacter.GetComponentInChildren<TextMeshProUGUI>();
                 textsecondCharacter.text = "Quadrado Laranja MIJADO";
                 break;
@@ -156,24 +156,52 @@ public class DialogController : MonoBehaviour
 
     public void ActiveCharacter()
     {
-        switch(activeCharacter)
+        Vector3 secondCharacterPosition = secondCharacter.rectTransform.anchoredPosition;
+        Vector3 firstCharacterPosition = firstCharacter.rectTransform.anchoredPosition;
+        Color firstCharacterColor = firstCharacter.GetComponent<Image>().color;
+        Color secondCharacterColor = secondCharacter.color;
+        switch (activeCharacter)
         {
             case 1:
-                secondCharacter.transform.position = new Vector3(50f,0f,0f);// arrumar a posicao
-                Color firstCharacterColor = firstCharacter.GetComponent<Image>().color;
+                firstCharacterPosition.y = 0f;
+                firstCharacter.rectTransform.anchoredPosition = firstCharacterPosition;
+                secondCharacterPosition.y = 10f;
+                secondCharacter.rectTransform.anchoredPosition = secondCharacterPosition;
                 firstCharacterColor.a = 0.4f;
-                firstCharacter.GetComponent<Image>().color = firstCharacterColor;
+                firstCharacter.color = firstCharacterColor;
+                secondCharacterColor.a = 1f;
+                secondCharacter.color = secondCharacterColor;
                 break;
             case 2:
-                firstCharacter.transform.position = new Vector3(0f, 0f, 0f);
-                secondCharacter.transform.position = new Vector3(15f, 0f, 0f);
-                Color secondCharacterColor = firstCharacter.GetComponent<Image>().color;
+                secondCharacterPosition.y = 0f;
+                secondCharacter.rectTransform.anchoredPosition = secondCharacterPosition;
+                firstCharacterPosition.y = 10f;
+                firstCharacter.rectTransform.anchoredPosition = firstCharacterPosition;
                 secondCharacterColor.a = 0.4f;
-                secondCharacter.GetComponent<Image>().color = secondCharacterColor;
-                         
+                secondCharacter.color = secondCharacterColor;
+                firstCharacterColor.a = 1f;
+                firstCharacter.color = firstCharacterColor;
+
                 break;
             case 3:
-
+                secondCharacterPosition.y = 0f;
+                secondCharacter.rectTransform.anchoredPosition = secondCharacterPosition;
+                firstCharacterPosition.y = 0f;
+                firstCharacter.rectTransform.anchoredPosition = firstCharacterPosition;
+                secondCharacterColor.a = 0.4f;
+                secondCharacter.color = secondCharacterColor;
+                firstCharacterColor.a = 0.4f;
+                firstCharacter.color = firstCharacterColor;
+                break;
+                case 4:
+                secondCharacterPosition.y = 10f;
+                secondCharacter.rectTransform.anchoredPosition = secondCharacterPosition;
+                firstCharacterPosition.y = 10f;
+                firstCharacter.rectTransform.anchoredPosition = firstCharacterPosition;
+                secondCharacterColor.a = 1f;
+                secondCharacter.color = secondCharacterColor;
+                firstCharacterColor.a = 1f;
+                firstCharacter.color = firstCharacterColor;
                 break;
         }
     }

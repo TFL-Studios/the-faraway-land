@@ -696,8 +696,8 @@ MonoBehaviour:
   linesBox: {fileID: 588786538}
   buttonsParent: {fileID: 1003440190}
   answerBoxPrefab: {fileID: 2769434290823580028, guid: 29eb9bca559bf29418567b7dcac48d4d, type: 3}
-  firstCharacter: {fileID: 9192484178603376733}
-  secondCharacter: {fileID: 6276263869131442724}
+  firstCharacter: {fileID: 7788750884567078029}
+  secondCharacter: {fileID: 3219934729687667417}
   indexButtons: 0
   spawnController: 3
   changeCharacter: 1
@@ -1079,9 +1079,9 @@ RectTransform:
   - {fileID: 7425650350498891721}
   m_Father: {fileID: 1294451382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -305, y: 29}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 84, y: 29}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4168786333280415458
@@ -1217,9 +1217,9 @@ RectTransform:
   - {fileID: 292058554964261143}
   m_Father: {fileID: 1294451382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293, y: 26}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -96, y: 26}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6052004517483573386
