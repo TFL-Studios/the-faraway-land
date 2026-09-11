@@ -20,13 +20,13 @@ public class InputTest : MonoBehaviour
 
     private void Update()
     {
-        if (InputHandler.Instance.EntradaMenu.FoiPressionada) { this._menu.gameObject.SetActive(!this._menu.gameObject.activeSelf); }
-        if (InputHandler.Instance.EntradaInventario.FoiPressionada) { this._inv.gameObject.SetActive(!this._inv.gameObject.activeSelf); } 
-        if (InputHandler.Instance.EntradaDiario.FoiPressionada) { this._diario.gameObject.SetActive(!this._diario.gameObject.activeSelf); }
+        if (InputHandler.Instance.PauseMenuInput.WasPressed) { this._menu.gameObject.SetActive(!this._menu.gameObject.activeSelf); }
+        if (InputHandler.Instance.InventoryInput.WasPressed) { this._inv.gameObject.SetActive(!this._inv.gameObject.activeSelf); } 
+        if (InputHandler.Instance.JournalInput.WasPressed) { this._diario.gameObject.SetActive(!this._diario.gameObject.activeSelf); }
 
-        if (InputHandler.Instance.EntradaSelecao.FoiPressionada) { this._toggleSelecao = !this._toggleSelecao; }
-        if (InputHandler.Instance.EntradaLanterna.FoiPressionada) { this._toggleLanterna = !this._toggleLanterna; }
-        if (InputHandler.Instance.EntradaPOV.FoiPressionada) { this._togglePOV = !this._togglePOV; }
+        if (InputHandler.Instance.SelectionInput.WasPressed) { this._toggleSelecao = !this._toggleSelecao; }
+        if (InputHandler.Instance.FlashlightInput.WasPressed) { this._toggleLanterna = !this._toggleLanterna; }
+        if (InputHandler.Instance.PointOfViewInput.WasPressed) { this._togglePOV = !this._togglePOV; }
 
         this._log.text = string.Concat
         (
@@ -34,15 +34,15 @@ public class InputTest : MonoBehaviour
             "(ESC) Menu\n",
             "(TAB) Inventario\n",
             "(Q) Diario\n",
-            $"(E) Selecionar: {(InputHandler.Instance.EntradaSelecao.EstaPressionada ? _PRESSED : _RELEASED)} ({(this._toggleSelecao ? _ON : _OFF)})\n",
+            $"(E) Selecionar: {(InputHandler.Instance.SelectionInput.IsPressed ? _PRESSED : _RELEASED)} ({(this._toggleSelecao ? _ON : _OFF)})\n",
             "Jogador\n",
-            $"(WASD) Direcao Movimento: {InputHandler.Instance.EntradaMovimento.Valor}\n",
-            $"(L SHIFT) Corrida: {(InputHandler.Instance.EntradaCorrida.EstaPressionada ? _ON : _OFF)}\n",
-            $"(L CONTROL) Agachar: {(InputHandler.Instance.EntradaAgachamento.EstaPressionada ? _ON : _OFF)}\n",
-            $"(E) Interagir: {(InputHandler.Instance.EntradaInteracao.EstaPressionada ? _PRESSED : _RELEASED)}\n",
-            $"(F) Lanterna: {(InputHandler.Instance.EntradaLanterna.EstaPressionada ? _PRESSED : _RELEASED)} ({(this._toggleLanterna ? _ON : _OFF)})\n",
-            $"(MOUSE) Camera Delta: {InputHandler.Instance.EntradaVisao.Valor}\n",
-            $"(L ALT) POV: {(InputHandler.Instance.EntradaPOV.EstaPressionada ? _PRESSED : _RELEASED)} ({(this._togglePOV ? _ON : _OFF)})\n"
+            $"(WASD) Direcao Movimento: {InputHandler.Instance.MovementInput.Value}\n",
+            $"(L SHIFT) Corrida: {(InputHandler.Instance.SprintInput.IsPressed ? _ON : _OFF)}\n",
+            $"(L CONTROL) Agachar: {(InputHandler.Instance.CrouchInput.IsPressed ? _ON : _OFF)}\n",
+            $"(E) Interagir: {(InputHandler.Instance.InteractionInput.IsPressed ? _PRESSED : _RELEASED)}\n",
+            $"(F) Lanterna: {(InputHandler.Instance.FlashlightInput.IsPressed ? _PRESSED : _RELEASED)} ({(this._toggleLanterna ? _ON : _OFF)})\n",
+            $"(MOUSE) Camera Delta: {InputHandler.Instance.CameraInput.Value}\n",
+            $"(L ALT) POV: {(InputHandler.Instance.PointOfViewInput.IsPressed ? _PRESSED : _RELEASED)} ({(this._togglePOV ? _ON : _OFF)})\n"
         );
     }
 }

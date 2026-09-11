@@ -25,7 +25,7 @@ public class Player2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputHandler.Instance.EntradaInteracao.FoiPressionada)
+        if (InputHandler.Instance.InteractionInput.WasPressed)
         {
 
             Debug.Log(interactables[0].name);

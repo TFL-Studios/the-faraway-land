@@ -3,11 +3,11 @@
     "name": "InputSystem_Actions",
     "maps": [
         {
-            "name": "Interface",
+            "name": "User Interface",
             "id": "e79902b8-f77e-4ce8-8f07-f348f268fb3f",
             "actions": [
                 {
-                    "name": "Menu",
+                    "name": "Pause Menu",
                     "type": "Button",
                     "id": "f66661be-b673-4688-8ae2-ebf7c8eb5666",
                     "expectedControlType": "",
@@ -16,7 +16,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventario",
+                    "name": "Inventory",
                     "type": "Button",
                     "id": "6c1037b6-4129-47e0-aae8-962977b88ab6",
                     "expectedControlType": "",
@@ -25,7 +25,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Diario",
+                    "name": "Journal",
                     "type": "Button",
                     "id": "18c628dc-2686-498a-85ac-e3ef729f72ac",
                     "expectedControlType": "",
@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Navegar",
+                    "name": "Navigation",
                     "type": "Value",
                     "id": "e521f0a6-f725-4269-8e44-5dfcf6e0f47c",
                     "expectedControlType": "Dpad",
@@ -43,7 +43,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Selecionar",
+                    "name": "Selection",
                     "type": "Button",
                     "id": "b3f765f3-4727-4736-a66c-0dcdd6d95064",
                     "expectedControlType": "",
@@ -60,7 +60,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Menu",
+                    "action": "Pause Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -71,7 +71,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -82,7 +82,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -93,7 +93,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -104,7 +104,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -115,7 +115,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -126,7 +126,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -137,7 +137,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -148,7 +148,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -159,7 +159,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -170,7 +170,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Navegar",
+                    "action": "Navigation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -181,7 +181,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Selecionar",
+                    "action": "Selection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -192,7 +192,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Inventario",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -203,18 +203,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Diario",
+                    "action": "Journal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Jogador",
+            "name": "Player",
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
-                    "name": "Mover",
+                    "name": "Movement",
                     "type": "Value",
                     "id": "dfec7c3b-ffda-4030-af16-f19fc1234d87",
                     "expectedControlType": "Dpad",
@@ -223,7 +223,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Correr",
+                    "name": "Sprint",
                     "type": "Button",
                     "id": "a1f4f975-b110-4115-8875-e4266328d9d5",
                     "expectedControlType": "",
@@ -232,7 +232,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Agachar",
+                    "name": "Crouch",
                     "type": "Button",
                     "id": "43728d05-7a2e-419e-8443-5a9400f61ffc",
                     "expectedControlType": "",
@@ -241,7 +241,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interagir",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "1a66d494-b947-4729-ac90-7677974b3a4a",
                     "expectedControlType": "",
@@ -250,7 +250,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Lanterna",
+                    "name": "Flashlight",
                     "type": "Button",
                     "id": "b3127d68-9b36-4b9f-bee4-a78bc6de2248",
                     "expectedControlType": "",
@@ -259,7 +259,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Visao",
+                    "name": "Camera",
                     "type": "Value",
                     "id": "57fbdc7f-4971-4f13-9baf-5f4b1d7feaf8",
                     "expectedControlType": "Delta",
@@ -268,7 +268,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "TrocarPOV",
+                    "name": "ChangePOV",
                     "type": "Button",
                     "id": "f3f84939-dc90-40b4-ac4f-4853032232fe",
                     "expectedControlType": "",
@@ -285,7 +285,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Correr",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -296,7 +296,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Agachar",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -307,7 +307,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Interagir",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -318,7 +318,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Lanterna",
+                    "action": "Flashlight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -329,7 +329,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Visao",
+                    "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -340,7 +340,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "TrocarPOV",
+                    "action": "ChangePOV",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -351,7 +351,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mover",
+                    "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -362,7 +362,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Mover",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -373,7 +373,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Mover",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -384,7 +384,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Mover",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -395,7 +395,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Mover",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

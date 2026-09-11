@@ -46,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     private void ReadInput()
     {
         this._moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        if (InputHandler.Instance.EntradaCorrida.FoiPressionada) { this.TryStartSprint(); }
-        if (InputHandler.Instance.EntradaCorrida.FoiSolta) { this._isSprinting = false; }
-        if (InputHandler.Instance.EntradaAgachamento.FoiPressionada) { this.ToggleCrouch(); }
+        if (InputHandler.Instance.SprintInput.WasPressed) { this.TryStartSprint(); }
+        if (InputHandler.Instance.SprintInput.WasReleased) { this._isSprinting = false; }
+        if (InputHandler.Instance.CrouchInput.WasPressed) { this.ToggleCrouch(); }
     }
 
     private void TryStartSprint()

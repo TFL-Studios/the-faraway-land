@@ -89,11 +89,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     ""name"": ""InputSystem_Actions"",
     ""maps"": [
         {
-            ""name"": ""Interface"",
+            ""name"": ""User Interface"",
             ""id"": ""e79902b8-f77e-4ce8-8f07-f348f268fb3f"",
             ""actions"": [
                 {
-                    ""name"": ""Menu"",
+                    ""name"": ""Pause Menu"",
                     ""type"": ""Button"",
                     ""id"": ""f66661be-b673-4688-8ae2-ebf7c8eb5666"",
                     ""expectedControlType"": """",
@@ -102,7 +102,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Inventario"",
+                    ""name"": ""Inventory"",
                     ""type"": ""Button"",
                     ""id"": ""6c1037b6-4129-47e0-aae8-962977b88ab6"",
                     ""expectedControlType"": """",
@@ -111,7 +111,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Diario"",
+                    ""name"": ""Journal"",
                     ""type"": ""Button"",
                     ""id"": ""18c628dc-2686-498a-85ac-e3ef729f72ac"",
                     ""expectedControlType"": """",
@@ -120,7 +120,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Navegar"",
+                    ""name"": ""Navigation"",
                     ""type"": ""Value"",
                     ""id"": ""e521f0a6-f725-4269-8e44-5dfcf6e0f47c"",
                     ""expectedControlType"": ""Dpad"",
@@ -129,7 +129,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Selecionar"",
+                    ""name"": ""Selection"",
                     ""type"": ""Button"",
                     ""id"": ""b3f765f3-4727-4736-a66c-0dcdd6d95064"",
                     ""expectedControlType"": """",
@@ -146,7 +146,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Menu"",
+                    ""action"": ""Pause Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -157,7 +157,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -168,7 +168,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -179,7 +179,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -190,7 +190,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -201,7 +201,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -212,7 +212,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -223,7 +223,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -234,7 +234,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -245,7 +245,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -256,7 +256,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Navegar"",
+                    ""action"": ""Navigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -267,7 +267,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Selecionar"",
+                    ""action"": ""Selection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -278,7 +278,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Inventario"",
+                    ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -289,18 +289,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Diario"",
+                    ""action"": ""Journal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""Jogador"",
+            ""name"": ""Player"",
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
-                    ""name"": ""Mover"",
+                    ""name"": ""Movement"",
                     ""type"": ""Value"",
                     ""id"": ""dfec7c3b-ffda-4030-af16-f19fc1234d87"",
                     ""expectedControlType"": ""Dpad"",
@@ -309,7 +309,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Correr"",
+                    ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""a1f4f975-b110-4115-8875-e4266328d9d5"",
                     ""expectedControlType"": """",
@@ -318,7 +318,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Agachar"",
+                    ""name"": ""Crouch"",
                     ""type"": ""Button"",
                     ""id"": ""43728d05-7a2e-419e-8443-5a9400f61ffc"",
                     ""expectedControlType"": """",
@@ -327,7 +327,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interagir"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""1a66d494-b947-4729-ac90-7677974b3a4a"",
                     ""expectedControlType"": """",
@@ -336,7 +336,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Lanterna"",
+                    ""name"": ""Flashlight"",
                     ""type"": ""Button"",
                     ""id"": ""b3127d68-9b36-4b9f-bee4-a78bc6de2248"",
                     ""expectedControlType"": """",
@@ -345,7 +345,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Visao"",
+                    ""name"": ""Camera"",
                     ""type"": ""Value"",
                     ""id"": ""57fbdc7f-4971-4f13-9baf-5f4b1d7feaf8"",
                     ""expectedControlType"": ""Delta"",
@@ -354,7 +354,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""TrocarPOV"",
+                    ""name"": ""ChangePOV"",
                     ""type"": ""Button"",
                     ""id"": ""f3f84939-dc90-40b4-ac4f-4853032232fe"",
                     ""expectedControlType"": """",
@@ -371,7 +371,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Correr"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -382,7 +382,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Agachar"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -393,7 +393,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Interagir"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -404,7 +404,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Lanterna"",
+                    ""action"": ""Flashlight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -415,7 +415,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Visao"",
+                    ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -426,7 +426,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""TrocarPOV"",
+                    ""action"": ""ChangePOV"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -437,7 +437,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Mover"",
+                    ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -448,7 +448,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -459,7 +459,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -470,7 +470,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -481,7 +481,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Mover"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -551,28 +551,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Interface
-        m_Interface = asset.FindActionMap("Interface", throwIfNotFound: true);
-        m_Interface_Menu = m_Interface.FindAction("Menu", throwIfNotFound: true);
-        m_Interface_Inventario = m_Interface.FindAction("Inventario", throwIfNotFound: true);
-        m_Interface_Diario = m_Interface.FindAction("Diario", throwIfNotFound: true);
-        m_Interface_Navegar = m_Interface.FindAction("Navegar", throwIfNotFound: true);
-        m_Interface_Selecionar = m_Interface.FindAction("Selecionar", throwIfNotFound: true);
-        // Jogador
-        m_Jogador = asset.FindActionMap("Jogador", throwIfNotFound: true);
-        m_Jogador_Mover = m_Jogador.FindAction("Mover", throwIfNotFound: true);
-        m_Jogador_Correr = m_Jogador.FindAction("Correr", throwIfNotFound: true);
-        m_Jogador_Agachar = m_Jogador.FindAction("Agachar", throwIfNotFound: true);
-        m_Jogador_Interagir = m_Jogador.FindAction("Interagir", throwIfNotFound: true);
-        m_Jogador_Lanterna = m_Jogador.FindAction("Lanterna", throwIfNotFound: true);
-        m_Jogador_Visao = m_Jogador.FindAction("Visao", throwIfNotFound: true);
-        m_Jogador_TrocarPOV = m_Jogador.FindAction("TrocarPOV", throwIfNotFound: true);
+        // User Interface
+        m_UserInterface = asset.FindActionMap("User Interface", throwIfNotFound: true);
+        m_UserInterface_PauseMenu = m_UserInterface.FindAction("Pause Menu", throwIfNotFound: true);
+        m_UserInterface_Inventory = m_UserInterface.FindAction("Inventory", throwIfNotFound: true);
+        m_UserInterface_Journal = m_UserInterface.FindAction("Journal", throwIfNotFound: true);
+        m_UserInterface_Navigation = m_UserInterface.FindAction("Navigation", throwIfNotFound: true);
+        m_UserInterface_Selection = m_UserInterface.FindAction("Selection", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Flashlight = m_Player.FindAction("Flashlight", throwIfNotFound: true);
+        m_Player_Camera = m_Player.FindAction("Camera", throwIfNotFound: true);
+        m_Player_ChangePOV = m_Player.FindAction("ChangePOV", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
     {
-        UnityEngine.Debug.Assert(!m_Interface.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Interface.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Jogador.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Jogador.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UserInterface.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UserInterface.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player.Disable() has not been called.");
     }
 
     /// <summary>
@@ -645,49 +645,49 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Interface
-    private readonly InputActionMap m_Interface;
-    private List<IInterfaceActions> m_InterfaceActionsCallbackInterfaces = new List<IInterfaceActions>();
-    private readonly InputAction m_Interface_Menu;
-    private readonly InputAction m_Interface_Inventario;
-    private readonly InputAction m_Interface_Diario;
-    private readonly InputAction m_Interface_Navegar;
-    private readonly InputAction m_Interface_Selecionar;
+    // User Interface
+    private readonly InputActionMap m_UserInterface;
+    private List<IUserInterfaceActions> m_UserInterfaceActionsCallbackInterfaces = new List<IUserInterfaceActions>();
+    private readonly InputAction m_UserInterface_PauseMenu;
+    private readonly InputAction m_UserInterface_Inventory;
+    private readonly InputAction m_UserInterface_Journal;
+    private readonly InputAction m_UserInterface_Navigation;
+    private readonly InputAction m_UserInterface_Selection;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Interface".
+    /// Provides access to input actions defined in input action map "User Interface".
     /// </summary>
-    public struct InterfaceActions
+    public struct UserInterfaceActions
     {
         private @InputSystem_Actions m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public InterfaceActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        public UserInterfaceActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Interface/Menu".
+        /// Provides access to the underlying input action "UserInterface/PauseMenu".
         /// </summary>
-        public InputAction @Menu => m_Wrapper.m_Interface_Menu;
+        public InputAction @PauseMenu => m_Wrapper.m_UserInterface_PauseMenu;
         /// <summary>
-        /// Provides access to the underlying input action "Interface/Inventario".
+        /// Provides access to the underlying input action "UserInterface/Inventory".
         /// </summary>
-        public InputAction @Inventario => m_Wrapper.m_Interface_Inventario;
+        public InputAction @Inventory => m_Wrapper.m_UserInterface_Inventory;
         /// <summary>
-        /// Provides access to the underlying input action "Interface/Diario".
+        /// Provides access to the underlying input action "UserInterface/Journal".
         /// </summary>
-        public InputAction @Diario => m_Wrapper.m_Interface_Diario;
+        public InputAction @Journal => m_Wrapper.m_UserInterface_Journal;
         /// <summary>
-        /// Provides access to the underlying input action "Interface/Navegar".
+        /// Provides access to the underlying input action "UserInterface/Navigation".
         /// </summary>
-        public InputAction @Navegar => m_Wrapper.m_Interface_Navegar;
+        public InputAction @Navigation => m_Wrapper.m_UserInterface_Navigation;
         /// <summary>
-        /// Provides access to the underlying input action "Interface/Selecionar".
+        /// Provides access to the underlying input action "UserInterface/Selection".
         /// </summary>
-        public InputAction @Selecionar => m_Wrapper.m_Interface_Selecionar;
+        public InputAction @Selection => m_Wrapper.m_UserInterface_Selection;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Interface; }
+        public InputActionMap Get() { return m_Wrapper.m_UserInterface; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -695,9 +695,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="InterfaceActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="UserInterfaceActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(InterfaceActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(UserInterfaceActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -705,26 +705,26 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="InterfaceActions" />
-        public void AddCallbacks(IInterfaceActions instance)
+        /// <seealso cref="UserInterfaceActions" />
+        public void AddCallbacks(IUserInterfaceActions instance)
         {
-            if (instance == null || m_Wrapper.m_InterfaceActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_InterfaceActionsCallbackInterfaces.Add(instance);
-            @Menu.started += instance.OnMenu;
-            @Menu.performed += instance.OnMenu;
-            @Menu.canceled += instance.OnMenu;
-            @Inventario.started += instance.OnInventario;
-            @Inventario.performed += instance.OnInventario;
-            @Inventario.canceled += instance.OnInventario;
-            @Diario.started += instance.OnDiario;
-            @Diario.performed += instance.OnDiario;
-            @Diario.canceled += instance.OnDiario;
-            @Navegar.started += instance.OnNavegar;
-            @Navegar.performed += instance.OnNavegar;
-            @Navegar.canceled += instance.OnNavegar;
-            @Selecionar.started += instance.OnSelecionar;
-            @Selecionar.performed += instance.OnSelecionar;
-            @Selecionar.canceled += instance.OnSelecionar;
+            if (instance == null || m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Add(instance);
+            @PauseMenu.started += instance.OnPauseMenu;
+            @PauseMenu.performed += instance.OnPauseMenu;
+            @PauseMenu.canceled += instance.OnPauseMenu;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
+            @Journal.started += instance.OnJournal;
+            @Journal.performed += instance.OnJournal;
+            @Journal.canceled += instance.OnJournal;
+            @Navigation.started += instance.OnNavigation;
+            @Navigation.performed += instance.OnNavigation;
+            @Navigation.canceled += instance.OnNavigation;
+            @Selection.started += instance.OnSelection;
+            @Selection.performed += instance.OnSelection;
+            @Selection.canceled += instance.OnSelection;
         }
 
         /// <summary>
@@ -733,33 +733,33 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="InterfaceActions" />
-        private void UnregisterCallbacks(IInterfaceActions instance)
+        /// <seealso cref="UserInterfaceActions" />
+        private void UnregisterCallbacks(IUserInterfaceActions instance)
         {
-            @Menu.started -= instance.OnMenu;
-            @Menu.performed -= instance.OnMenu;
-            @Menu.canceled -= instance.OnMenu;
-            @Inventario.started -= instance.OnInventario;
-            @Inventario.performed -= instance.OnInventario;
-            @Inventario.canceled -= instance.OnInventario;
-            @Diario.started -= instance.OnDiario;
-            @Diario.performed -= instance.OnDiario;
-            @Diario.canceled -= instance.OnDiario;
-            @Navegar.started -= instance.OnNavegar;
-            @Navegar.performed -= instance.OnNavegar;
-            @Navegar.canceled -= instance.OnNavegar;
-            @Selecionar.started -= instance.OnSelecionar;
-            @Selecionar.performed -= instance.OnSelecionar;
-            @Selecionar.canceled -= instance.OnSelecionar;
+            @PauseMenu.started -= instance.OnPauseMenu;
+            @PauseMenu.performed -= instance.OnPauseMenu;
+            @PauseMenu.canceled -= instance.OnPauseMenu;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
+            @Journal.started -= instance.OnJournal;
+            @Journal.performed -= instance.OnJournal;
+            @Journal.canceled -= instance.OnJournal;
+            @Navigation.started -= instance.OnNavigation;
+            @Navigation.performed -= instance.OnNavigation;
+            @Navigation.canceled -= instance.OnNavigation;
+            @Selection.started -= instance.OnSelection;
+            @Selection.performed -= instance.OnSelection;
+            @Selection.canceled -= instance.OnSelection;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="InterfaceActions.UnregisterCallbacks(IInterfaceActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="UserInterfaceActions.UnregisterCallbacks(IUserInterfaceActions)" />.
         /// </summary>
-        /// <seealso cref="InterfaceActions.UnregisterCallbacks(IInterfaceActions)" />
-        public void RemoveCallbacks(IInterfaceActions instance)
+        /// <seealso cref="UserInterfaceActions.UnregisterCallbacks(IUserInterfaceActions)" />
+        public void RemoveCallbacks(IUserInterfaceActions instance)
         {
-            if (m_Wrapper.m_InterfaceActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -769,75 +769,75 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="InterfaceActions.AddCallbacks(IInterfaceActions)" />
-        /// <seealso cref="InterfaceActions.RemoveCallbacks(IInterfaceActions)" />
-        /// <seealso cref="InterfaceActions.UnregisterCallbacks(IInterfaceActions)" />
-        public void SetCallbacks(IInterfaceActions instance)
+        /// <seealso cref="UserInterfaceActions.AddCallbacks(IUserInterfaceActions)" />
+        /// <seealso cref="UserInterfaceActions.RemoveCallbacks(IUserInterfaceActions)" />
+        /// <seealso cref="UserInterfaceActions.UnregisterCallbacks(IUserInterfaceActions)" />
+        public void SetCallbacks(IUserInterfaceActions instance)
         {
-            foreach (var item in m_Wrapper.m_InterfaceActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_UserInterfaceActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_InterfaceActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_UserInterfaceActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="InterfaceActions" /> instance referencing this action map.
+    /// Provides a new <see cref="UserInterfaceActions" /> instance referencing this action map.
     /// </summary>
-    public InterfaceActions @Interface => new InterfaceActions(this);
+    public UserInterfaceActions @UserInterface => new UserInterfaceActions(this);
 
-    // Jogador
-    private readonly InputActionMap m_Jogador;
-    private List<IJogadorActions> m_JogadorActionsCallbackInterfaces = new List<IJogadorActions>();
-    private readonly InputAction m_Jogador_Mover;
-    private readonly InputAction m_Jogador_Correr;
-    private readonly InputAction m_Jogador_Agachar;
-    private readonly InputAction m_Jogador_Interagir;
-    private readonly InputAction m_Jogador_Lanterna;
-    private readonly InputAction m_Jogador_Visao;
-    private readonly InputAction m_Jogador_TrocarPOV;
+    // Player
+    private readonly InputActionMap m_Player;
+    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_Crouch;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Flashlight;
+    private readonly InputAction m_Player_Camera;
+    private readonly InputAction m_Player_ChangePOV;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Jogador".
+    /// Provides access to input actions defined in input action map "Player".
     /// </summary>
-    public struct JogadorActions
+    public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public JogadorActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        public PlayerActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Jogador/Mover".
+        /// Provides access to the underlying input action "Player/Movement".
         /// </summary>
-        public InputAction @Mover => m_Wrapper.m_Jogador_Mover;
+        public InputAction @Movement => m_Wrapper.m_Player_Movement;
         /// <summary>
-        /// Provides access to the underlying input action "Jogador/Correr".
+        /// Provides access to the underlying input action "Player/Sprint".
         /// </summary>
-        public InputAction @Correr => m_Wrapper.m_Jogador_Correr;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         /// <summary>
-        /// Provides access to the underlying input action "Jogador/Agachar".
+        /// Provides access to the underlying input action "Player/Crouch".
         /// </summary>
-        public InputAction @Agachar => m_Wrapper.m_Jogador_Agachar;
+        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         /// <summary>
-        /// Provides access to the underlying input action "Jogador/Interagir".
+        /// Provides access to the underlying input action "Player/Interact".
         /// </summary>
-        public InputAction @Interagir => m_Wrapper.m_Jogador_Interagir;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         /// <summary>
-        /// Provides access to the underlying input action "Jogador/Lanterna".
+        /// Provides access to the underlying input action "Player/Flashlight".
         /// </summary>
-        public InputAction @Lanterna => m_Wrapper.m_Jogador_Lanterna;
+        public InputAction @Flashlight => m_Wrapper.m_Player_Flashlight;
         /// <summary>
-        /// Provides access to the underlying input action "Jogador/Visao".
+        /// Provides access to the underlying input action "Player/Camera".
         /// </summary>
-        public InputAction @Visao => m_Wrapper.m_Jogador_Visao;
+        public InputAction @Camera => m_Wrapper.m_Player_Camera;
         /// <summary>
-        /// Provides access to the underlying input action "Jogador/TrocarPOV".
+        /// Provides access to the underlying input action "Player/ChangePOV".
         /// </summary>
-        public InputAction @TrocarPOV => m_Wrapper.m_Jogador_TrocarPOV;
+        public InputAction @ChangePOV => m_Wrapper.m_Player_ChangePOV;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Jogador; }
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -845,9 +845,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="JogadorActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(JogadorActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -855,32 +855,32 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="JogadorActions" />
-        public void AddCallbacks(IJogadorActions instance)
+        /// <seealso cref="PlayerActions" />
+        public void AddCallbacks(IPlayerActions instance)
         {
-            if (instance == null || m_Wrapper.m_JogadorActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_JogadorActionsCallbackInterfaces.Add(instance);
-            @Mover.started += instance.OnMover;
-            @Mover.performed += instance.OnMover;
-            @Mover.canceled += instance.OnMover;
-            @Correr.started += instance.OnCorrer;
-            @Correr.performed += instance.OnCorrer;
-            @Correr.canceled += instance.OnCorrer;
-            @Agachar.started += instance.OnAgachar;
-            @Agachar.performed += instance.OnAgachar;
-            @Agachar.canceled += instance.OnAgachar;
-            @Interagir.started += instance.OnInteragir;
-            @Interagir.performed += instance.OnInteragir;
-            @Interagir.canceled += instance.OnInteragir;
-            @Lanterna.started += instance.OnLanterna;
-            @Lanterna.performed += instance.OnLanterna;
-            @Lanterna.canceled += instance.OnLanterna;
-            @Visao.started += instance.OnVisao;
-            @Visao.performed += instance.OnVisao;
-            @Visao.canceled += instance.OnVisao;
-            @TrocarPOV.started += instance.OnTrocarPOV;
-            @TrocarPOV.performed += instance.OnTrocarPOV;
-            @TrocarPOV.canceled += instance.OnTrocarPOV;
+            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Flashlight.started += instance.OnFlashlight;
+            @Flashlight.performed += instance.OnFlashlight;
+            @Flashlight.canceled += instance.OnFlashlight;
+            @Camera.started += instance.OnCamera;
+            @Camera.performed += instance.OnCamera;
+            @Camera.canceled += instance.OnCamera;
+            @ChangePOV.started += instance.OnChangePOV;
+            @ChangePOV.performed += instance.OnChangePOV;
+            @ChangePOV.canceled += instance.OnChangePOV;
         }
 
         /// <summary>
@@ -889,39 +889,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="JogadorActions" />
-        private void UnregisterCallbacks(IJogadorActions instance)
+        /// <seealso cref="PlayerActions" />
+        private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Mover.started -= instance.OnMover;
-            @Mover.performed -= instance.OnMover;
-            @Mover.canceled -= instance.OnMover;
-            @Correr.started -= instance.OnCorrer;
-            @Correr.performed -= instance.OnCorrer;
-            @Correr.canceled -= instance.OnCorrer;
-            @Agachar.started -= instance.OnAgachar;
-            @Agachar.performed -= instance.OnAgachar;
-            @Agachar.canceled -= instance.OnAgachar;
-            @Interagir.started -= instance.OnInteragir;
-            @Interagir.performed -= instance.OnInteragir;
-            @Interagir.canceled -= instance.OnInteragir;
-            @Lanterna.started -= instance.OnLanterna;
-            @Lanterna.performed -= instance.OnLanterna;
-            @Lanterna.canceled -= instance.OnLanterna;
-            @Visao.started -= instance.OnVisao;
-            @Visao.performed -= instance.OnVisao;
-            @Visao.canceled -= instance.OnVisao;
-            @TrocarPOV.started -= instance.OnTrocarPOV;
-            @TrocarPOV.performed -= instance.OnTrocarPOV;
-            @TrocarPOV.canceled -= instance.OnTrocarPOV;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Flashlight.started -= instance.OnFlashlight;
+            @Flashlight.performed -= instance.OnFlashlight;
+            @Flashlight.canceled -= instance.OnFlashlight;
+            @Camera.started -= instance.OnCamera;
+            @Camera.performed -= instance.OnCamera;
+            @Camera.canceled -= instance.OnCamera;
+            @ChangePOV.started -= instance.OnChangePOV;
+            @ChangePOV.performed -= instance.OnChangePOV;
+            @ChangePOV.canceled -= instance.OnChangePOV;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="JogadorActions.UnregisterCallbacks(IJogadorActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
         /// </summary>
-        /// <seealso cref="JogadorActions.UnregisterCallbacks(IJogadorActions)" />
-        public void RemoveCallbacks(IJogadorActions instance)
+        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+        public void RemoveCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_JogadorActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -931,21 +931,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="JogadorActions.AddCallbacks(IJogadorActions)" />
-        /// <seealso cref="JogadorActions.RemoveCallbacks(IJogadorActions)" />
-        /// <seealso cref="JogadorActions.UnregisterCallbacks(IJogadorActions)" />
-        public void SetCallbacks(IJogadorActions instance)
+        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+        public void SetCallbacks(IPlayerActions instance)
         {
-            foreach (var item in m_Wrapper.m_JogadorActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_JogadorActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="JogadorActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
     /// </summary>
-    public JogadorActions @Jogador => new JogadorActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1012,103 +1012,103 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         }
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Interface" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "User Interface" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="InterfaceActions.AddCallbacks(IInterfaceActions)" />
-    /// <seealso cref="InterfaceActions.RemoveCallbacks(IInterfaceActions)" />
-    public interface IInterfaceActions
+    /// <seealso cref="UserInterfaceActions.AddCallbacks(IUserInterfaceActions)" />
+    /// <seealso cref="UserInterfaceActions.RemoveCallbacks(IUserInterfaceActions)" />
+    public interface IUserInterfaceActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Pause Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMenu(InputAction.CallbackContext context);
+        void OnPauseMenu(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Inventario" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Inventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInventario(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Diario" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Journal" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDiario(InputAction.CallbackContext context);
+        void OnJournal(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Navegar" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Navigation" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNavegar(InputAction.CallbackContext context);
+        void OnNavigation(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Selecionar" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Selection" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSelecionar(InputAction.CallbackContext context);
+        void OnSelection(InputAction.CallbackContext context);
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Jogador" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="JogadorActions.AddCallbacks(IJogadorActions)" />
-    /// <seealso cref="JogadorActions.RemoveCallbacks(IJogadorActions)" />
-    public interface IJogadorActions
+    /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+    /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+    public interface IPlayerActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Mover" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMover(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Correr" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Sprint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCorrer(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Agachar" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Crouch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnAgachar(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Interagir" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInteragir(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Lanterna" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Flashlight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLanterna(InputAction.CallbackContext context);
+        void OnFlashlight(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Visao" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Camera" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnVisao(InputAction.CallbackContext context);
+        void OnCamera(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "TrocarPOV" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ChangePOV" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnTrocarPOV(InputAction.CallbackContext context);
+        void OnChangePOV(InputAction.CallbackContext context);
     }
 }

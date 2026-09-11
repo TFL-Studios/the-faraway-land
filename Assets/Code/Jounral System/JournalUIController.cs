@@ -94,7 +94,7 @@ public class JournalUIController : MonoBehaviour
     {
         this.UpdateCollectableSelector();
 
-        if (InputHandler.Instance.EntradaDiario.FoiPressionada)
+        if (InputHandler.Instance.JournalInput.WasPressed)
         {
             this._collectableFocusPanel.SetActive(false);
             this._journalUIPanel.SetActive(!this._journalUIPanel.activeSelf);
@@ -102,9 +102,9 @@ public class JournalUIController : MonoBehaviour
 
         if (!this._journalUIPanel.activeSelf) return;
 
-        if (InputHandler.Instance.EntradaNavegacao.FoiPressionada && !this.isFocusedOnCollectable)
+        if (InputHandler.Instance.NavigationInput.WasPressed && !this.isFocusedOnCollectable)
         {
-            Vector2 inputValue = InputHandler.Instance.EntradaNavegacao.Valor;
+            Vector2 inputValue = InputHandler.Instance.NavigationInput.Value;
 
             this.ChangeJournalMode((int)inputValue.y);
 
@@ -122,7 +122,7 @@ public class JournalUIController : MonoBehaviour
             }
         }
 
-        if (InputHandler.Instance.EntradaSelecao.FoiPressionada)
+        if (InputHandler.Instance.SelectionInput.WasPressed)
         {
             switch (this._currentMode)
             {

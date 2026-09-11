@@ -17,14 +17,14 @@ public class Inventory : MonoBehaviour
     
     void Update()
     {
-       if( InputHandler.Instance.EntradaAgachamento.FoiPressionada)
+       if( InputHandler.Instance.CrouchInput.WasPressed)
         {
             AddItem(item);
             Debug.Log("Item adicionado");
 
         }
 
-       if(InputHandler.Instance.EntradaCorrida.FoiPressionada)
+       if(InputHandler.Instance.SprintInput.WasPressed)
         {
             RemoveItem(item);
             Debug.Log("Item removido");

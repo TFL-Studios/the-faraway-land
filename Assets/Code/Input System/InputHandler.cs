@@ -1,124 +1,125 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public interface IEntrada
+public interface ICustomInput
 {
-    public void RegistrarCallbacks();
-    public void Habilitar();
-    public void Desabilitar();
+    public void RegisterCallbacks();
+    public void Enable();
+    public void Disable();
 }
 
-public class EntradaCustomizada<T> : IEntrada where T : struct
+public class CustomInput<T> : ICustomInput where T : struct
 {
-    private InputAction _acao;
+    private InputAction _action;
 
-    private T _valor;
-    public T Valor { get { return this._valor; } }
+    private T _value;
+    public T Value { get { return this._value; } }
 
-    public bool FoiPressionada { get { return this._acao.WasPressedThisFrame(); } }
-    public bool EstaPressionada { get { return this._acao.IsPressed(); } }
-    public bool FoiSolta { get { return this._acao.WasReleasedThisFrame(); } }
+    public bool WasPressed { get { return this._action.WasPressedThisFrame(); } }
+    public bool IsPressed { get { return this._action.IsPressed(); } }
+    public bool WasReleased { get { return this._action.WasReleasedThisFrame(); } }
 
-    public EntradaCustomizada(InputAction acao)
+    public CustomInput(InputAction action)
     {
-        this._acao = acao;
+        this._action = action;
     }
 
-    public void RegistrarCallbacks()
+    public void RegisterCallbacks()
     {
         if (typeof(T) == typeof(bool)) return;
-        this._acao.performed += context => this._valor = context.ReadValue<T>();
-        this._acao.canceled += context => this._valor = default(T);
+        this._action.performed += context => this._value = context.ReadValue<T>();
+        this._action.canceled += context => this._value = default(T);
     }
 
-    public void Habilitar() => this._acao.Enable();
-    public void Desabilitar() => this._acao.Disable();
+    public void Enable() => this._action.Enable();
+    public void Disable() => this._action.Disable();
 }
 
 public class InputHandler : PersistentSingleton<InputHandler>
 {
-    [SerializeField] private InputActionAsset _assetDeAcoesDeEntrada;
+    [SerializeField] private InputActionAsset _inputActionAsset;
 
-    /* Entradas Customizadas */
-    private IEntrada[] _entradas;
-    // Interface
-    private EntradaCustomizada<bool> _entradaMenu;
-    private EntradaCustomizada<bool> _entradaInventario;
-    private EntradaCustomizada<bool> _entradaDiario;
-    private EntradaCustomizada<Vector2> _entradaNavegacao;
-    private EntradaCustomizada<bool> _entradaSelecao;
-    // Jogador
-    private EntradaCustomizada<Vector2> _entradaMovimento;
-    private EntradaCustomizada<bool> _entradaCorrida;
-    private EntradaCustomizada<bool> _entradaAgachamento;
-    private EntradaCustomizada<bool> _entradaInteracao;
-    private EntradaCustomizada<bool> _entradaLanterna;
-    private EntradaCustomizada<Vector2> _entradaVisao;
-    private EntradaCustomizada<bool> _entradaPOV;
+    /* Custom Inputs */
+    private ICustomInput[] _allCustomInputs;
+    // User Interface
+    private CustomInput<bool> _pauseMenuInput;
+    private CustomInput<bool> _inventoryInput;
+    private CustomInput<bool> _journalInput;
+    private CustomInput<Vector2> _navigationInput;
+    private CustomInput<bool> _selectionInput;
+    // Player
+    private CustomInput<Vector2> _movementInput;
+    private CustomInput<bool> _sprintInput;
+    private CustomInput<bool> _crouchInput;
+    private CustomInput<bool> _interactionInput;
+    private CustomInput<bool> _flashlightInput;
+    private CustomInput<Vector2> _cameraInput;
+    private CustomInput<bool> _pointOfViewInput;
 
-    /* Acesso */
-    // Interface
-    public EntradaCustomizada<bool> EntradaMenu { get { return this._entradaMenu; } }
-    public EntradaCustomizada<bool> EntradaInventario { get { return this._entradaInventario; } }
-    public EntradaCustomizada<bool> EntradaDiario { get { return this._entradaDiario; } }
-    public EntradaCustomizada<Vector2> EntradaNavegacao { get { return this._entradaNavegacao; } }
-    public EntradaCustomizada<bool> EntradaSelecao { get { return this._entradaSelecao; } }
-    // Jogador
-    public EntradaCustomizada<Vector2> EntradaMovimento { get { return this._entradaMovimento; } }
-    public EntradaCustomizada<bool> EntradaCorrida { get { return this._entradaCorrida; } }
-    public EntradaCustomizada<bool> EntradaAgachamento { get { return this._entradaAgachamento; } }
-    public EntradaCustomizada<bool> EntradaInteracao { get { return this._entradaInteracao; } }
-    public EntradaCustomizada<bool> EntradaLanterna { get { return this._entradaLanterna; } }
-    public EntradaCustomizada<Vector2> EntradaVisao { get { return this._entradaVisao; } }
-    public EntradaCustomizada<bool> EntradaPOV { get { return this._entradaPOV; } }
+    /* Access */
+    // User Interface
+    public CustomInput<bool> PauseMenuInput { get { return this._pauseMenuInput; } }
+    public CustomInput<bool> InventoryInput { get { return this._inventoryInput; } }
+    public CustomInput<bool> JournalInput { get { return this._journalInput; } }
+    public CustomInput<Vector2> NavigationInput { get { return this._navigationInput; } }
+    public CustomInput<bool> SelectionInput { get { return this._selectionInput; } }
+    // Player
+    public CustomInput<Vector2> MovementInput { get { return this._movementInput; } }
+    public CustomInput<bool> SprintInput { get { return this._sprintInput; } }
+    public CustomInput<bool> CrouchInput { get { return this._crouchInput; } }
+    public CustomInput<bool> InteractionInput { get { return this._interactionInput; } }
+    public CustomInput<bool> FlashlightInput { get { return this._flashlightInput; } }
+    public CustomInput<Vector2> CameraInput { get { return this._cameraInput; } }
+    public CustomInput<bool> PointOfViewInput { get { return this._pointOfViewInput; } }
 
     protected override void Awake()
     {
         base.Awake();
 
-        InputActionMap mapaDeAcoesDeEntradaDeInterface = this._assetDeAcoesDeEntrada.FindActionMap("Interface");
-        InputActionMap mapaDeAcoesDeEntradaDoJogador = this._assetDeAcoesDeEntrada.FindActionMap("Jogador");
+        InputActionMap userInterfaceActionMap = this._inputActionAsset.FindActionMap("User Interface");
+        InputActionMap playerActionMap = this._inputActionAsset.FindActionMap("Player");
 
-        this._entradas = new IEntrada[]
+        this._allCustomInputs = new ICustomInput[]
         {
-            this._entradaMenu = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDeInterface.FindAction("Menu")),
-            this._entradaInventario = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDeInterface.FindAction("Inventario")),
-            this._entradaDiario = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDeInterface.FindAction("Diario")),
-            this._entradaNavegacao = new EntradaCustomizada<Vector2>(mapaDeAcoesDeEntradaDeInterface.FindAction("Navegar")),
-            this._entradaSelecao = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDeInterface.FindAction("Selecionar")),
-            this._entradaMovimento = new EntradaCustomizada<Vector2>(mapaDeAcoesDeEntradaDoJogador.FindAction("Mover")),
-            this._entradaCorrida = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDoJogador.FindAction("Correr")),
-            this._entradaAgachamento = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDoJogador.FindAction("Agachar")),
-            this._entradaInteracao = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDoJogador.FindAction("Interagir")),
-            this._entradaLanterna = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDoJogador.FindAction("Lanterna")),
-            this._entradaVisao = new EntradaCustomizada<Vector2>(mapaDeAcoesDeEntradaDoJogador.FindAction("Visao")),
-            this._entradaPOV = new EntradaCustomizada<bool>(mapaDeAcoesDeEntradaDoJogador.FindAction("TrocarPOV"))
+            this._pauseMenuInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Pause Menu")),
+            this._inventoryInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Inventory")),
+            this._journalInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Journal")),
+            this._navigationInput = new CustomInput<Vector2>(userInterfaceActionMap.FindAction("Navigation")),
+            this._selectionInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Selection")),
+            
+            this._movementInput = new CustomInput<Vector2>(playerActionMap.FindAction("Movement")),
+            this._sprintInput = new CustomInput<bool>(playerActionMap.FindAction("Sprint")),
+            this._crouchInput = new CustomInput<bool>(playerActionMap.FindAction("Crouch")),
+            this._interactionInput = new CustomInput<bool>(playerActionMap.FindAction("Interact")),
+            this._flashlightInput = new CustomInput<bool>(playerActionMap.FindAction("Flashlight")),
+            this._cameraInput = new CustomInput<Vector2>(playerActionMap.FindAction("Camera")),
+            this._pointOfViewInput = new CustomInput<bool>(playerActionMap.FindAction("ChangePOV"))
         };
 
-        this.RegistrarCallbacksDasEntradas();
+        this.RegisterInputCallbacks();
     }
 
     private void OnEnable()
     {
-        for (int i = 0; i < this._entradas.Length; i++)
+        for (int i = 0; i < this._allCustomInputs.Length; i++)
         {
-            this._entradas[i].Habilitar();
+            this._allCustomInputs[i].Enable();
         }
     }
 
     private void OnDisable()
     {
-        for (int i = 0; i < this._entradas.Length; i++)
+        for (int i = 0; i < this._allCustomInputs.Length; i++)
         {
-            this._entradas[i].Desabilitar();
+            this._allCustomInputs[i].Disable();
         }
     }
 
-    private void RegistrarCallbacksDasEntradas()
+    private void RegisterInputCallbacks()
     {
-        for (int i = 0; i < this._entradas.Length; i++)
+        for (int i = 0; i < this._allCustomInputs.Length; i++)
         {
-            this._entradas[i].RegistrarCallbacks();
+            this._allCustomInputs[i].RegisterCallbacks();
         }
     }
 }
