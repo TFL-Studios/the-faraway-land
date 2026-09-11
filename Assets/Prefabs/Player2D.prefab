@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c24f225fce8984ba3670f70d8e12d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2D
-  isHolding: 0
+  _isHolding: 0
   _moveDuration: 0.2
   _gridSize: 1
   _hitBoxUp: {x: 0, y: 1, z: 0}
@@ -328,7 +328,7 @@ MonoBehaviour:
   _hitBoxLeft: {x: -1, y: 0, z: 0}
   _hitBoxRight: {x: 1, y: 0, z: 0}
   _hitBox: {fileID: 2543437232905995731}
-  interactables: []
+  _interactables: []
 --- !u!1 &5483887894418332914
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +418,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: -876546973899608171, guid: 9920c1f1781549a46ba081a2a15a16ec, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
