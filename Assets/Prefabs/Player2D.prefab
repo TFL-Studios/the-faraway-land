@@ -321,13 +321,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2D
   isHolding: 0
-  moveDuration: 0.2
-  gridSize: 1
-  hitBoxUp: {x: 0, y: 1, z: 0}
-  hitBoxDown: {x: 0, y: -1, z: 0}
-  hitBoxLeft: {x: -1, y: 0, z: 0}
-  hitBoxRight: {x: 1, y: 0, z: 0}
-  hitBox: {fileID: 2543437232905995731}
+  _moveDuration: 0.2
+  _gridSize: 1
+  _hitBoxUp: {x: 0, y: 1, z: 0}
+  _hitBoxDown: {x: 0, y: -1, z: 0}
+  _hitBoxLeft: {x: -1, y: 0, z: 0}
+  _hitBoxRight: {x: 1, y: 0, z: 0}
+  _hitBox: {fileID: 2543437232905995731}
   interactables: []
 --- !u!1 &5483887894418332914
 GameObject:

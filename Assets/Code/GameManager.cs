@@ -14,7 +14,7 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public void TriggerSceneChange(string targerScene)
     {
-        StartCoroutine(ChangeScene(targerScene));
+        this.StartCoroutine(this.ChangeScene(targerScene));
     }
 
     private IEnumerator ChangeScene(string targetScene)

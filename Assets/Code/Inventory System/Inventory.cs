@@ -5,67 +5,49 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Itens> itens;
-    public Transform icon;
-    public GameObject itemPrefab;
-    public Itens item;
-    void Start()
-    {
-        
-    }
-
+    [SerializeField] private List<Items> _itens;
+    [SerializeField] private Transform _icon;
+    [SerializeField] private GameObject _itemPrefab;
+    [SerializeField] private Items _item;
     
-    void Update()
+    private void Update()
     {
-       if( InputHandler.Instance.CrouchInput.WasPressed)
+        if (InputHandler.Instance.CrouchInput.WasPressed)
         {
-            AddItem(item);
+            this.AddItem(_item);
             Debug.Log("Item adicionado");
-
         }
-
-       if(InputHandler.Instance.SprintInput.WasPressed)
+        
+        if (InputHandler.Instance.SprintInput.WasPressed)
         {
-            RemoveItem(item);
+            this.RemoveItem(_item);
             Debug.Log("Item removido");
         }
-
     }
 
-
-    public void AddItem(Itens item)
+    public void AddItem(Items item)
     {
-        itens.Add(item);
-        UpdateList();
-
-
+        this._itens.Add(item);
+        this.UpdateList();
     }
 
-    public void RemoveItem(Itens item)
+    public void RemoveItem(Items item)
     {
-        itens.Remove(item);
-        UpdateList();
+        this._itens.Remove(item);
+        this.UpdateList();
     }
 
     public void UpdateList()
     {
-
-        for(int i = icon.childCount - 1; i  >= 0; i--)
+        for (int i = this._icon.childCount - 1; i >= 0; i--)
         {
-            Destroy(icon.GetChild(i).gameObject);
+            GameObject.Destroy(this._icon.GetChild(i).gameObject);
         }
 
-        for (int i = 0; i < itens.Count; i++)
+        for (int i = 0; i < this._itens.Count; i++)
         {
-            Vector3 itemGot;
-
-            itemGot = new Vector3(icon.transform.position.x + 100f * i, icon.transform.position.y, icon.transform.position.z);
-            Instantiate(itemPrefab, itemGot, Quaternion.identity, icon).GetComponent<Image>().sprite = itens[i].itemIcon;
-            
+            Vector3 itemGot = new Vector3(this._icon.transform.position.x + 100f * i, this._icon.transform.position.y, this._icon.transform.position.z);
+            GameObject.Instantiate(this._itemPrefab, itemGot, Quaternion.identity, this._icon).GetComponent<Image>().sprite = this._itens[i].itemIcon;
         }
-
-
-
-
     }
 }

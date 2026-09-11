@@ -1,44 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-//using static UnityEditor.Progress;
 
 public class Player2D : MonoBehaviour
 {
-    [SerializeField] private bool isHolding;
-     private bool isMoving;
-    [SerializeField] private float moveDuration = 0.2f;
-    [SerializeField] private float gridSize = 1f;
-    [SerializeField] private Vector3 hitBoxUp;
-    [SerializeField] private Vector3 hitBoxDown;
-    [SerializeField] private Vector3 hitBoxLeft;
-    [SerializeField] private Vector3 hitBoxRight;
-    [SerializeField] private Transform hitBox;
-    public List<GameObject> interactables;
+    [SerializeField] private bool _isHolding;
+     private bool _isMoving;
+    [SerializeField] private float _moveDuration = 0.2f;
+    [SerializeField] private float _gridSize = 1f;
+    [SerializeField] private Vector3 _hitBoxUp;
+    [SerializeField] private Vector3 _hitBoxDown;
+    [SerializeField] private Vector3 _hitBoxLeft;
+    [SerializeField] private Vector3 _hitBoxRight;
+    [SerializeField] private Transform _hitBox;
+    [SerializeField] private List<GameObject> _interactables;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (InputHandler.Instance.InteractionInput.WasPressed)
         {
-
-            Debug.Log(interactables[0].name);
-
+            Debug.Log(this._interactables[0].name);
         }
 
-        if (!this.isMoving) {
+        if (!this._isMoving) {
             
             System.Func<KeyCode, bool> inputFunction;
-            if (this.isHolding)
+            if (this._isHolding)
             {
                 inputFunction = Input.GetKeyDown;
-                
             }
             else
             {
@@ -47,60 +36,54 @@ public class Player2D : MonoBehaviour
 
             if (inputFunction(KeyCode.W))
             {
-                StartCoroutine(Move(Vector2.up));
-                this.hitBox.position = this.transform.position + this.hitBoxUp;
+                this.StartCoroutine(this.Move(Vector2.up));
+                this._hitBox.position = this.transform.position + this._hitBoxUp;
                 
             } else if (inputFunction(KeyCode.S))
             {
-                StartCoroutine(Move(Vector2.down));
-                this.hitBox.position = this.transform.position + this.hitBoxDown;
+                this.StartCoroutine(this.Move(Vector2.down));
+                this._hitBox.position = this.transform.position + this._hitBoxDown;
             }
             else if (inputFunction(KeyCode.A))
             {
-                StartCoroutine(Move(Vector2.left));
-                this.hitBox.position = this.transform.position + this.hitBoxLeft;
+                this.StartCoroutine(this.Move(Vector2.left));
+                this._hitBox.position = this.transform.position + this._hitBoxLeft;
             }
             else if (inputFunction(KeyCode.D))
             {
-                StartCoroutine(Move(Vector2.right));
-                this.hitBox.position = this.transform.position + this.hitBoxRight;
+                this.StartCoroutine(this.Move(Vector2.right));
+                this._hitBox.position = this.transform.position + this._hitBoxRight;
             }
-
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
         if (collision.CompareTag("Interactable")) 
         {
-            interactables.Add(collision.gameObject);
-            
+            this._interactables.Add(collision.gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        interactables.Remove(collision.gameObject);
+        this._interactables.Remove(collision.gameObject);
     }
 
-
-    private System.Collections.IEnumerator Move(Vector2 direction)
+    private IEnumerator Move(Vector2 direction)
     {
-        this.isMoving = true;
+        this._isMoving = true;
         Vector2 startPosition = this.transform.position;
-        Vector2 endPosition = startPosition + (direction * this.gridSize);
+        Vector2 endPosition = startPosition + (direction * this._gridSize);
         float elapsedTime = 0f;
-        while (elapsedTime < this.moveDuration)
+        while (elapsedTime < this._moveDuration)
         {
             elapsedTime += Time.deltaTime;
-            this.transform.position = Vector2.Lerp(startPosition, endPosition, elapsedTime / this.moveDuration);
+            this.transform.position = Vector2.Lerp(startPosition, endPosition, elapsedTime / this._moveDuration);
             
             yield return null;
         }
         this.transform.position = endPosition;
-        this.isMoving = false;
+        this._isMoving = false;
     }
-
 }

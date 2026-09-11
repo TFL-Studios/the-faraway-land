@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 708476736873120327}
   - component: {fileID: 144386136295954248}
   m_Layer: 5
-  m_Name: PanelDialogController
+  m_Name: DialogUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,13 +381,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08f81db86163314c88864a0fce08d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogController
-  dialogBox: {fileID: 3279516218910879789}
-  answerPanel: {fileID: 718449157875525001}
-  linesBox: {fileID: 8052501802936310221}
-  buttonsParent: {fileID: 4762646150761032121}
-  answerBoxPrefab: {fileID: 2769434290823580028, guid: 29eb9bca559bf29418567b7dcac48d4d, type: 3}
-  firstCharacter: {fileID: 1292837499639727770}
-  secondCharacter: {fileID: 2347954511852963302}
+  _dialogBox: {fileID: 3279516218910879789}
+  _answerPanel: {fileID: 718449157875525001}
+  _linesBox: {fileID: 8052501802936310221}
+  _buttonsParent: {fileID: 4762646150761032121}
+  _answerBoxPrefab: {fileID: 2769434290823580028, guid: 29eb9bca559bf29418567b7dcac48d4d, type: 3}
+  _firstCharacter: {fileID: 1292837499639727770}
+  _secondCharacter: {fileID: 2347954511852963302}
   indexButtons: 0
   spawnController: 3
   changeCharacter: 1

@@ -434,10 +434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd79ed83812382e4bb4625fff16cb3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  itens: []
-  icon: {fileID: 746295223}
-  itemPrefab: {fileID: 8922220154876509167, guid: 660194a2e0eebab4ca3d12582c0be0cc, type: 3}
-  item: {fileID: 11400000, guid: c9d4eeb0b1d2db442bc3cea1bad89256, type: 2}
+  _itens: []
+  _icon: {fileID: 746295223}
+  _itemPrefab: {fileID: 8922220154876509167, guid: 660194a2e0eebab4ca3d12582c0be0cc, type: 3}
+  _item: {fileID: 11400000, guid: c9d4eeb0b1d2db442bc3cea1bad89256, type: 2}
 --- !u!4 &792437645
 Transform:
   m_ObjectHideFlags: 0
