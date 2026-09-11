@@ -14,7 +14,18 @@ public class InteractionController : MonoBehaviour
     private void Awake()
     {
         this._cameraController = this.GetComponent<CameraController>();
+        
         this._interactionPopupController = GameObject.FindAnyObjectByType<InterationPopupController>();
+        if (!this._interactionPopupController)
+        {
+            Canvas canvas = GameObject.FindAnyObjectByType<Canvas>();
+            GameObject prefab = Resources.Load<GameObject>("InteractionPopupController");
+
+            if (canvas && prefab)
+            {
+                this._interactionPopupController = GameObject.Instantiate(prefab, canvas.transform, false).GetComponent<InterationPopupController>();
+            }
+        }
     }
 
     private void Update()
