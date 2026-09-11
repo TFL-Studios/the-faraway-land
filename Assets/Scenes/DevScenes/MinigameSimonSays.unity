@@ -1573,53 +1573,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 329846510}
     m_Modifications:
-    - target: {fileID: 8129114705103333, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8129114705103333, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8129114705103333, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8129114705103333, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 374577332513538527, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
       propertyPath: m_Name
       value: InteractionPopupController
-      objectReference: {fileID: 0}
-    - target: {fileID: 899698847099971388, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 899698847099971388, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 899698847099971388, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 167.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 899698847099971388, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 173.725
-      objectReference: {fileID: 0}
-    - target: {fileID: 899698847099971388, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379721521900470094, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1379721521900470094, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7222950485159791330, guid: 47937a67490e53f4baa3e91298e8b868, type: 3}
       propertyPath: m_Pivot.x
