@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DialogUI.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/DevScenes/2DMovement.unity
+    path: Assets/Scenes/DevScenes/2D Specifics/2DMovement.unity
     guid: 294a97e55369131428e26d77d4020ebd
   - enabled: 1
     path: Assets/Scenes/DevScenes/3DCamera.unity
