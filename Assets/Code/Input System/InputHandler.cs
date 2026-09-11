@@ -76,6 +76,11 @@ public class InputHandler : PersistentSingleton<InputHandler>
     {
         base.Awake();
 
+        if (!this._inputActionAsset)
+        {
+            this._inputActionAsset = Resources.Load<InputActionAsset>("InputSystem_Actions");
+        }
+
         InputActionMap userInterfaceActionMap = this._inputActionAsset.FindActionMap("User Interface");
         InputActionMap playerActionMap = this._inputActionAsset.FindActionMap("Player");
 
