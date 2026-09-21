@@ -16,7 +16,7 @@ public class DialogController : MonoBehaviour
     private string[] _options = new[] { "eca", "ola", "..." };
     private Image[] _buttons;
     private int _index = 0;
-    private int _spawnController = 1;
+    private int _spawnController = 3;
     private int _changeCharacter = 1;
     private int _activeCharacter = 1;
     
