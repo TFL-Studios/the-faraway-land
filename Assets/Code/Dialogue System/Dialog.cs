@@ -8,6 +8,8 @@ public struct Dialog
     public Answers[] answers;
     public bool haveAnswer;
     public bool right;
+    public int talking;
+
 
 
 

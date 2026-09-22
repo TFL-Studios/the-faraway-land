@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d4ff03702e46c438446a0f0863efac, type: 3}
   m_Name: DialogBlock
   m_EditorClassIdentifier: Assembly-CSharp::DialogBlock
-  characterNameDireita: 
-  characterNameEsquerda: 
-  characterImagemDireita: {fileID: 0}
-  characterImagemEsquerda: {fileID: 0}
-  falas: []
+  characterTalking: []
+  dialog:
+  - speechs: dadsa
+    answers: []
+    haveAnswer: 0
+    right: 1
+    talking: 0
