@@ -13,7 +13,6 @@ public class DialogController : MonoBehaviour
     [SerializeField] private Image _secondCharacter;
     [SerializeField] private DialogBlock _dialogBlock;
     private int _indexButtons = 0;
-    private string[] _options = new[] { "eca", "ola", "..." };
     private Image[] _buttons;
     private int _index = 0;
     Dialog currentDialog;
@@ -66,13 +65,12 @@ public class DialogController : MonoBehaviour
         
         if (InputHandler.Instance.SelectionInput.WasPressed)
         {
-            this.NextLine();
+            this.AnswerBox();
+            
+
         }
 
-        if (Input.GetKeyDown("q"))
-        {
-            this.AnswerBox();
-        }
+        
 
         
 
@@ -80,7 +78,7 @@ public class DialogController : MonoBehaviour
 
         if(Input.GetKeyDown("x"))
         {
-            this.ActiveCharacter();
+            this.ConfirmAnswer();
         }
     }
 
@@ -95,6 +93,10 @@ public class DialogController : MonoBehaviour
         currentDialog = _dialogBlock.dialog[_index];
         talking = currentDialog.talking;
         this.ActiveCharacter();
+       
+        this.AnswerBox();
+
+        
 
         return true;
     }
@@ -180,28 +182,31 @@ public class DialogController : MonoBehaviour
                     this._firstCharacter.color = firstCharacterColor;*/
 
             }
-    
+
 
     public void ConfirmAnswer()
     {
-        TextMeshProUGUI textButtons = this._buttons[this._indexButtons].GetComponentInChildren<TextMeshProUGUI>();
-        Debug.Log(textButtons.text);
-        for (int i = this._buttons.Length - 1; i >= 0; i--) 
+        if (_answerPanel)
+        { 
+        this._dialogLinesBox.text = currentDialog.answers[0].answerOptions;
+        for (int i = this._buttons.Length - 1; i >= 0; i--)
         {
             GameObject.Destroy(this._buttons[i].gameObject);
+        }
+            _answerPanel.SetActive(false);
         }
     }
 
     public void AnswerBox()
     {
-        for (int i = 0; i < this._options.Length; i++)
+        for (int i = 0; i < currentDialog.answers.Length; i++)
         {
             GameObject answerBoxInstance = GameObject.Instantiate(this._answerBoxPrefab, this._buttonsParent.transform, false);
             TextMeshProUGUI textPrefab = answerBoxInstance.GetComponentInChildren<TextMeshProUGUI>();
-            textPrefab.text = this._options[i];
+            textPrefab.text = currentDialog.answers[i].options;
             
         }
-
+        _answerPanel.SetActive(true);
         this._buttons = this._buttonsParent.GetComponentsInChildren<Image>();
         this._indexButtons = 0;
         this._buttons[this._indexButtons].color = Color.red;
