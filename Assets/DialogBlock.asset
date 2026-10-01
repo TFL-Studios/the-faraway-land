@@ -27,3 +27,12 @@ MonoBehaviour:
     haveAnswer: 1
     right: 1
     talking: 0
+  - speechs: vish
+    answers:
+    - options: 'Ok '
+      answerOptions: deu certo
+    - options: n sei
+      answerOptions: 
+    haveAnswer: 0
+    right: 1
+    talking: 0

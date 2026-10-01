@@ -12,6 +12,7 @@ public class DialogController : MonoBehaviour
     [SerializeField] private Image _firstCharacter;
     [SerializeField] private Image _secondCharacter;
     [SerializeField] private DialogBlock _dialogBlock;
+    private bool canAnswer = false;
     private int _indexButtons = 0;
     private Image[] _buttons;
     private int _index = 0;
@@ -65,7 +66,16 @@ public class DialogController : MonoBehaviour
         
         if (InputHandler.Instance.SelectionInput.WasPressed)
         {
-            this.AnswerBox();
+            if (canAnswer)
+            {
+                this.ConfirmAnswer();
+            }
+            else if (!canAnswer) 
+            {
+                this.NextLine();
+            }
+            
+                
             
 
         }
@@ -78,7 +88,14 @@ public class DialogController : MonoBehaviour
 
         if(Input.GetKeyDown("x"))
         {
-            this.ConfirmAnswer();
+            if (canAnswer)
+            {
+                this.ConfirmAnswer();
+            }
+            else 
+            {
+                this.NextLine();
+            }
         }
     }
 
@@ -88,13 +105,16 @@ public class DialogController : MonoBehaviour
         {
             return false;
         }
+        if (_dialogBlock.dialog[this._index].haveAnswer)
+        {
+            this.AnswerBox();
+
+            return true;
+        }
         this._dialogLinesBox.text = _dialogBlock.dialog[this._index].speechs;
-        this._index++;
-        currentDialog = _dialogBlock.dialog[_index];
-        talking = currentDialog.talking;
         this.ActiveCharacter();
        
-        this.AnswerBox();
+        
 
         
 
@@ -186,15 +206,20 @@ public class DialogController : MonoBehaviour
 
     public void ConfirmAnswer()
     {
-        if (_answerPanel)
-        { 
-        this._dialogLinesBox.text = currentDialog.answers[0].answerOptions;
+        
+            
+        
+            this._index++;
+            currentDialog = _dialogBlock.dialog[this._index];
+            talking = currentDialog.talking;
         for (int i = this._buttons.Length - 1; i >= 0; i--)
         {
             GameObject.Destroy(this._buttons[i].gameObject);
         }
-            _answerPanel.SetActive(false);
-        }
+        this._dialogLinesBox.text = currentDialog.answers[0].answerOptions;
+        _answerPanel.SetActive(false);
+            canAnswer = false;
+        
     }
 
     public void AnswerBox()
@@ -206,6 +231,7 @@ public class DialogController : MonoBehaviour
             textPrefab.text = currentDialog.answers[i].options;
             
         }
+        canAnswer = true;
         _answerPanel.SetActive(true);
         this._buttons = this._buttonsParent.GetComponentsInChildren<Image>();
         this._indexButtons = 0;

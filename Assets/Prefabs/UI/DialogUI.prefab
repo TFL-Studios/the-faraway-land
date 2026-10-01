@@ -340,11 +340,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogController
   _dialogBox: {fileID: 3119179612539019968}
   _answerPanel: {fileID: 718449157875525001}
-  _linesBox: {fileID: 8052501802936310221}
+  _dialogLinesBox: {fileID: 8052501802936310221}
   _buttonsParent: {fileID: 4762646150761032121}
   _answerBoxPrefab: {fileID: 2769434290823580028, guid: 29eb9bca559bf29418567b7dcac48d4d, type: 3}
   _firstCharacter: {fileID: 1292837499639727770}
   _secondCharacter: {fileID: 2347954511852963302}
+  _dialogBlock: {fileID: 11400000, guid: b6f9a822d2720e04bab02c5bc5e0bfb2, type: 2}
 --- !u!1 &3119179612539019968
 GameObject:
   m_ObjectHideFlags: 0
