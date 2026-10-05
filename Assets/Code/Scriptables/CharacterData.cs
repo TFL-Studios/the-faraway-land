@@ -7,6 +7,9 @@ public class CharacterData : ScriptableObject
     public string characterName;
     public Sprite characterSprite; // TODO: incluir poses e expressoes
 
+    [Header("Dialog")]
+    public Sprite characterDialogSprite;
+
     [Header("Quests")]
     public int[] givenQuests; // TODO: colocar o scriptable da quest, maybe
 

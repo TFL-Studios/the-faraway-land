@@ -31,17 +31,12 @@ public class NPC_Controller : Interactable
         int charDialogIndex = 0;
         foreach (DialogBlock charDialog in GameManager.Instance.quests[GameManager.Instance.activeQuestIndex].questData.charSpecificExtraDialog)
         {
-            List<CharacterTalking> cars = charDialog.characterTalking.ToList();
-            foreach(CharacterTalking perso in cars)
+            List<CharacterData> cars = charDialog.characters.ToList();
+            if (cars.Contains(this._characterData))
             {
-                if (perso.characterTalkingName == this._characterData.characterName) // TODO: verificar com CharacterData em si, ao inves do name
-                {
-                    hasQuestGeneric = true;
-                    break;
-                }
+                hasQuestGeneric = true;
+                break;
             }
-
-            if (hasQuestGeneric) break;
             charDialogIndex++;
         }
 
@@ -52,7 +47,7 @@ public class NPC_Controller : Interactable
 
         foreach (Dialog dialogdialog in dialog.dialog)
         {
-            Debug.Log($"{dialog.characterTalking[dialogdialog.talking]}: {dialogdialog.speechs}");
+            Debug.Log($"{dialog.characters[dialogdialog.talking]}: {dialogdialog.speechs}");
         }
 
         this.AjustAffinity(Random.Range(-7, 8));

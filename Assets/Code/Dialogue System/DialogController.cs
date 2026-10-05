@@ -125,23 +125,23 @@ public class DialogController : MonoBehaviour
     {
         TextMeshProUGUI textfirstCharacter = this._firstCharacter.GetComponentInChildren<TextMeshProUGUI>();
         TextMeshProUGUI textsecondCharacter = this._secondCharacter.GetComponentInChildren<TextMeshProUGUI>();
-        CharacterTalking characterTalking = _dialogBlock.characterTalking[talking];
+        CharacterData characterTalking = _dialogBlock.characters[talking];
 
 
         if (!currentDialog.right)
         {
             this._firstCharacter.gameObject.SetActive(!this._firstCharacter.gameObject.activeSelf);
 
-            this._firstCharacter.sprite = characterTalking.characterTalkingImagem;
-            textfirstCharacter.text = characterTalking.characterTalkingName;
+            this._firstCharacter.sprite = characterTalking.characterDialogSprite;
+            textfirstCharacter.text = characterTalking.characterName;
         }
 
         else
         {
 
             this._secondCharacter.gameObject.SetActive(!this._secondCharacter.gameObject.activeSelf);
-            this._secondCharacter.sprite = characterTalking.characterTalkingImagem;
-            textsecondCharacter.text = characterTalking.characterTalkingName;
+            this._secondCharacter.sprite = characterTalking.characterDialogSprite;
+            textsecondCharacter.text = characterTalking.characterName;
 
 
         }
