@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
+    [Header("Interactable")]
     [SerializeField] private Transform _interactionPopupAnchor;
     public Transform InteractionPopupAnchor { get { return this._interactionPopupAnchor; } }
 

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50a7223d51660494c89f9eb065228e4a, type: 3}
-  m_Name: MeiData
+  m_Name: CarvalhoData
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  characterName: Mei
-  characterSprite: {fileID: 21300000, guid: 627d807ddaa16914db9c3f334135ff73, type: 3}
-  givenQuests: 0000000002000000
-  portraitSilhouette: {fileID: 1657147325, guid: 60547ea40034a28409b9488e5fea603c, type: 3}
-  portraitColored: {fileID: 1290251301, guid: 60547ea40034a28409b9488e5fea603c, type: 3}
+  characterName: Krl
+  characterSprite: {fileID: 21300000, guid: d91298a5baffc4a4e89c78d6a762361e, type: 3}
+  givenQuests: 
+  portraitSilhouette: {fileID: 0}
+  portraitColored: {fileID: 0}

@@ -1,10 +1,21 @@
 using System.Collections;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[System.Serializable]
+public struct Quest
+{
+    public bool complete;
+    public QuestData questData;
+}
+
 public class GameManager : PersistentSingleton<GameManager>
 {
+    public int activeQuestIndex = 0; // ph
+    public Quest[] quests;
+
     [SerializeField] private Canvas _blackoutCanvasPrefab;
 
     protected override void Awake()
