@@ -20,7 +20,6 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual bool Interact()
     {
-        Debug.LogWarning("Interactable not overriden");
         return false;
     }
 }

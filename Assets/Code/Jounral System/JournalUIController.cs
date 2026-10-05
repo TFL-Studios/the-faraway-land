@@ -6,11 +6,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JournalUIController : MonoBehaviour
+public class JournalUIController : InterfaceNode
 {
     #region General
     [Header("General")]
-    [SerializeField] private GameObject _journalUIPanel;
     [SerializeField] private GameObject _modeSelectorsPanel;
     [SerializeField] private Image _collectablesModeSelector;
     [SerializeField] private Image _memoriesModeSelector;
@@ -92,15 +91,11 @@ public class JournalUIController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentControlMode != ControllMode.UI_Journal) return;
+
         this.UpdateCollectableSelector();
 
-        if (InputHandler.Instance.JournalInput.WasPressed)
-        {
-            this._collectableFocusPanel.SetActive(false);
-            this._journalUIPanel.SetActive(!this._journalUIPanel.activeSelf);
-        }
-
-        if (!this._journalUIPanel.activeSelf) return;
+        if (!this._nodeUIPanel.activeSelf) return;
 
         if (InputHandler.Instance.NavigationInput.WasPressed && !this.isFocusedOnCollectable)
         {
@@ -165,6 +160,12 @@ public class JournalUIController : MonoBehaviour
     }
 
     #region General Methods
+    public void SetJournalUI(bool active)
+    {
+        this._collectableFocusPanel.SetActive(false);
+        this._nodeUIPanel.SetActive(active);
+    }
+
     private bool ChangeJournalMode(int amount)
     {
         if (amount == 0) return false;

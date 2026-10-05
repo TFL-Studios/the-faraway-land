@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum InputMap
+{
+    Player,
+    UserInterface,
+}
+
 public interface ICustomInput
 {
     public void RegisterCallbacks();
@@ -38,6 +44,9 @@ public class CustomInput<T> : ICustomInput where T : struct
 public class InputHandler : PersistentSingleton<InputHandler>
 {
     [SerializeField] private InputActionAsset _inputActionAsset;
+
+    private InputActionMap _userInterfaceActionMap;
+    private InputActionMap _playerActionMap;
 
     /* Custom Inputs */
     private ICustomInput[] _allCustomInputs;
@@ -81,24 +90,24 @@ public class InputHandler : PersistentSingleton<InputHandler>
             this._inputActionAsset = Resources.Load<InputActionAsset>("InputSystem_Actions");
         }
 
-        InputActionMap userInterfaceActionMap = this._inputActionAsset.FindActionMap("User Interface");
-        InputActionMap playerActionMap = this._inputActionAsset.FindActionMap("Player");
+        this._userInterfaceActionMap = this._inputActionAsset.FindActionMap("User Interface");
+        this._playerActionMap = this._inputActionAsset.FindActionMap("Player");
 
         this._allCustomInputs = new ICustomInput[]
         {
-            this._pauseMenuInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Pause Menu")),
-            this._inventoryInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Inventory")),
-            this._journalInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Journal")),
-            this._navigationInput = new CustomInput<Vector2>(userInterfaceActionMap.FindAction("Navigation")),
-            this._selectionInput = new CustomInput<bool>(userInterfaceActionMap.FindAction("Selection")),
+            this._pauseMenuInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Pause Menu")),
+            this._inventoryInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Inventory")),
+            this._journalInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Journal")),
+            this._navigationInput = new CustomInput<Vector2>(_userInterfaceActionMap.FindAction("Navigation")),
+            this._selectionInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Selection")),
             
-            this._movementInput = new CustomInput<Vector2>(playerActionMap.FindAction("Movement")),
-            this._sprintInput = new CustomInput<bool>(playerActionMap.FindAction("Sprint")),
-            this._crouchInput = new CustomInput<bool>(playerActionMap.FindAction("Crouch")),
-            this._interactionInput = new CustomInput<bool>(playerActionMap.FindAction("Interact")),
-            this._flashlightInput = new CustomInput<bool>(playerActionMap.FindAction("Flashlight")),
-            this._cameraInput = new CustomInput<Vector2>(playerActionMap.FindAction("Camera")),
-            this._pointOfViewInput = new CustomInput<bool>(playerActionMap.FindAction("ChangePOV"))
+            this._movementInput = new CustomInput<Vector2>(_playerActionMap.FindAction("Movement")),
+            this._sprintInput = new CustomInput<bool>(_playerActionMap.FindAction("Sprint")),
+            this._crouchInput = new CustomInput<bool>(_playerActionMap.FindAction("Crouch")),
+            this._interactionInput = new CustomInput<bool>(_playerActionMap.FindAction("Interact")),
+            this._flashlightInput = new CustomInput<bool>(_playerActionMap.FindAction("Flashlight")),
+            this._cameraInput = new CustomInput<Vector2>(_playerActionMap.FindAction("Camera")),
+            this._pointOfViewInput = new CustomInput<bool>(_playerActionMap.FindAction("ChangePOV"))
         };
 
         this.RegisterInputCallbacks();
@@ -125,6 +134,18 @@ public class InputHandler : PersistentSingleton<InputHandler>
         for (int i = 0; i < this._allCustomInputs.Length; i++)
         {
             this._allCustomInputs[i].RegisterCallbacks();
+        }
+    }
+
+    public void SetActiveMap(InputMap map)
+    {
+        if (map == InputMap.Player)
+        {
+            this._playerActionMap.Enable();
+        }
+        else
+        {
+            this._playerActionMap.Disable();
         }
     }
 }

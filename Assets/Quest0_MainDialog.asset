@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d4ff03702e46c438446a0f0863efac, type: 3}
   m_Name: Quest0_MainDialog
   m_EditorClassIdentifier: Assembly-CSharp::DialogBlock
-  characterTalking:
-  - characterTalkingName: Mei
-    characterTalkingImagem: {fileID: 0}
-  - characterTalkingName: Ash
-    characterTalkingImagem: {fileID: 0}
+  characters:
+  - {fileID: 11400000, guid: 51734d7ab0b2dc04b9af46e19f09d606, type: 2}
+  - {fileID: 11400000, guid: 72bc5b8922e4b6e42aa5b1ea9ecae28d, type: 2}
   dialog:
   - speechs: Q0_MD_L1
     answers: []

@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08f81db86163314c88864a0fce08d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogController
-  _dialogBox: {fileID: 3119179612539019968}
+  _nodeUIPanel: {fileID: 3119179612539019968}
   _answerPanel: {fileID: 718449157875525001}
   _dialogLinesBox: {fileID: 8052501802936310221}
   _buttonsParent: {fileID: 4762646150761032121}

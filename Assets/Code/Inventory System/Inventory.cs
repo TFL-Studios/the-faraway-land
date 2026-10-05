@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : InterfaceNode
 {
-    [SerializeField] private GameObject _inventoryUIPanel;
-
     [SerializeField] private List<Items> _itens;
     [SerializeField] private Transform _icon;
     [SerializeField] private GameObject _itemPrefab;
@@ -14,11 +12,6 @@ public class Inventory : MonoBehaviour
     
     private void Update()
     {
-        if (InputHandler.Instance.InventoryInput.WasPressed)
-        {
-            this._inventoryUIPanel.SetActive(!this._inventoryUIPanel.activeSelf);
-        }
-
         if (InputHandler.Instance.CrouchInput.WasPressed)
         {
             this.AddItem(_item);

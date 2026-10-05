@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ReadInput()
     {
-        this._moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        this._moveInput = InputHandler.Instance.MovementInput.Value;
         if (InputHandler.Instance.SprintInput.WasPressed) { this.TryStartSprint(); }
         if (InputHandler.Instance.SprintInput.WasReleased) { this._isSprinting = false; }
         if (InputHandler.Instance.CrouchInput.WasPressed) { this.ToggleCrouch(); }

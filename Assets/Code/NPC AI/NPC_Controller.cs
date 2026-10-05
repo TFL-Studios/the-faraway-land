@@ -45,10 +45,12 @@ public class NPC_Controller : Interactable
             dialog = GameManager.Instance.quests[GameManager.Instance.activeQuestIndex].questData.charSpecificExtraDialog[charDialogIndex];
         }
 
-        foreach (Dialog dialogdialog in dialog.dialog)
-        {
-            Debug.Log($"{dialog.characters[dialogdialog.talking]}: {dialogdialog.speechs}");
-        }
+        GameManager.Instance.StartDialog(dialog);
+
+        //foreach (Dialog dialogdialog in dialog.dialog)
+        //{
+        //    Debug.Log($"{dialog.characters[dialogdialog.talking]}: {dialogdialog.speechs}");
+        //}
 
         this.AjustAffinity(Random.Range(-7, 8));
         Debug.Log(this._currentAffinity);

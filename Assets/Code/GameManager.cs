@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Diagnostics.Contracts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,9 +17,25 @@ public class GameManager : PersistentSingleton<GameManager>
 
     [SerializeField] private Canvas _blackoutCanvasPrefab;
 
+    private GeneralUIController _uiController;
+
+    public ControllMode CurrentControlMode { get { return this._uiController.CurrentControlMode; } }
+
     protected override void Awake()
     {
         base.Awake();
+
+        this._uiController = GameObject.FindFirstObjectByType<GeneralUIController>();
+    }
+
+    public void StartDialog(DialogBlock dialogBlock)
+    {
+        this._uiController.EnableDialogUI(dialogBlock);
+    }
+
+    public void EndDialog()
+    {
+        this._uiController.DisableDialogUI();
     }
 
     public void TriggerSceneChange(string targerScene)

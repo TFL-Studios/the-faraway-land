@@ -1875,7 +1875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ec1a77ce1bae340a791718c8087741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JournalController
-  _journalUIPanel: {fileID: 8698614168764926878}
+  _nodeUIPanel: {fileID: 8698614168764926878}
   _modeSelectorsPanel: {fileID: 1622557439965668346}
   _collectablesModeSelector: {fileID: 637605522361554532}
   _memoriesModeSelector: {fileID: 7716306350308427026}
