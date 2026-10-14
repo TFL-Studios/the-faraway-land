@@ -1,118 +1,89 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum InputMap
+public enum EInputMap
 {
-    Player,
     UserInterface,
-}
-
-public interface ICustomInput
-{
-    public void RegisterCallbacks();
-    public void Enable();
-    public void Disable();
-}
-
-public class CustomInput<T> : ICustomInput where T : struct
-{
-    private InputAction _action;
-
-    private T _value;
-    public T Value { get { return this._value; } }
-
-    public bool WasPressed { get { return this._action.WasPressedThisFrame(); } }
-    public bool IsPressed { get { return this._action.IsPressed(); } }
-    public bool WasReleased { get { return this._action.WasReleasedThisFrame(); } }
-
-    public CustomInput(InputAction action)
-    {
-        this._action = action;
-    }
-
-    public void RegisterCallbacks()
-    {
-        if (typeof(T) == typeof(bool)) return;
-        this._action.performed += context => this._value = context.ReadValue<T>();
-        this._action.canceled += context => this._value = default(T);
-    }
-
-    public void Enable() => this._action.Enable();
-    public void Disable() => this._action.Disable();
+	Player,
 }
 
 public class InputHandler : PersistentSingleton<InputHandler>
 {
-    [SerializeField] private InputActionAsset _inputActionAsset;
-
-    private InputActionMap _userInterfaceActionMap;
-    private InputActionMap _playerActionMap;
+    private InputActionAsset _inputActionAsset;
+    
+    /* Maps */
+    private InputActionMap _mapUserInterface;
+	private InputActionMap _mapPlayer;
 
     /* Custom Inputs */
     private ICustomInput[] _allCustomInputs;
-    // User Interface
-    private CustomInput<bool> _pauseMenuInput;
-    private CustomInput<bool> _inventoryInput;
-    private CustomInput<bool> _journalInput;
-    private CustomInput<Vector2> _navigationInput;
-    private CustomInput<bool> _selectionInput;
-    // Player
-    private CustomInput<Vector2> _movementInput;
-    private CustomInput<bool> _sprintInput;
-    private CustomInput<bool> _crouchInput;
-    private CustomInput<bool> _interactionInput;
-    private CustomInput<bool> _flashlightInput;
-    private CustomInput<Vector2> _cameraInput;
-    private CustomInput<bool> _pointOfViewInput;
-
+    // User Interface Map
+	private CustomInput<bool> _inputPauseMenu;
+	private CustomInput<bool> _inputInventory;
+	private CustomInput<bool> _inputJournal;
+	private CustomInput<Vector2> _inputNavigation;
+	private CustomInput<bool> _inputSelection;
+	// Player Map
+	private CustomInput<Vector2> _inputMovement;
+	private CustomInput<bool> _inputSprint;
+	private CustomInput<bool> _inputCrouch;
+	private CustomInput<bool> _inputInteract;
+	private CustomInput<bool> _inputFlashlight;
+	private CustomInput<Vector2> _inputCamera;
+	private CustomInput<bool> _inputChangePOV;
+    
     /* Access */
-    // User Interface
-    public CustomInput<bool> PauseMenuInput { get { return this._pauseMenuInput; } }
-    public CustomInput<bool> InventoryInput { get { return this._inventoryInput; } }
-    public CustomInput<bool> JournalInput { get { return this._journalInput; } }
-    public CustomInput<Vector2> NavigationInput { get { return this._navigationInput; } }
-    public CustomInput<bool> SelectionInput { get { return this._selectionInput; } }
-    // Player
-    public CustomInput<Vector2> MovementInput { get { return this._movementInput; } }
-    public CustomInput<bool> SprintInput { get { return this._sprintInput; } }
-    public CustomInput<bool> CrouchInput { get { return this._crouchInput; } }
-    public CustomInput<bool> InteractionInput { get { return this._interactionInput; } }
-    public CustomInput<bool> FlashlightInput { get { return this._flashlightInput; } }
-    public CustomInput<Vector2> CameraInput { get { return this._cameraInput; } }
-    public CustomInput<bool> PointOfViewInput { get { return this._pointOfViewInput; } }
-
+    // User Interface Map
+	public CustomInput<bool> PauseMenuInput { get { return this._inputPauseMenu; } }
+	public CustomInput<bool> InventoryInput { get { return this._inputInventory; } }
+	public CustomInput<bool> JournalInput { get { return this._inputJournal; } }
+	public CustomInput<Vector2> NavigationInput { get { return this._inputNavigation; } }
+	public CustomInput<bool> SelectionInput { get { return this._inputSelection; } }
+	// Player Map
+	public CustomInput<Vector2> MovementInput { get { return this._inputMovement; } }
+	public CustomInput<bool> SprintInput { get { return this._inputSprint; } }
+	public CustomInput<bool> CrouchInput { get { return this._inputCrouch; } }
+	public CustomInput<bool> InteractInput { get { return this._inputInteract; } }
+	public CustomInput<bool> FlashlightInput { get { return this._inputFlashlight; } }
+	public CustomInput<Vector2> CameraInput { get { return this._inputCamera; } }
+	public CustomInput<bool> ChangePOVInput { get { return this._inputChangePOV; } }
+    
     protected override void Awake()
     {
         base.Awake();
-
+        
         if (!this._inputActionAsset)
         {
             this._inputActionAsset = Resources.Load<InputActionAsset>("InputSystem_Actions");
         }
 
-        this._userInterfaceActionMap = this._inputActionAsset.FindActionMap("User Interface");
-        this._playerActionMap = this._inputActionAsset.FindActionMap("Player");
-
+        this._mapUserInterface = this._inputActionAsset.FindActionMap("User Interface");
+		this._mapPlayer = this._inputActionAsset.FindActionMap("Player");
+        
         this._allCustomInputs = new ICustomInput[]
         {
-            this._pauseMenuInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Pause Menu")),
-            this._inventoryInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Inventory")),
-            this._journalInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Journal")),
-            this._navigationInput = new CustomInput<Vector2>(_userInterfaceActionMap.FindAction("Navigation")),
-            this._selectionInput = new CustomInput<bool>(_userInterfaceActionMap.FindAction("Selection")),
-            
-            this._movementInput = new CustomInput<Vector2>(_playerActionMap.FindAction("Movement")),
-            this._sprintInput = new CustomInput<bool>(_playerActionMap.FindAction("Sprint")),
-            this._crouchInput = new CustomInput<bool>(_playerActionMap.FindAction("Crouch")),
-            this._interactionInput = new CustomInput<bool>(_playerActionMap.FindAction("Interact")),
-            this._flashlightInput = new CustomInput<bool>(_playerActionMap.FindAction("Flashlight")),
-            this._cameraInput = new CustomInput<Vector2>(_playerActionMap.FindAction("Camera")),
-            this._pointOfViewInput = new CustomInput<bool>(_playerActionMap.FindAction("ChangePOV"))
+            // User Interface Map
+			this._inputPauseMenu = new CustomInput<bool>(_mapUserInterface.FindAction("Pause Menu")),
+			this._inputInventory = new CustomInput<bool>(_mapUserInterface.FindAction("Inventory")),
+			this._inputJournal = new CustomInput<bool>(_mapUserInterface.FindAction("Journal")),
+			this._inputNavigation = new CustomInput<Vector2>(_mapUserInterface.FindAction("Navigation")),
+			this._inputSelection = new CustomInput<bool>(_mapUserInterface.FindAction("Selection")),
+			// Player Map
+			this._inputMovement = new CustomInput<Vector2>(_mapPlayer.FindAction("Movement")),
+			this._inputSprint = new CustomInput<bool>(_mapPlayer.FindAction("Sprint")),
+			this._inputCrouch = new CustomInput<bool>(_mapPlayer.FindAction("Crouch")),
+			this._inputInteract = new CustomInput<bool>(_mapPlayer.FindAction("Interact")),
+			this._inputFlashlight = new CustomInput<bool>(_mapPlayer.FindAction("Flashlight")),
+			this._inputCamera = new CustomInput<Vector2>(_mapPlayer.FindAction("Camera")),
+			this._inputChangePOV = new CustomInput<bool>(_mapPlayer.FindAction("ChangePOV")),
         };
-
-        this.RegisterInputCallbacks();
+        
+        for (int i = 0; i < this._allCustomInputs.Length; i++)
+        {
+            this._allCustomInputs[i].RegisterCallbacks();
+        }
     }
-
+    
     private void OnEnable()
     {
         for (int i = 0; i < this._allCustomInputs.Length; i++)
@@ -128,24 +99,15 @@ public class InputHandler : PersistentSingleton<InputHandler>
             this._allCustomInputs[i].Disable();
         }
     }
-
-    private void RegisterInputCallbacks()
+    
+    public bool SetMapEnabled(EInputMap map, bool enable)
     {
-        for (int i = 0; i < this._allCustomInputs.Length; i++)
+        switch (map)
         {
-            this._allCustomInputs[i].RegisterCallbacks();
+            case EInputMap.UserInterface: if (enable) _mapUserInterface.Enable(); else _mapUserInterface.Disable(); break;
+			case EInputMap.Player: if (enable) _mapPlayer.Enable(); else _mapPlayer.Disable(); break;
+            default: return false;
         }
-    }
-
-    public void SetActiveMap(InputMap map)
-    {
-        if (map == InputMap.Player)
-        {
-            this._playerActionMap.Enable();
-        }
-        else
-        {
-            this._playerActionMap.Disable();
-        }
+        return true;
     }
 }

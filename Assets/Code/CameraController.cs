@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         // Inputs
-        if (InputHandler.Instance.PointOfViewInput.WasPressed) this.ChangePOV();
+        if (InputHandler.Instance.ChangePOVInput.WasPressed) this.ChangePOV();
         Vector2 mouseDelta = InputHandler.Instance.CameraInput.Value;
         
         // Horizontal Rotation

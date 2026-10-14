@@ -62,7 +62,7 @@ public class GeneralUIController : MonoBehaviour
         this._currentControlMode = nextControlMode;
         this._interfaceNodes[(int)this._currentControlMode].SetNodeUI(true);
 
-        InputHandler.Instance.SetActiveMap(this._currentControlMode != ControllMode.FreeRoam ? InputMap.UserInterface : InputMap.Player);
+        InputHandler.Instance.SetMapEnabled(EInputMap.Player, this._currentControlMode == ControllMode.FreeRoam);
     }
 
     public void EnableDialogUI(DialogBlock dialogBlock)

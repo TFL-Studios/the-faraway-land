@@ -35,7 +35,7 @@ public class InteractionController : MonoBehaviour
             this._interactionPopupController.SetTarget(this._targetInteractable ? this._targetInteractable.InteractionPopupAnchor : null);
         }
 
-        if (InputHandler.Instance.InteractionInput.WasPressed)
+        if (InputHandler.Instance.InteractInput.WasPressed)
         {
             this.TryInteraction();
         }
