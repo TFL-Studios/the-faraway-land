@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Mei
   characterSprite: {fileID: 21300000, guid: 627d807ddaa16914db9c3f334135ff73, type: 3}
+  characterDialogSprite: {fileID: 0}
   givenQuests: 0000000002000000
   portraitSilhouette: {fileID: 1657147325, guid: 60547ea40034a28409b9488e5fea603c, type: 3}
   portraitColored: {fileID: 1290251301, guid: 60547ea40034a28409b9488e5fea603c, type: 3}
