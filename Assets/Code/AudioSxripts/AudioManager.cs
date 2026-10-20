@@ -19,15 +19,23 @@ public class AudioManager : MonoBehaviour
         return audioSourceInstantiate;
     }
 
-    private void OnReleaseToPool(AudioSource pooledObject)
+    private void OnReleaseToPool(Audios pooledObject)
     {
-        pooledObject.gameObject.SetActive(false);
-        pooledObject.transform.parent = this.transform;
-        pooledObject.transform.localPosition = Vector3.zero;
+        for (int i = 0; i < audioPool.Count; i++)
+        {
+            if (audioPool[i] != audios.isUsing)
+            {
+                pooledObject.gameObject.SetActive(false);
+                pooledObject.transform.parent = this.transform;
+                pooledObject.transform.localPosition = Vector3.zero;
+            }
+
+        }
+            
         
     }
 
-    private void OnGetFromPool(AudioSource pooledObject, Vector3 audioPosition)
+    private void OnGetFromPool(Audios pooledObject, Vector3 audioPosition)
     {
         for (int i = 0; i < audioPool.Count; i++)
         {
@@ -43,8 +51,13 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    private void OnDestroyPooledObject(AudioSource pooledObject)
+    private void OnDestroyPooledObject(Audios pooledObject)
     {
         Destroy(pooledObject.gameObject);
+    }
+
+    private void PlayAudio()
+    {
+
     }
 }
