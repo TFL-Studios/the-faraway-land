@@ -1,24 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 
 public class AudioManager : MonoBehaviour
 {
-    private IObjectPool<AudioSource> audioPool;
-    public IObjectPool<AudioSource> AudioPool { set => audioPool = value; }
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private bool poolCheck = true;
-    [SerializeField] private int defaultCapacity = 20;
+    private Audios audios;
+    private List<Audios> audioPool = new List<Audios>();
     
-    private void Awake()
-    {
-        audioPool = new AudioPool<AudioSource>(poolCheck, defaultCapacity);
-    }
     
-    private AudioSource CreateAudio()
+    
+    
+    
+    private Audios CreateAudio()
     {
-        AudioSource audioSourceInstantiate = Instantiate(audioSource);
-        audioSourceInstantiate.AudioPool = audioPool;
+        Audios audioSourceInstantiate = Instantiate(audios);
+        audioPool.Add(audioSourceInstantiate);
         return audioSourceInstantiate;
     }
 
@@ -27,13 +24,23 @@ public class AudioManager : MonoBehaviour
         pooledObject.gameObject.SetActive(false);
         pooledObject.transform.parent = this.transform;
         pooledObject.transform.localPosition = Vector3.zero;
+        
     }
 
     private void OnGetFromPool(AudioSource pooledObject, Vector3 audioPosition)
     {
-        pooledObject.gameObject.SetActive(true);
-        pooledObject.transform.parent = null;
-        pooledObject.transform.position = audioPosition;
+        for (int i = 0; i < audioPool.Count; i++)
+        {
+            if (audioPool[i] == audios.isUsing)
+            {
+                pooledObject.gameObject.SetActive(true);
+                pooledObject.transform.parent = null;
+                pooledObject.transform.position = audioPosition;
+                audioPool[i].isUsing = true;
+            }
+            return;
+        }
+        
     }
 
     private void OnDestroyPooledObject(AudioSource pooledObject)
