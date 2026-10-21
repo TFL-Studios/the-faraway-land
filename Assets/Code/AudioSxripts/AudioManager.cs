@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
 
 public class AudioManager : MonoBehaviour
 {
-    private Audios audios;
+    private GameObject audiosPrefab;
     private List<Audios> audioPool = new List<Audios>();
     
     
@@ -14,41 +15,37 @@ public class AudioManager : MonoBehaviour
     
     private Audios CreateAudio()
     {
-        Audios audioSourceInstantiate = Instantiate(audios);
+        Audios audioSourceInstantiate = Instantiate(audiosPrefab).GetComponent<Audios>();
         audioPool.Add(audioSourceInstantiate);
         return audioSourceInstantiate;
     }
 
     private void OnReleaseToPool(Audios pooledObject)
     {
-        for (int i = 0; i < audioPool.Count; i++)
-        {
-            if (audioPool[i] != audios.isUsing)
-            {
+                
                 pooledObject.gameObject.SetActive(false);
                 pooledObject.transform.parent = this.transform;
                 pooledObject.transform.localPosition = Vector3.zero;
-            }
-
-        }
+        
             
         
     }
 
-    private void OnGetFromPool(Audios pooledObject, Vector3 audioPosition)
+    private bool OnGetFromPool(AudioClip audioClip, Vector3 audioPosition)
     {
         for (int i = 0; i < audioPool.Count; i++)
         {
-            if (audioPool[i] == audios.isUsing)
+            if (!audioPool[i].isUsing)
             {
-                pooledObject.gameObject.SetActive(true);
-                pooledObject.transform.parent = null;
-                pooledObject.transform.position = audioPosition;
+                audioPool[i].gameObject.SetActive(true);
+                audioPool[i].transform.parent = null;
+                audioPool[i].transform.position = audioPosition;
                 audioPool[i].isUsing = true;
+                return true;
             }
-            return;
+            
         }
-        
+        return false;
     }
 
     private void OnDestroyPooledObject(Audios pooledObject)
