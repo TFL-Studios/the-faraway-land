@@ -21,7 +21,7 @@ public class Audios : MonoBehaviour
 
     private void Update()
     {
-        if(this.isUsing && audioSource.isPlaying == false)
+        if(this.isUsing && this.audioSource.isPlaying == false)
         {
             AudioManager.OnAudioStop.Invoke(this);
 

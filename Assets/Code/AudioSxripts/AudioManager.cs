@@ -7,8 +7,8 @@ using UnityEngine.Events;
 
 public class AudioManager : PersistentSingleton<AudioManager>
 {
-    private GameObject audiosPrefab;
-    private List<Audios> audioPool = new List<Audios>();
+    private GameObject _audiosPrefab;
+    private List<Audios> _audioPool = new List<Audios>();
     public static UnityAction<Audios> OnAudioStop;
 
     public void PlayAudio(AudioClip audioClip, Vector3 audioPosition)
@@ -17,7 +17,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
         bool audioFlag = OnGetFromPool(audioClip, audioPosition);
         if (!audioFlag) 
         {
-            CreateAudio().InitAudio(audioClip, audioPosition);
+            this.CreateAudio().InitAudio(audioClip, audioPosition);
         
         
         }
@@ -35,8 +35,8 @@ public class AudioManager : PersistentSingleton<AudioManager>
 
     private Audios CreateAudio()
     {
-        Audios audioSourceInstantiate = Instantiate(audiosPrefab).GetComponent<Audios>();
-        audioPool.Add(audioSourceInstantiate);
+        Audios audioSourceInstantiate = GameObject.Instantiate(_audiosPrefab).GetComponent<Audios>();
+        _audioPool.Add(audioSourceInstantiate);
         
         return audioSourceInstantiate;
     }
@@ -54,11 +54,11 @@ public class AudioManager : PersistentSingleton<AudioManager>
 
     private bool OnGetFromPool(AudioClip audioClip, Vector3 audioPosition)
     {
-        for (int i = 0; i < audioPool.Count; i++)
+        for (int i = 0; i < _audioPool.Count; i++)
         {
-            if (!audioPool[i].isUsing)
+            if (!_audioPool[i].isUsing)
             {
-                audioPool[i].InitAudio(audioClip, audioPosition);
+                _audioPool[i].InitAudio(audioClip, audioPosition);
                
                 return true;
             }
