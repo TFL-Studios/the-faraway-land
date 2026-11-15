@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 830c5a0d7c6b4704784d1807027a7318, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelID: 1
+  minProgression:
+    stages:
+    - stageID: 0
+      objective: Nao ativa
+      passCondition: Comecar quest
+    - stageID: 1
+      objective: Achar uma saida
+      passCondition: Chegar no portao do brinquedao
+    - stageID: 2
+      objective: 'Abrir o portao do brinquedao '
+      passCondition: '- interagir com a bancada [vai pro 3]
+
+        - ou comecar
+        o Genius [vai pro 4]'
+    - stageID: 3
+      objective: Ganhar tickets pra tesoura
+      passCondition: 'Jogar genius e pegar os ticket '
+    - stageID: 4
+      objective: Comprar a tesoura
+      passCondition: Comprar a tesoura na bancada
+    - stageID: 5
+      objective: Abrir o portao
+      passCondition: Interagir com o portao
+    - stageID: 6
+      objective: Fuja pelo brinquedao
+      passCondition: Entrar no brinquedao
+    - stageID: 7
+      objective: CORRE DO COISO
+      passCondition: Chegar no fim do brnquedo
+    - stageID: 200
+      objective: Completa
+      passCondition: 
+  medProgression:
+    stages: []
+  maxProgression:
+    stages: []
