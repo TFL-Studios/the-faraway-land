@@ -10,23 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5d4ff03702e46c438446a0f0863efac, type: 3}
-  m_Name: Quest0_MainDialog
+  m_Name: Mei_MeetDialog
   m_EditorClassIdentifier: Assembly-CSharp::DialogBlock
   characters:
   - {fileID: 11400000, guid: 51734d7ab0b2dc04b9af46e19f09d606, type: 2}
-  - {fileID: 11400000, guid: 72bc5b8922e4b6e42aa5b1ea9ecae28d, type: 2}
+  - {fileID: 11400000, guid: bd7592ab58d2fb84081a016e106b7749, type: 2}
   dialog:
-  - speechs: Q0_MD_L1
+  - speechs: Oi, eu sou a mei!
+    answers: []
+    haveAnswer: 0
+    right: 1
+    talking: 0
+  - speechs: Oi, eu sou o Krl!
     answers: []
     haveAnswer: 0
     right: 0
     talking: 1
-  - speechs: Q0_MD_L2
-    answers: []
+  - speechs: Quer jogar um JooJ?
+    answers:
+    - options: Sim
+      answerOptions: Vai se Fuder ent
+    - options: Nao
+      answerOptions: Chupa minha Rola
     haveAnswer: 0
-    right: 0
+    right: 1
     talking: 0
-  - speechs: Q0_MD_L3
+  - speechs: Nha
     answers: []
     haveAnswer: 0
     right: 0

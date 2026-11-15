@@ -8,12 +8,13 @@ public class CharacterData : ScriptableObject
     public Sprite characterSprite; // TODO: incluir poses e expressoes
 
     [Header("Dialog")]
+    public DialogBlock genericDialog;
     public Sprite characterDialogSprite;
-
-    [Header("Quests")]
-    public int[] givenQuests; // TODO: colocar o scriptable da quest, maybe
 
     [Header("Journal Character Sheet")]
     public Sprite portraitSilhouette;
     public Sprite portraitColored;
+
+    [Header("AI")]
+    public UnityEditor.MonoScript stateMachiune;
 }

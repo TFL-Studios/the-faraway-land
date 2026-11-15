@@ -1,25 +1,26 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-[System.Serializable]
-public struct Quest
-{
-    public bool complete;
-    public QuestData questData;
-}
-
 public class GameManager : PersistentSingleton<GameManager>
 {
-    public int activeQuestIndex = 0; // ph
-    public Quest[] quests;
-
     [SerializeField] private Canvas _blackoutCanvasPrefab;
 
     private GeneralUIController _uiController;
 
     public ControllMode CurrentControlMode { get { return this._uiController.CurrentControlMode; } }
+
+    private void OnEnable()
+    {
+        DialogController.OnEndDialog += OnEndDialog_Callback;
+    }
+
+    private void OnDisable()
+    {
+        DialogController.OnEndDialog -= OnEndDialog_Callback;
+    }
 
     protected override void Awake()
     {
@@ -33,7 +34,7 @@ public class GameManager : PersistentSingleton<GameManager>
         this._uiController.EnableDialogUI(dialogBlock);
     }
 
-    public void EndDialog()
+    public void OnEndDialog_Callback(DialogBlock dialogBlock, int dialogOutcome)
     {
         this._uiController.DisableDialogUI();
     }

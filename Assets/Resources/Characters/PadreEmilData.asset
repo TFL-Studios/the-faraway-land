@@ -18,3 +18,4 @@ MonoBehaviour:
   givenQuests: 
   portraitSilhouette: {fileID: 31273014, guid: 60547ea40034a28409b9488e5fea603c, type: 3}
   portraitColored: {fileID: -1793524559, guid: 60547ea40034a28409b9488e5fea603c, type: 3}
+  stateMachiune: {fileID: 11500000, guid: 20c5e9e28ab1dd6428581f0f60b23315, type: 3}

@@ -1,67 +1,26 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC_Controller : Interactable
 {
     [Header("NPC")]
     [SerializeField] private CharacterData _characterData;
-    [SerializeField] private CharacterAffinity _currentAffinity = CharacterAffinity.Stranger; // TODO: mover pra GameManager
-    [SerializeField] private DialogBlock genericDialog; // TODO: passar pro CharacterData
-    
+
+    private StateMachine _charStateMachine;
+
     [Header("GameObject Config")]
     [SerializeField] private SpriteRenderer _npcGraphics;
 
     public override bool Interact()
     {
-        DialogBlock dialog = genericDialog;
-        bool foundGiven = false;
-
-        foreach (int questID in this._characterData.givenQuests)
-        {
-            if (questID != GameManager.Instance.activeQuestIndex) continue;
-            
-            dialog = GameManager.Instance.quests[questID].questData.mainDialog;
-            GameManager.Instance.activeQuestIndex++; // TODO: inclusir a bool
-            foundGiven = true;
-            break;
-        }
-
-        bool hasQuestGeneric = false;
-        int charDialogIndex = 0;
-        foreach (DialogBlock charDialog in GameManager.Instance.quests[GameManager.Instance.activeQuestIndex].questData.charSpecificExtraDialog)
-        {
-            List<CharacterData> cars = charDialog.characters.ToList();
-            if (cars.Contains(this._characterData))
-            {
-                hasQuestGeneric = true;
-                break;
-            }
-            charDialogIndex++;
-        }
-
-        if (!foundGiven && hasQuestGeneric)
-        {
-            dialog = GameManager.Instance.quests[GameManager.Instance.activeQuestIndex].questData.charSpecificExtraDialog[charDialogIndex];
-        }
+        bool flag = this._charStateMachine.Interact(out DialogBlock interactionDialog);
+        
+        DialogBlock dialog = flag ? interactionDialog : this._characterData.genericDialog;
 
         GameManager.Instance.StartDialog(dialog);
-
-        //foreach (Dialog dialogdialog in dialog.dialog)
-        //{
-        //    Debug.Log($"{dialog.characters[dialogdialog.talking]}: {dialogdialog.speechs}");
-        //}
-
-        this.AjustAffinity(Random.Range(-7, 8));
-        Debug.Log(this._currentAffinity);
-
         return true;
-    }
-
-    public void AjustAffinity(int increment) // TODO: mover pra GameManager
-    {
-        int ajustedAffinity = (int)this._currentAffinity + increment;
-        this._currentAffinity = (CharacterAffinity)Mathf.Clamp(ajustedAffinity, (int)CharacterAffinity.Bad3, (int)CharacterAffinity.Family);
     }
 
 #if UNITY_EDITOR
@@ -73,9 +32,30 @@ public class NPC_Controller : Interactable
         {
             name = this._characterData.characterName.ToUpper().Replace(" ", "_");
             this._npcGraphics.sprite = this._characterData.characterSprite;
+
+            if (this._characterData.stateMachiune)
+            {
+                System.Type stateMachineType = this._characterData.stateMachiune.GetClass();
+
+                if (this._charStateMachine == null)
+                {
+                    StateMachine result = this.gameObject.GetComponent(stateMachineType) as StateMachine;
+                    if (result == null) result = this.gameObject.AddComponent(stateMachineType) as StateMachine;
+                    this._charStateMachine = result;
+                }
+                else if (this._charStateMachine.GetType() != stateMachineType)
+                {
+                    StateMachine targetStateMachine = this._charStateMachine;
+                    UnityEditor.EditorApplication.delayCall += () => UnityEditor.Undo.DestroyObjectImmediate(targetStateMachine);
+                    this._charStateMachine = this.gameObject.AddComponent(stateMachineType) as StateMachine;
+                }
+            }
+            else if (this._charStateMachine != null)
+            {
+                UnityEditor.EditorApplication.delayCall += () => UnityEditor.Undo.DestroyObjectImmediate(this._charStateMachine);
+            }
         }
 
-        this.transform.parent.name = $"{name}_Environment";
         this.name = $"{name}_Controller";
         this.transform.GetChild(0).name = $"{name}_Graphic";
     }

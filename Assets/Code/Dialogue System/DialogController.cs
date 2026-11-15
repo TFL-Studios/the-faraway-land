@@ -1,9 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DialogController : InterfaceNode
 {
+    public static UnityAction<DialogBlock, int> OnEndDialog;
+
     [SerializeField] private GameObject _answerPanel;
     [SerializeField] private TextMeshProUGUI _dialogLinesBox;
     [SerializeField] private GameObject _buttonsParent;
@@ -89,6 +92,7 @@ public class DialogController : InterfaceNode
     public void InitDialog(DialogBlock dialogBlock)
     {
         this._dialogBlock = dialogBlock;
+        this._index = 0;
         currentDialog = _dialogBlock.dialog[_index];
         talking = currentDialog.talking;
         this.SpawnCharacter();
@@ -111,7 +115,7 @@ public class DialogController : InterfaceNode
         this._index++;
         if (this._index >= _dialogBlock.dialog.Length)
         {
-            GameManager.Instance.EndDialog();
+            OnEndDialog.Invoke(this._dialogBlock, 0); // TODO: mudar dialogOutcome
             return false;
         }
         this._dialogLinesBox.text = _dialogBlock.dialog[this._index].speechs;
