@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d4ff03702e46c438446a0f0863efac, type: 3}
   m_Name: DialogBlock
   m_EditorClassIdentifier: Assembly-CSharp::DialogBlock
-  characterTalking:
-  - characterTalkingName: osvald
-    characterTalkingImagem: {fileID: 21300000, guid: d91298a5baffc4a4e89c78d6a762361e, type: 3}
-  - characterTalkingName: restaro
-    characterTalkingImagem: {fileID: -1196046084, guid: b5ff16396019d144f974db363ce9b6ce, type: 3}
+  characters:
+  - {fileID: 11400000, guid: 72bc5b8922e4b6e42aa5b1ea9ecae28d, type: 2}
+  - {fileID: 11400000, guid: 51734d7ab0b2dc04b9af46e19f09d606, type: 2}
   dialog:
   - speechs: dadsa
     answers:

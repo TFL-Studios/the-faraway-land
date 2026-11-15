@@ -17,7 +17,7 @@ public class Player2D : MonoBehaviour
 
     private void Update()
     {
-        if (InputHandler.Instance.InteractionInput.WasPressed)
+        if (InputHandler.Instance.InteractInput.WasPressed)
         {
             Debug.Log(this._interactables[0].name);
         }

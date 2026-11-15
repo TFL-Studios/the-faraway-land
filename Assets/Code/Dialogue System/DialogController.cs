@@ -1,10 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class DialogController : MonoBehaviour
+public class DialogController : InterfaceNode
 {
-    [SerializeField] private GameObject _dialogBox;
+    public static UnityAction<DialogBlock, int> OnEndDialog;
+
     [SerializeField] private GameObject _answerPanel;
     [SerializeField] private TextMeshProUGUI _dialogLinesBox;
     [SerializeField] private GameObject _buttonsParent;
@@ -19,9 +21,12 @@ public class DialogController : MonoBehaviour
     Dialog currentDialog;
     private int talking;
 
+    private int framseElapsed = 0;
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentControlMode != ControllMode.UI_Dialog) return;
+
         if (this._buttons != null)
         {
             if (InputHandler.Instance.NavigationInput.Value.y > 0)
@@ -53,50 +58,46 @@ public class DialogController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("r"))
-        {
-            currentDialog = _dialogBlock.dialog[_index];
-            talking = currentDialog.talking;
-            this._dialogBox.SetActive(!this._dialogBox.activeSelf);
-            this.SpawnCharacter();
-            this._dialogLinesBox.text = _dialogBlock.dialog[0].speechs;
-            this.ActiveCharacter();
-        }
 
-        
-        if (InputHandler.Instance.SelectionInput.WasPressed)
+        if (framseElapsed > 1 && (Input.GetKeyDown("x") || InputHandler.Instance.SelectionInput.WasPressed))
         {
             if (canAnswer)
             {
                 this.ConfirmAnswer();
             }
-            else if (!canAnswer) 
+            else
             {
                 this.NextLine();
             }
-            
-                
-            
 
+
+
+            framseElapsed = 0;
         }
 
-        
 
-        
 
-        
 
-        if(Input.GetKeyDown("x"))
-        {
-            if (canAnswer)
-            {
-                this.ConfirmAnswer();
-            }
-            else 
-            {
-                this.NextLine();
-            }
-        }
+
+
+
+        framseElapsed++;
+    }
+
+    public override void SetNodeUI(bool active)
+    {
+        base.SetNodeUI(active);
+    }
+
+    public void InitDialog(DialogBlock dialogBlock)
+    {
+        this._dialogBlock = dialogBlock;
+        this._index = 0;
+        currentDialog = _dialogBlock.dialog[_index];
+        talking = currentDialog.talking;
+        this.SpawnCharacter();
+        this._dialogLinesBox.text = _dialogBlock.dialog[0].speechs;
+        this.ActiveCharacter();
     }
 
     public bool NextLine()
@@ -110,6 +111,12 @@ public class DialogController : MonoBehaviour
             this.AnswerBox();
 
             return true;
+        }
+        this._index++;
+        if (this._index >= _dialogBlock.dialog.Length)
+        {
+            OnEndDialog.Invoke(this._dialogBlock, 0); // TODO: mudar dialogOutcome
+            return false;
         }
         this._dialogLinesBox.text = _dialogBlock.dialog[this._index].speechs;
         this.ActiveCharacter();
@@ -125,23 +132,23 @@ public class DialogController : MonoBehaviour
     {
         TextMeshProUGUI textfirstCharacter = this._firstCharacter.GetComponentInChildren<TextMeshProUGUI>();
         TextMeshProUGUI textsecondCharacter = this._secondCharacter.GetComponentInChildren<TextMeshProUGUI>();
-        CharacterTalking characterTalking = _dialogBlock.characterTalking[talking];
+        CharacterData characterTalking = _dialogBlock.characters[talking];
 
 
         if (!currentDialog.right)
         {
             this._firstCharacter.gameObject.SetActive(!this._firstCharacter.gameObject.activeSelf);
 
-            this._firstCharacter.sprite = characterTalking.characterTalkingImagem;
-            textfirstCharacter.text = characterTalking.characterTalkingName;
+            this._firstCharacter.sprite = characterTalking.characterDialogSprite;
+            textfirstCharacter.text = characterTalking.characterName;
         }
 
         else
         {
 
             this._secondCharacter.gameObject.SetActive(!this._secondCharacter.gameObject.activeSelf);
-            this._secondCharacter.sprite = characterTalking.characterTalkingImagem;
-            textsecondCharacter.text = characterTalking.characterTalkingName;
+            this._secondCharacter.sprite = characterTalking.characterDialogSprite;
+            textsecondCharacter.text = characterTalking.characterName;
 
 
         }
@@ -209,7 +216,6 @@ public class DialogController : MonoBehaviour
         
             
         
-            this._index++;
             currentDialog = _dialogBlock.dialog[this._index];
             talking = currentDialog.talking;
         for (int i = this._buttons.Length - 1; i >= 0; i--)
@@ -224,6 +230,8 @@ public class DialogController : MonoBehaviour
 
     public void AnswerBox()
     {
+        if (currentDialog.answers == null) return;
+
         for (int i = 0; i < currentDialog.answers.Length; i++)
         {
             GameObject answerBoxInstance = GameObject.Instantiate(this._answerBoxPrefab, this._buttonsParent.transform, false);

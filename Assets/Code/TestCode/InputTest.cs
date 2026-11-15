@@ -26,7 +26,7 @@ public class InputTest : MonoBehaviour
 
         if (InputHandler.Instance.SelectionInput.WasPressed) { this._toggleSelecao = !this._toggleSelecao; }
         if (InputHandler.Instance.FlashlightInput.WasPressed) { this._toggleLanterna = !this._toggleLanterna; }
-        if (InputHandler.Instance.PointOfViewInput.WasPressed) { this._togglePOV = !this._togglePOV; }
+        if (InputHandler.Instance.ChangePOVInput.WasPressed) { this._togglePOV = !this._togglePOV; }
 
         this._log.text = string.Concat
         (
@@ -39,10 +39,10 @@ public class InputTest : MonoBehaviour
             $"(WASD) Direcao Movimento: {InputHandler.Instance.MovementInput.Value}\n",
             $"(L SHIFT) Corrida: {(InputHandler.Instance.SprintInput.IsPressed ? _ON : _OFF)}\n",
             $"(L CONTROL) Agachar: {(InputHandler.Instance.CrouchInput.IsPressed ? _ON : _OFF)}\n",
-            $"(E) Interagir: {(InputHandler.Instance.InteractionInput.IsPressed ? _PRESSED : _RELEASED)}\n",
+            $"(E) Interagir: {(InputHandler.Instance.InteractInput.IsPressed ? _PRESSED : _RELEASED)}\n",
             $"(F) Lanterna: {(InputHandler.Instance.FlashlightInput.IsPressed ? _PRESSED : _RELEASED)} ({(this._toggleLanterna ? _ON : _OFF)})\n",
             $"(MOUSE) Camera Delta: {InputHandler.Instance.CameraInput.Value}\n",
-            $"(L ALT) POV: {(InputHandler.Instance.PointOfViewInput.IsPressed ? _PRESSED : _RELEASED)} ({(this._togglePOV ? _ON : _OFF)})\n"
+            $"(L ALT) POV: {(InputHandler.Instance.ChangePOVInput.IsPressed ? _PRESSED : _RELEASED)} ({(this._togglePOV ? _ON : _OFF)})\n"
         );
     }
 }

@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd79ed83812382e4bb4625fff16cb3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  _inventoryUIPanel: {fileID: 9203009667888956266}
+  _nodeUIPanel: {fileID: 9203009667888956266}
   _itens: []
   _icon: {fileID: 247257850407631143}
   _itemPrefab: {fileID: 8922220154876509167, guid: 660194a2e0eebab4ca3d12582c0be0cc, type: 3}
