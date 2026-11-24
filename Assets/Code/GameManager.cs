@@ -8,9 +8,14 @@ public class GameManager : PersistentSingleton<GameManager>
 {
     [SerializeField] private Canvas _blackoutCanvasPrefab;
 
+    private SaveSystem _saveSystem;
+    public SaveSystem SaveSystem { get { return this._saveSystem; } }
+
     private GeneralUIController _uiController;
 
     public ControllMode CurrentControlMode { get { return this._uiController.CurrentControlMode; } }
+
+    [SerializeField] public LevelSaveData _currentLevel;
 
     private void OnEnable()
     {
@@ -27,6 +32,33 @@ public class GameManager : PersistentSingleton<GameManager>
         base.Awake();
 
         this._uiController = GameObject.FindFirstObjectByType<GeneralUIController>();
+    }
+
+    private void Start()
+    {
+        this._saveSystem = new SaveSystem();
+
+        int currentLevelID = this._saveSystem.FetchCurrentLevelID();
+        this._currentLevel = this._saveSystem.FetchLevel(currentLevelID);
+
+        // ph test
+        //this._currentLevel.levelID = 2;
+
+        //this._saveSystem.SaveCurrentLevelID(this._currentLevel.levelID);
+        //this._saveSystem.SaveLevel(this._currentLevel);
+        //this._saveSystem.PersistSavedData();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (this._saveSystem == null) return;
+        this._saveSystem.PersistSavedData();
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (this._saveSystem == null) return;
+        this._saveSystem.PersistSavedData();
     }
 
     public void StartDialog(DialogBlock dialogBlock)

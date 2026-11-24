@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+[System.Serializable]
 public class LevelSaveData
 {
     [JsonProperty("LevelID")] public int levelID;
@@ -11,7 +12,7 @@ public class LevelSaveData
     [JsonProperty("MaxProgress")] public int maxProgress;
 }
 
-public class CharactersStateData
+public class CharacterSaveData
 {
     [JsonProperty("CharacterName")] public string characterName;
     [JsonProperty("StateIndex")] public int stateIndex;
@@ -19,11 +20,19 @@ public class CharactersStateData
 
 public class SaveData
 {
-    public List<LevelSaveData> levelsSaveData;
-    public List<CharactersStateData> charactersSateData;
+    public int currentLevelID;
+    public List<LevelSaveData> levelSaveDataList;
+    public List<CharacterSaveData> characterSaveDataList;
+
+    public SaveData()
+    {
+        this.currentLevelID = -1;
+        this.levelSaveDataList = new List<LevelSaveData>();
+        this.characterSaveDataList = new List<CharacterSaveData>();
+    }
 }
 
-public class SaveSystem : MonoBehaviour
+public class SaveSystem
 {
     private SaveData _saveData;
 
@@ -35,13 +44,22 @@ public class SaveSystem : MonoBehaviour
     private SaveData Load()
     {
         SaveData result;
+        string jsonString = string.Empty;
 
-        string jsonString = File.ReadAllText($"{Application.persistentDataPath}/SaveData.txt");
-        result = JsonConvert.DeserializeObject<SaveData>(jsonString);
+        try
+        {
+            jsonString = File.ReadAllText($"{Application.persistentDataPath}/SaveData.txt");
+        }
+        catch (FileNotFoundException e)
+        {
+            File.WriteAllText($"{Application.persistentDataPath}/SaveData.txt", "");
+        }
+        finally
+        {
+            result = JsonConvert.DeserializeObject<SaveData>(jsonString);
+        }
 
         if (result == null) { result = new SaveData(); }
-        if (result.levelsSaveData == null ) { result.levelsSaveData = new List<LevelSaveData>(); }
-        if (result.charactersSateData == null ) { result.charactersSateData = new List<CharactersStateData>(); }
 
         return result;
     }
@@ -53,28 +71,90 @@ public class SaveSystem : MonoBehaviour
         File.WriteAllText(path, jsonString);
     }
 
-    public bool SaveLevel(int levelID, int minProgress, int medProgress, int maxProgress)
+    public void SaveCurrentLevelID(int levelID)
     {
-        if (this._saveData == null) { return false; }
+        this._saveData.currentLevelID = levelID;
+    }
 
-        if (this._saveData.levelsSaveData == null) { return false; }
+    public int FetchCurrentLevelID()
+    {
+        return this._saveData.currentLevelID;
+    }
 
-        for (int i = 0; i < this._saveData.levelsSaveData.Count; i++)
+    public bool SaveLevel(LevelSaveData levelSaveData)
+    {
+        int levelID = levelSaveData.levelID;
+        int minProgress = levelSaveData.minProgress;
+        int medProgress = levelSaveData.medProgress;
+        int maxProgress = levelSaveData.maxProgress;
+
+        for (int index = 0; index < this._saveData.levelSaveDataList.Count; index++)
         {
-            if (this._saveData.levelsSaveData[i].levelID == levelID)
+            if (this._saveData.levelSaveDataList[index].levelID == levelID)
             {
-                this._saveData.levelsSaveData[i].minProgress = minProgress;
-                this._saveData.levelsSaveData[i].medProgress = medProgress;
-                this._saveData.levelsSaveData[i].maxProgress = maxProgress;
+                this._saveData.levelSaveDataList[index].minProgress = minProgress;
+                this._saveData.levelSaveDataList[index].medProgress = medProgress;
+                this._saveData.levelSaveDataList[index].maxProgress = maxProgress;
                 return true;
             }
         }
 
         LevelSaveData newLevelSaveData = new LevelSaveData();
+        newLevelSaveData.levelID = levelID;
         newLevelSaveData.minProgress = minProgress;
         newLevelSaveData.medProgress = medProgress;
         newLevelSaveData.maxProgress = maxProgress;
-        this._saveData.levelsSaveData.Add(newLevelSaveData);
+        this._saveData.levelSaveDataList.Add(newLevelSaveData);
         return true;
+    }
+
+    public LevelSaveData FetchLevel(int levelID)
+    {
+        LevelSaveData result = null;
+
+        for (int index = 0; index < this._saveData.levelSaveDataList.Count; index++)
+        {
+            if (levelID == this._saveData.levelSaveDataList[index].levelID)
+            {
+                result = this._saveData.levelSaveDataList[index];
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    public bool SaveCharacterState(string characterName, int stateIndex)
+    {
+        for (int index = 0; index < this._saveData.characterSaveDataList.Count; index++)
+        {
+            if (this._saveData.characterSaveDataList[index].characterName == characterName)
+            {
+                this._saveData.characterSaveDataList[index].stateIndex = stateIndex;
+                return true;
+            }
+        }
+
+        CharacterSaveData mewCharacterSaveData = new CharacterSaveData();
+        mewCharacterSaveData.characterName = characterName;
+        mewCharacterSaveData.stateIndex = stateIndex;
+        this._saveData.characterSaveDataList.Add(mewCharacterSaveData);
+        return true;
+    }
+
+    public int FetchCharacterState(string characterName)
+    {
+        int result = -1;
+
+        for (int index = 0; index < this._saveData.characterSaveDataList.Count; index++)
+        {
+            if (this._saveData.characterSaveDataList[index].characterName == characterName)
+            {
+                result = this._saveData.characterSaveDataList[index].stateIndex;
+                break;
+            }
+        }
+
+        return result;
     }
 }

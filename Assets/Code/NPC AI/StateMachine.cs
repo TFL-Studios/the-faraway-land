@@ -15,6 +15,7 @@ public class StateMachine : MonoBehaviour
     protected IState[] _states;
 
     protected int _currentState;
+    public int CurrentStateIndex { get { return this._currentState; } }
 
     private void OnEnable()
     {
